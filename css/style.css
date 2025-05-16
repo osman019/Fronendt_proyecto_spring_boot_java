@@ -1,76 +1,550 @@
-*{
- background-color: rgba(221, 221, 221, 1);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
 
-.footer{
-grid-area: a;
+body {
+  background-color: rgba(221, 221, 221, 1);
 }
 
-.logo{width: 10vw;
-margin-left: 2vw;
-margin-top: 1vw;}
-.boton1{
-    cursor: pointer;
-    border: none;
-    right: 9vw;
-    position: absolute;
-    height: 2.5vw;
-    font-size: 1vw; 
-     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    margin-left: 2vw;
+/* Header styles */
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  background-color: rgba(221, 221, 221, 1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
-      
-    
+.logo {
+  width: 120px;
+  height: auto;
 }
-.boton1:hover{
-   background-color: black;
-   color: aliceblue;
-   border-radius: 0.6vw;
+
+.nav-buttons {
+   display: flex;
+  gap: 1rem;
+  position: relative;
+  right: 30vw;
 }
-.boton2:hover{
-   background-color: black;
-   color: aliceblue;
-   border-radius: 0.6vw;
-}
-.boton2{
-     cursor: pointer;
+
+.boton1,
+.boton2,
+.boton3 {
+   cursor: pointer;
   border: none;
-    right: 16vw;
-    position: absolute;
-     height: 2.5vw;
-      font-size: 1vw;
-          text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-}
-.boton3{
-     cursor: pointer;
-      border-radius: 0.6vw;
-     color: aliceblue;
-    right: 3vw;
-    position: absolute;
-    height: 2.5vw;
-    background-color: black;
-     font-size: 1vw;
-}
-#imagenCambia{
-
-    right: 4vw;
-    position: absolute;
-    top: 10vw;
+  padding: 1rem 3rem;
+  font-size: 1.5rem;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-color: transparent;
+  right: 6vw;
+  position: relative;
 }
 
-
-
-.textodebienvenidad{
-    font-size: 4vw;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    margin-left: 2vw;
-    margin-top: 8vw;
+.boton1:hover,
+.boton2:hover {
+  background-color: black;
+  color: aliceblue;
+  border-radius: 0.6rem;
 }
-.brevedescripcion{
-    color: rgb(58, 57, 57);
-    top: 30vw;
-    position: absolute;
-        font-size: 2vw;
-            margin-left: 2vw;
-    margin-top: 4vw;
+
+.boton3 {
+  border-radius: 0.6rem;
+  color: aliceblue;
+  background-color: black;
+}
+
+/* Mobile menu */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(221, 221, 221, 0.95);
+  z-index: 5;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-nav.active {
+  display: flex;
+}
+
+/* Main content styles */
+.cuerpo {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#imagenCambia {
+  max-width: 24%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.text-container {
+  margin-top: 2rem;
+}
+
+.textodebienvenidad {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  position: relative;
+  top: 10vh;
+}
+
+.brevedescripcion {
+  color: rgb(58, 57, 57);
+  font-size: 1.2rem;
+  line-height: 1.5;
+   position: relative;
+     top: 20vh;
+}
+
+/* Process steps */
+.process-steps {
+    display: flex;
+  position: relative;
+  top: 25vh;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 100%;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step-number {
+  background-color: black;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex-grow: 1;
+}
+
+.step-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+/* Ofertas Especiales Section */
+.ofertas-section {
+  padding: 3rem 1rem;
+  text-align: center;
+  position: relative;
+    top: 30vh;
+  scroll-margin-top: 80px; /* Para el desplazamiento suave */
+}
+
+.ofertas-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ofertas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.oferta-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.oferta-card:hover {
+  transform: translateY(-5px);
+}
+
+.oferta-img-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.oferta-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.oferta-nombre {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.oferta-precio-antes {
+  color: #777;
+  text-decoration: line-through;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.oferta-precio-ahora {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.oferta-precio-ahora span {
+  color: #000;
+  font-weight: bold;
+}
+
+.reservar-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reservar-btn:hover {
+  background-color: #333;
+}
+
+/* Modal styles */
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #777;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.submit-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+.form-footer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.form-footer a {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .nav-buttons {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .textodebienvenidad {
+       font-size: 2rem;
+    text-align: center;
+     position: relative; 
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+  }
+
+  .brevedescripcion {
+     font-size: 1rem;
+    text-align: center;
+     position: relative; 
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+  }
+
+  #imagenCambia {
+    margin-top: 1rem;
+    max-width: 80%;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .process-steps {
+    margin: 2rem auto;
+      position: relative; 
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .step-content p {
+    font-size: 0.85rem;
+  }
+
+  .ofertas-title {
+    font-size: 2rem;
+  }
+
+  .oferta-card {
+    max-width: 100%;
+      position: relative; 
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo {
+    width: 100px;
+  }
+
+  .textodebienvenidad {
+         font-size: 2rem;
+    text-align: center;
+     position: relative; 
+    top: 0;
+    left: 0;
+    margin-top: 10px;
+  }
+
+  #imagenCambia {
+    max-width: 45%;
+    float: right;
+    margin-top: 2rem;
+  }
+
+  .text-container {
+    width: 50%;
+  }
+
+  .process-steps {
+    margin-top: 3rem;
+  }
+
+  .ofertas-container {
+    gap: 1.5rem;
+  }
+
+  .oferta-card {
+    max-width: 220px;
+  }
+}
+
+@media (min-width: 1025px) {
+  header {
+    padding: 1rem 3rem;
+  }
+
+  .cuerpo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+  }
+
+  .text-container {
+    width: 50%;
+    margin-top: 4rem;
+  }
+
+  #imagenCambia {
+    width: 40%;
+    margin-top: 2rem;
+  }
+
+  .textodebienvenidad {
+    font-size: 3rem;
+  }
+
+  .brevedescripcion {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .process-steps {
+    margin-top: 4rem;
+  }
+
+  .step {
+    max-width: 80%;
+  }
+
+  .step-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .step-content p {
+    font-size: 1rem;
+  }
+
+  .ofertas-section {
+    padding: 4rem 3rem;
+  }
 }

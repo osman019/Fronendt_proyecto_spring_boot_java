@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="es">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,30 +7,161 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header class="footer">
-        <img class="logo" src="img/WhatsApp_Image_2025-05-15_at_12.14.34_PM-removebg-preview.png" alt="">
-        <button class="boton1">Iniciar sesion <link rel="stylesheet" href=""></button>
-        <button class="boton2">Registrarse <link rel="stylesheet" href=""></button>
-        <button class="boton3">Ofertas <link rel="stylesheet" href=""></button>
+    <header>
+        <img class="logo" src="img/WhatsApp_Image_2025-05-15_at_12.14.34_PM-removebg-preview.png" alt="Logo HerraRent">
+        
+        <div class="nav-buttons">
+            <button class="boton1" id="login-btn">Iniciar sesión</button>
+            <button class="boton2" id="register-btn">Registrarse</button>
+            <button class="boton3" id="ofertas-btn">Ofertas</button>
+        </div>
+        
+        <div class="hamburger" id="hamburger-menu">
+            <span></span>
+            <span></span>
+            <span></span>
+        </div>
+        
+        <div class="mobile-nav" id="mobile-nav">
+            <button class="boton1" id="mobile-login-btn">Iniciar sesión</button>
+            <button class="boton2" id="mobile-register-btn">Registrarse</button>
+            <button class="boton3" id="mobile-ofertas-btn">Ofertas</button>
+        </div>
     </header>
-      <main class="cuerpo"><img id="imagenCambia" src="img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png" alt="Descripción de la imagen">
-
-    <script>
-        const imagenes = ['img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png ', 'img/vista-superior-del-martillo-de-acero-con-otros-elementos-y-herramientas-de-construccion (2) 1.png'];
-        let indiceActual = 0;
-        const imagenElemento = document.getElementById('imagenCambia');
-
-        function cambiarImagen() {
-            indiceActual = (indiceActual + 1) % imagenes.length;
-            imagenElemento.src = imagenes[indiceActual];
-        }
-
-        setInterval(cambiarImagen, 2000); 
-    </script>
-    <p class="textodebienvenidad">Renta de herramientas <br>de alta calidad</p>
-    <p class="brevedescripcion">En HerraRent, llevamos tus proyectos al siguiente nivel. <br> Encuentra, reserva y recibe las mejores herramientas sin complicaciones.</p>
-
-</main>
     
+    <main class="cuerpo">
+        <div class="text-container">
+            <h1 class="textodebienvenidad">Renta de herramientas <br>de alta calidad</h1>
+            <p class="brevedescripcion">En HerraRent, llevamos tus proyectos al siguiente nivel. <br> Encuentra, reserva y recibe las mejores herramientas sin complicaciones.</p>
+            
+            
+            <div class="process-steps">
+                <div class="step">
+                    <div class="step-number">1</div>
+                    <div class="step-content">
+                        <h3>Reserva</h3>
+                        <p>Selecciona las herramientas que necesitas</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">2</div>
+                    <div class="step-content">
+                        <h3>Paga</h3>
+                        <p>Realiza el pago de forma segura</p>
+                    </div>
+                </div>
+                <div class="step">
+                    <div class="step-number">3</div>
+                    <div class="step-content">
+                        <h3>Obtén</h3>
+                        <p>Recibe tus herramientas y comienza tu proyecto</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <img id="imagenCambia" src="img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png" alt="Herramientas de construcción">
+    </main>
+    
+    <!-- Sección de Ofertas Especiales -->
+    <section id="ofertas-especiales" class="ofertas-section">
+        <h2 class="ofertas-title">Ofertas Especiales</h2>
+        
+        <div class="ofertas-container">
+            <div class="oferta-card">
+                <div class="oferta-img-container">
+                    <img src="img/pala.png" alt="Pala" class="oferta-img">
+                </div>
+                <h3 class="oferta-nombre">Pala</h3>
+                <p class="oferta-precio-antes">Antes <span>$18,000</span> cop x 1 día</p>
+                <p class="oferta-precio-ahora">Ahora <span>$10,000</span> cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            
+            <div class="oferta-card">
+                <div class="oferta-img-container">
+                    <img src="img/mazo.png" alt="Mazo" class="oferta-img">
+                </div>
+                <h3 class="oferta-nombre">Mazo</h3>
+                <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
+                <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            
+            <div class="oferta-card">
+                <div class="oferta-img-container">
+                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="oferta-img">
+                </div>
+                <h3 class="oferta-nombre">Mezcladora de concreto</h3>
+                <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
+                <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Modal de Inicio de Sesión -->
+    <div class="modal" id="login-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Iniciar Sesión</h2>
+                <button class="close-modal" id="close-login">&times;</button>
+            </div>
+            <form id="login-form">
+                <div class="form-group">
+                    <label for="login-email">Correo Electrónico</label>
+                    <input type="email" id="login-email" required>
+                    <div class="error-message" id="login-email-error">Por favor ingresa un correo electrónico válido</div>
+                </div>
+                <div class="form-group">
+                    <label for="login-password">Contraseña</label>
+                    <input type="password" id="login-password" required>
+                    <div class="error-message" id="login-password-error">La contraseña debe tener al menos 6 caracteres</div>
+                </div>
+                <button type="submit" class="submit-btn">Iniciar Sesión</button>
+                <div class="form-footer">
+                    ¿No tienes una cuenta? <a id="switch-to-register">Regístrate aquí</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <!-- Modal de Registro -->
+    <div class="modal" id="register-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 class="modal-title">Crear Cuenta</h2>
+                <button class="close-modal" id="close-register">&times;</button>
+            </div>
+            <form id="register-form">
+                <div class="form-group">
+                    <label for="register-name">Nombre Completo</label>
+                    <input type="text" id="register-name" required>
+                    <div class="error-message" id="register-name-error">Por favor ingresa tu nombre</div>
+                </div>
+                <div class="form-group">
+                    <label for="register-email">Correo Electrónico</label>
+                    <input type="email" id="register-email" required>
+                    <div class="error-message" id="register-email-error">Por favor ingresa un correo electrónico válido</div>
+                </div>
+                <div class="form-group">
+                    <label for="register-password">Contraseña</label>
+                    <input type="password" id="register-password" required>
+                    <div class="error-message" id="register-password-error">La contraseña debe tener al menos 6 caracteres</div>
+                </div>
+                <div class="form-group">
+                    <label for="register-confirm-password">Confirmar Contraseña</label>
+                    <input type="password" id="register-confirm-password" required>
+                    <div class="error-message" id="register-confirm-password-error">Las contraseñas no coinciden</div>
+                </div>
+                <button type="submit" class="submit-btn">Crear Cuenta</button>
+                <div class="form-footer">
+                    ¿Ya tienes una cuenta? <a id="switch-to-login">Inicia sesión aquí</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    
+    <script src="js/script.js"></script>
 </body> 
 </html>
