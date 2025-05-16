@@ -9,7 +9,7 @@ body {
   background-color: rgba(221, 221, 221, 1);
 }
 
-/* Header styles */
+/* estilos del header */
 header {
   display: flex;
   justify-content: space-between;
@@ -31,7 +31,7 @@ header {
    display: flex;
   gap: 1rem;
   position: relative;
-  right: 30vw;
+  right: 24vw;
 }
 
 .boton1,
@@ -115,7 +115,11 @@ header {
   margin-right: auto;
   display: block;
   object-fit: cover;
+  box-shadow: #000 0px 0px 30px;
+  border-radius: 19vw;
+
 }
+
 
 .text-container {
   margin-top: 2rem;
@@ -183,16 +187,15 @@ header {
   color: #555;
 }
 
-/* Ofertas Especiales Section */
 .ofertas-section {
   padding: 3rem 1rem;
   text-align: center;
   position: relative;
     top: 30vh;
-  scroll-margin-top: 80px; /* Para el desplazamiento suave */
+  scroll-margin-top: 80px; 
 }
 
-.ofertas-title {
+.ofertas-titulo {
   font-size: 2.5rem;
   margin-bottom: 3rem;
   text-align: center;
