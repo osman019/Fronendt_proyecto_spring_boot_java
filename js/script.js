@@ -1,4 +1,17 @@
 
+const imagenes = [
+  "img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png",
+  "img/vista-superior-del-martillo-de-acero-con-otros-elementos-y-herramientas-de-construccion (2) 1.png",
+]
+let indiceActual = 0
+const imagenElemento = document.getElementById("imagenCambia")
+
+function cambiarImagen() {
+  indiceActual = (indiceActual + 1) % imagenes.length
+  imagenElemento.src = imagenes[indiceActual]
+}
+
+setInterval(cambiarImagen, 4000)
 
 // Menú hamburguesa para móviles
 const hamburger = document.getElementById("hamburger-menu")
@@ -136,9 +149,11 @@ loginForm.addEventListener("submit", (e) => {
   }
 
   if (isValid) {
-    // Aquí iría la lógica de inicio de sesión
-    alert("Inicio de sesión exitoso")
+    // Simulación de inicio de sesión exitoso
     loginModal.classList.remove("active")
+
+    // Mostrar panel de cliente y ocultar botones de login/registro
+    mostrarPanelCliente(email.split("@")[0]) // Usar la parte del email antes del @ como nombre
   }
 })
 
@@ -184,9 +199,11 @@ registerForm.addEventListener("submit", (e) => {
   }
 
   if (isValid) {
-    // Aquí iría la lógica de registro
-    alert("Registro exitoso")
+    // Simulación de registro exitoso
     registerModal.classList.remove("active")
+
+    // Mostrar panel de cliente y ocultar botones de login/registro
+    mostrarPanelCliente(name)
   }
 })
 
@@ -209,4 +226,222 @@ ofertasBtn.addEventListener("click", () => {
 mobileOfertasBtn.addEventListener("click", () => {
   ofertasSection.scrollIntoView({ behavior: "smooth" })
   mobileNav.classList.remove("active")
+})
+
+// Desplazamiento suave a la sección Acerca de
+const acercaBtn = document.getElementById("acerca-btn")
+const mobileAcercaBtn = document.getElementById("mobile-acerca-btn")
+const acercaSection = document.getElementById("acerca-de")
+
+acercaBtn.addEventListener("click", () => {
+  acercaSection.scrollIntoView({ behavior: "smooth" })
+})
+
+mobileAcercaBtn.addEventListener("click", () => {
+  acercaSection.scrollIntoView({ behavior: "smooth" })
+  mobileNav.classList.remove("active")
+})
+
+// Panel de Cliente
+const clientePanel = document.getElementById("cliente-panel")
+const clienteNombre = document.getElementById("cliente-nombre")
+const clienteDropdown = document.querySelector(".cliente-dropdown")
+const mobileClientePanel = document.getElementById("mobile-cliente-panel")
+const nombreUsuario = document.getElementById("nombre-usuario")
+const mobileNombreUsuario = document.getElementById("mobile-nombre-usuario")
+
+// Mostrar/ocultar dropdown del cliente
+clienteNombre.addEventListener("click", () => {
+  clienteDropdown.classList.toggle("active")
+  clienteNombre.classList.toggle("active")
+})
+
+// Cerrar dropdown al hacer clic fuera
+document.addEventListener("click", (e) => {
+  if (!clienteNombre.contains(e.target) && !clienteDropdown.contains(e.target)) {
+    clienteDropdown.classList.remove("active")
+    clienteNombre.classList.remove("active")
+  }
+})
+
+// Función para mostrar el panel de cliente
+function mostrarPanelCliente(nombre) {
+  // Ocultar botones de login y registro
+  document.getElementById("login-btn").style.display = "none"
+  document.getElementById("register-btn").style.display = "none"
+  document.getElementById("mobile-login-btn").style.display = "none"
+  document.getElementById("mobile-register-btn").style.display = "none"
+
+  // Mostrar panel de cliente
+  clientePanel.style.display = "block"
+  mobileClientePanel.style.display = "flex"
+
+  // Actualizar nombre de usuario
+  nombreUsuario.textContent = nombre
+  mobileNombreUsuario.textContent = nombre
+
+  // Mostrar alerta de bienvenida
+  alert(`¡Bienvenido, ${nombre}! Has iniciado sesión correctamente.`)
+}
+
+// Funcionalidad de cerrar sesión
+const cerrarSesionBtn = document.getElementById("cerrar-sesion-btn")
+const mobileCerrarSesionBtn = document.getElementById("mobile-cerrar-sesion-btn")
+
+cerrarSesionBtn.addEventListener("click", cerrarSesion)
+mobileCerrarSesionBtn.addEventListener("click", cerrarSesion)
+
+function cerrarSesion() {
+  // Ocultar panel de cliente
+  clientePanel.style.display = "none"
+  mobileClientePanel.style.display = "none"
+
+  // Mostrar botones de login y registro
+  document.getElementById("login-btn").style.display = "block"
+  document.getElementById("register-btn").style.display = "block"
+  document.getElementById("mobile-login-btn").style.display = "block"
+  document.getElementById("mobile-register-btn").style.display = "block"
+
+  // Ocultar secciones del panel
+  document.getElementById("panel-productos").style.display = "none"
+  document.getElementById("panel-reservas").style.display = "none"
+
+  // Mostrar alerta
+  alert("Has cerrado sesión correctamente.")
+}
+
+// Funcionalidad de Ver Productos
+const verProductosBtn = document.getElementById("ver-productos-btn")
+const mobileVerProductosBtn = document.getElementById("mobile-ver-productos-btn")
+const panelProductos = document.getElementById("panel-productos")
+
+verProductosBtn.addEventListener("click", mostrarProductos)
+mobileVerProductosBtn.addEventListener("click", mostrarProductos)
+
+function mostrarProductos() {
+  // Ocultar otras secciones del panel
+  document.getElementById("panel-reservas").style.display = "none"
+
+  // Mostrar sección de productos
+  panelProductos.style.display = "block"
+  panelProductos.scrollIntoView({ behavior: "smooth" })
+
+  // Cerrar dropdown en versión desktop
+  clienteDropdown.classList.remove("active")
+
+  // Cerrar menú móvil si está abierto
+  mobileNav.classList.remove("active")
+}
+
+// Funcionalidad de Mis Reservas
+const misReservasBtn = document.getElementById("mis-reservas-btn")
+const mobileMisReservasBtn = document.getElementById("mobile-mis-reservas-btn")
+const panelReservas = document.getElementById("panel-reservas")
+
+misReservasBtn.addEventListener("click", mostrarReservas)
+mobileMisReservasBtn.addEventListener("click", mostrarReservas)
+
+function mostrarReservas() {
+  // Ocultar otras secciones del panel
+  document.getElementById("panel-productos").style.display = "none"
+
+  // Mostrar sección de reservas
+  panelReservas.style.display = "block"
+  panelReservas.scrollIntoView({ behavior: "smooth" })
+
+  // Cerrar dropdown en versión desktop
+  clienteDropdown.classList.remove("active")
+
+  // Cerrar menú móvil si está abierto
+  mobileNav.classList.remove("active")
+}
+
+// Filtrado de productos
+const filtroCategoria = document.getElementById("filtro-categoria")
+const buscarProducto = document.getElementById("buscar-producto")
+const productoCards = document.querySelectorAll(".producto-card")
+
+filtroCategoria.addEventListener("change", filtrarProductos)
+buscarProducto.addEventListener("input", filtrarProductos)
+
+function filtrarProductos() {
+  const categoriaSeleccionada = filtroCategoria.value
+  const textoBusqueda = buscarProducto.value.toLowerCase()
+
+  productoCards.forEach((card) => {
+    const categoria = card.getAttribute("data-categoria")
+    const nombre = card.querySelector(".producto-nombre").textContent.toLowerCase()
+    const descripcion = card.querySelector(".producto-descripcion").textContent.toLowerCase()
+
+    const coincideCategoria = categoriaSeleccionada === "todos" || categoria === categoriaSeleccionada
+    const coincideBusqueda = nombre.includes(textoBusqueda) || descripcion.includes(textoBusqueda)
+
+    if (coincideCategoria && coincideBusqueda) {
+      card.style.display = "flex"
+    } else {
+      card.style.display = "none"
+    }
+  })
+}
+
+// Funcionalidad de los botones de reserva
+const reservarBtns = document.querySelectorAll(".reservar-btn")
+
+reservarBtns.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    // Verificar si el usuario está logueado
+    if (clientePanel.style.display === "block") {
+      const nombreProducto =
+        btn.parentElement.querySelector(".producto-nombre")?.textContent ||
+        btn.parentElement.querySelector(".oferta-nombre")?.textContent
+
+      alert(`Has reservado: ${nombreProducto}. Revisa tu sección de "Mis Reservas" para ver los detalles.`)
+    } else {
+      alert("Debes iniciar sesión para poder reservar herramientas.")
+      loginModal.classList.add("active")
+    }
+  })
+})
+
+// Funcionalidad de los botones en las reservas
+const btnExtender = document.querySelectorAll(".btn-extender")
+const btnCancelar = document.querySelectorAll(".btn-cancelar")
+const btnFactura = document.querySelectorAll(".btn-factura")
+const btnReservarNuevamente = document.querySelectorAll(".btn-reservar-nuevamente")
+
+btnExtender.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    alert("Has solicitado extender tu reserva. Un asesor se pondrá en contacto contigo.")
+  })
+})
+
+btnCancelar.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (confirm("¿Estás seguro de que deseas cancelar esta reserva?")) {
+      alert("Reserva cancelada correctamente.")
+      // Aquí iría la lógica para actualizar la UI
+    }
+  })
+})
+
+btnFactura.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    alert("Descargando factura...")
+  })
+})
+
+btnReservarNuevamente.forEach((btn) => {
+  btn.addEventListener("click", () => {
+    alert("Redirigiendo al catálogo de productos...")
+    mostrarProductos()
+  })
+})
+
+// Inicializar la página ocultando las secciones del panel de cliente
+document.addEventListener("DOMContentLoaded", () => {
+  // Ocultar paneles de cliente al inicio
+  clientePanel.style.display = "none"
+  mobileClientePanel.style.display = "none"
+  panelProductos.style.display = "none"
+  panelReservas.style.display = "none"
 })

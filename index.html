@@ -13,7 +13,20 @@
         <div class="nav-buttons">
             <button class="boton1" id="login-btn">Iniciar sesión</button>
             <button class="boton2" id="register-btn">Registrarse</button>
+            <button class="boton4" id="acerca-btn">Acerca de</button>
             <button class="boton3" id="ofertas-btn">Ofertas</button>
+           
+            <div class="cliente-panel" id="cliente-panel">
+                <button class="cliente-btn" id="cliente-nombre">
+                    <span id="nombre-usuario">Usuario</span>
+                    <span class="dropdown-icon">▼</span>
+                </button>
+                <div class="cliente-dropdown">
+                    <a href="#" id="ver-productos-btn">Ver Productos</a>
+                    <a href="#" id="mis-reservas-btn">Mis Reservas</a>
+                    <a href="#" id="cerrar-sesion-btn">Cerrar Sesión</a>
+                </div>
+            </div>
         </div>
         
         <div class="hamburger" id="hamburger-menu">
@@ -25,7 +38,15 @@
         <div class="mobile-nav" id="mobile-nav">
             <button class="boton1" id="mobile-login-btn">Iniciar sesión</button>
             <button class="boton2" id="mobile-register-btn">Registrarse</button>
+            <button class="boton4" id="mobile-acerca-btn">Acerca de</button>
             <button class="boton3" id="mobile-ofertas-btn">Ofertas</button>
+          
+            <div class="mobile-cliente-panel" id="mobile-cliente-panel">
+                <p id="mobile-nombre-usuario">Usuario</p>
+                <button class="mobile-cliente-btn" id="mobile-ver-productos-btn">Ver Productos</button>
+                <button class="mobile-cliente-btn" id="mobile-mis-reservas-btn">Mis Reservas</button>
+                <button class="mobile-cliente-btn" id="mobile-cerrar-sesion-btn">Cerrar Sesión</button>
+            </div>
         </div>
     </header>
     
@@ -34,7 +55,7 @@
             <h1 class="textodebienvenidad">Renta de herramientas <br>de alta calidad</h1>
             <p class="brevedescripcion">En HerraRent, llevamos tus proyectos al siguiente nivel. <br> Encuentra, reserva y recibe las mejores herramientas sin complicaciones.</p>
             
-            
+ 
             <div class="process-steps">
                 <div class="step">
                     <div class="step-number">1</div>
@@ -60,13 +81,12 @@
             </div>
         </div>
         
-        <img id="imagenCambia" src="img/herramientas-de-madera-de-vista-superior-en-el-escritorio 1.png" alt="Herramientas de construcción">
-        <img id="imagenCambia" src="img/vista-superior-del-martillo-de-acero-con-otros-elementos-y-herramientas-de-construccion (2) 1.png" alt="">
+        <img id="imagenCambia" src="img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png" alt="Herramientas de construcción">
     </main>
     
-    <!-- Sección de Ofertas Especiales -->
+   
     <section id="ofertas-especiales" class="ofertas-section">
-        <h2 class="ofertas-titulo">Ofertas Especiales</h2>
+        <h2 class="ofertas-title">Ofertas Especiales</h2>
         
         <div class="ofertas-container">
             <div class="oferta-card">
@@ -101,7 +121,188 @@
         </div>
     </section>
     
-    <!-- Modal de Inicio de Sesión -->
+    
+    <section id="acerca-de" class="acerca-section">
+        <h2 class="acerca-title">Acerca de Nosotros</h2>
+        
+        <div class="acerca-container">
+            <div class="acerca-imagen">
+                <img src="img/herramientas-de-madera-de-vista-superior-en-el-escritorio.jpg" alt="Nuestro equipo" class="acerca-img">
+            </div>
+            
+            <div class="acerca-contenido">
+                <h3 class="acerca-subtitulo">Nuestra Historia</h3>
+                <p class="acerca-texto">
+                    HerraRent nació en 2025 con una misión clara: hacer que las herramientas de alta calidad sean accesibles para todos. Fundada por un grupo de profesionales de la construcción, nuestra empresa entiende las necesidades reales de quienes trabajan en proyectos de construcción y remodelación.
+                </p>
+                
+                <h3 class="acerca-subtitulo">Nuestra Misión</h3>
+                <p class="acerca-texto">
+                    Proporcionar acceso a herramientas profesionales de alta calidad a precios accesibles, permitiendo a nuestros clientes completar sus proyectos con eficiencia y excelencia.
+                </p>
+                
+                <h3 class="acerca-subtitulo">¿Por qué elegirnos?</h3>
+                <ul class="acerca-lista">
+                    <li>Herramientas de marcas reconocidas y alta calidad</li>
+                    <li>Proceso de reserva simple y rápido</li>
+                    <li>Precios transparentes sin cargos ocultos</li>
+                    <li>Servicio de entrega y recogida disponible</li>
+                    <li>Soporte técnico para el uso de las herramientas</li>
+                </ul>
+            </div>
+        </div>
+    </section>
+    
+    
+    <section id="panel-productos" class="panel-section">
+        <h2 class="panel-title">Catálogo de Productos</h2>
+        
+        <div class="panel-filtros">
+            <select id="filtro-categoria" class="filtro-select">
+                <option value="todos">Todas las categorías</option>
+                <option value="manuales">Herramientas manuales</option>
+                <option value="electricas">Herramientas eléctricas</option>
+                <option value="construccion">Equipo de construcción</option>
+            </select>
+            
+            <input type="text" id="buscar-producto" class="filtro-buscar" placeholder="Buscar herramientas...">
+        </div>
+        
+        <div class="productos-container">
+           
+            <div class="producto-card" data-categoria="manuales">
+                <div class="producto-img-container">
+                    <img src="img/pala.png" alt="Pala" class="producto-img">
+                </div>
+                <h3 class="producto-nombre">Pala</h3>
+                <p class="producto-descripcion">Pala resistente para excavación y movimiento de tierra.</p>
+                <p class="producto-precio">$15,000 cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            
+          
+            <div class="producto-card" data-categoria="manuales">
+                <div class="producto-img-container">
+                    <img src="img/mazo.png" alt="Mazo" class="producto-img">
+                </div>
+                <h3 class="producto-nombre">Mazo</h3>
+                <p class="producto-descripcion">Mazo de acero para trabajos de demolición.</p>
+                <p class="producto-precio">$18,000 cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            
+           
+            <div class="producto-card" data-categoria="construccion">
+                <div class="producto-img-container">
+                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="producto-img">
+                </div>
+                <h3 class="producto-nombre">Mezcladora de concreto</h3>
+                <p class="producto-descripcion">Mezcladora profesional para preparación de concreto.</p>
+                <p class="producto-precio">$50,000 cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            
+          
+            <div class="producto-card" data-categoria="electricas">
+                <div class="producto-img-container">
+                    <img src="img/taladro.png" alt="Taladro eléctrico" class="producto-img">
+                </div>
+                <h3 class="producto-nombre">Taladro eléctrico</h3>
+                <p class="producto-descripcion">Taladro eléctrico profesional con múltiples brocas.</p>
+                <p class="producto-precio">$25,000 cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+       
+            <div class="producto-card" data-categoria="electricas">
+                <div class="producto-img-container">
+                    <img src="img/sierra.png" alt="Sierra circular" class="producto-img">
+                </div>
+                <h3 class="producto-nombre">Sierra circular</h3>
+                <p class="producto-descripcion">Sierra circular para cortes precisos en madera.</p>
+                <p class="producto-precio">$30,000 cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+            
+         
+            <div class="producto-card" data-categoria="construccion">
+                <div class="producto-img-container">
+                    <img src="img/andamio.png" alt="Andamio" class="producto-img">
+                </div>
+                <h3 class="producto-nombre">Andamio</h3>
+                <p class="producto-descripcion">Andamio metálico para trabajos en altura.</p>
+                <p class="producto-precio">$45,000 cop x 1 día</p>
+                <button class="reservar-btn">Reservar</button>
+            </div>
+        </div>
+    </section>
+    
+   
+    <section id="panel-reservas" class="panel-section">
+        <h2 class="panel-title">Mis Reservas</h2>
+        
+        <div class="reservas-container">
+           
+            <div class="reserva-card">
+                <div class="reserva-header">
+                    <h3 class="reserva-id">Reserva #12345</h3>
+                    <span class="reserva-estado activa">Activa</span>
+                </div>
+                
+                <div class="reserva-detalles">
+                    <div class="reserva-info">
+                        <p><strong>Fecha de inicio:</strong> 15/05/2025</p>
+                        <p><strong>Fecha de devolución:</strong> 18/05/2025</p>
+                        <p><strong>Total:</strong> $75,000 cop</p>
+                    </div>
+                    
+                    <div class="reserva-items">
+                        <h4>Herramientas reservadas:</h4>
+                        <ul>
+                            <li>Mezcladora de concreto (1) - $50,000 cop</li>
+                            <li>Pala (1) - $15,000 cop</li>
+                            <li>Mazo (1) - $10,000 cop (oferta)</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reserva-acciones">
+                    <button class="btn-extender">Extender reserva</button>
+                    <button class="btn-cancelar">Cancelar reserva</button>
+                </div>
+            </div>
+            
+       
+            <div class="reserva-card">
+                <div class="reserva-header">
+                    <h3 class="reserva-id">Reserva #12289</h3>
+                    <span class="reserva-estado completada">Completada</span>
+                </div>
+                
+                <div class="reserva-detalles">
+                    <div class="reserva-info">
+                        <p><strong>Fecha de inicio:</strong> 01/05/2025</p>
+                        <p><strong>Fecha de devolución:</strong> 03/05/2025</p>
+                        <p><strong>Total:</strong> $55,000 cop</p>
+                    </div>
+                    
+                    <div class="reserva-items">
+                        <h4>Herramientas reservadas:</h4>
+                        <ul>
+                            <li>Taladro eléctrico (1) - $25,000 cop</li>
+                            <li>Sierra circular (1) - $30,000 cop</li>
+                        </ul>
+                    </div>
+                </div>
+                
+                <div class="reserva-acciones">
+                    <button class="btn-factura">Ver factura</button>
+                    <button class="btn-reservar-nuevamente">Reservar nuevamente</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+   
     <div class="modal" id="login-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -127,7 +328,7 @@
         </div>
     </div>
     
-    <!-- Modal de Registro -->
+   
     <div class="modal" id="register-modal">
         <div class="modal-content">
             <div class="modal-header">
