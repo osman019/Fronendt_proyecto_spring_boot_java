@@ -43,7 +43,7 @@ header {
   cursor: pointer;
   border: none;
   padding: 0.5rem 1rem;
-   font-size: 2rem;
+   font-size: 1.3rem;
   text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
   transition: all 0.3s ease;
   background-color: transparent;
@@ -107,6 +107,7 @@ header {
   flex-direction: column;
   overflow: hidden;
   z-index: 100;
+  font-size: 1rem;
 }
 
 .cliente-dropdown.active {
@@ -124,9 +125,9 @@ header {
   background-color: rgba(0, 0, 0, 0.05);
 }
 
-/* Mobile cliente panel */
+
 .mobile-cliente-panel {
-  display: none; /* Oculto por defecto */
+  display: none; 
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
@@ -154,7 +155,7 @@ header {
   background-color: rgba(0, 0, 0, 0.1);
 }
 
-/* Mobile menu */
+
 .hamburger {
   display: none;
   flex-direction: column;

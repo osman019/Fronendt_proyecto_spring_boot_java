@@ -1,4 +1,6 @@
 
+
+
 const imagenes = [
   "img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png",
   "img/vista-superior-del-martillo-de-acero-con-otros-elementos-y-herramientas-de-construccion (2) 1.png",
