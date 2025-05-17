@@ -3,7 +3,7 @@
 
 const imagenes = [
   "img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png",
-  "img/vista-superior-del-martillo-de-acero-con-otros-elementos-y-herramientas-de-construccion (2) 1.png",
+  "img/martillo-de-construccion-dentro-de-la-naturaleza-muerta (1) 1 (1).png",
 ]
 let indiceActual = 0
 const imagenElemento = document.getElementById("imagenCambia")
