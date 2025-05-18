@@ -1,0 +1,833 @@
+/* Panel CSS - Estilos específicos para paneles de cliente y proveedor */
+
+/* Estilos generales para paneles */
+.panel-section {
+  padding: 2rem 1rem;
+  background-color: #f9f9f9;
+  display: none; /* Oculto por defecto */
+}
+
+.panel-title {
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+  color: #333;
+}
+
+/* Estilos para paneles de proveedor */
+.proveedor-panel {
+  position: relative;
+  display: none; /
+}
+
+.proveedor-btn {
+   display: flex;
+  gap: 1rem;
+   top: 3vh;
+  align-items: center;
+  position: relative;
+  right: 24vw;
+   border: none;
+  padding: 0.5rem 1rem;
+   font-size: 1.9rem;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-color: transparent;
+  background-color: #777;
+  border-radius: 1vw;
+  color: white;
+}
+
+.proveedor-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.6rem;
+}
+
+.proveedor-dropdown {
+ 
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  right: 10vw;
+   border: none;
+  padding: 0.5rem 1rem;
+   font-size: 1.3rem;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-color: transparent;
+  
+}
+
+.proveedor-dropdown.active {
+  display: flex;
+}
+
+.proveedor-dropdown a {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.proveedor-dropdown a:hover {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+}
+
+/* Panel móvil de proveedor */
+.mobile-proveedor-panel {
+  display: none; /* Oculto por defecto */
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#mobile-nombre-proveedor {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.mobile-proveedor-btn {
+  background-color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-proveedor-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+/* Panel de Mis Herramientas */
+.panel-acciones {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+  
+}
+
+.btn-accion {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.btn-accion:hover {
+  background-color: #333;
+}
+
+.herramientas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.herramienta-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 350px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  position: relative;
+}
+
+.herramienta-card:hover {
+  transform: translateY(-5px);
+}
+
+.herramienta-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.herramienta-estado {
+  padding: 0.4rem 0.8rem;
+  border-radius: 20px;
+  font-size: 0.8rem;
+  font-weight: bold;
+}
+
+.herramienta-estado.disponible {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.herramienta-estado.reservada {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.herramienta-estado.mantenimiento {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.herramienta-acciones {
+  display: flex;
+  gap: 0.5rem;
+}
+
+.btn-editar,
+.btn-eliminar {
+  background: none;
+  border: none;
+  font-size: 1.2rem;
+  cursor: pointer;
+  color: #777;
+  transition: color 0.3s ease;
+}
+
+.btn-editar:hover {
+  color: #1565c0;
+}
+
+.btn-eliminar:hover {
+  color: #d32f2f;
+}
+
+.icon-edit::before {
+  content: "✏️";
+}
+
+.icon-delete::before {
+  content: "🗑️";
+}
+
+.herramienta-img-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 1rem;
+}
+
+.herramienta-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.herramienta-info {
+  text-align: center;
+  margin-bottom: 1.5rem;
+}
+
+.herramienta-nombre {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.herramienta-categoria {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.herramienta-precio {
+  font-size: 1.1rem;
+  font-weight: bold;
+  margin-bottom: 0.5rem;
+}
+
+.herramienta-stock {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+.herramienta-stats {
+  display: flex;
+  justify-content: space-around;
+  border-top: 1px solid #eee;
+  padding-top: 1rem;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.stat-valor {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.stat-label {
+  font-size: 0.8rem;
+  color: #777;
+}
+
+/* Panel de Agregar Herramienta */
+.form-panel {
+  max-width: 900px;
+  margin: 0 auto;
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group.full-width {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group textarea {
+  resize: vertical;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+}
+
+.upload-preview {
+  width: 100%;
+  height: 200px;
+  border: 2px dashed #ddd;
+  border-radius: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #777;
+  background-color: #f9f9f9;
+}
+
+.specs-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-bottom: 1rem;
+}
+
+.spec-item {
+  display: flex;
+  gap: 0.5rem;
+  align-items: center;
+}
+
+.spec-key,
+.spec-value {
+  flex: 1;
+}
+
+.btn-remove-spec {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #d32f2f;
+}
+
+.form-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn-primary,
+.btn-secondary {
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  border: none;
+  transition: all 0.3s ease;
+}
+
+.btn-primary {
+  background-color: black;
+  color: white;
+}
+
+.btn-secondary {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.btn-primary:hover {
+  background-color: #333;
+}
+
+.btn-secondary:hover {
+  background-color: #e0e0e0;
+}
+
+/* Panel de Pedidos Pendientes */
+.pedidos-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.pedido-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.pedido-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.pedido-info-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.pedido-id {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.pedido-fecha {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.pedido-estado {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.pedido-estado.pendiente {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.pedido-estado.aprobado {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.pedido-estado.rechazado {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.pedido-cliente {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+}
+
+.pedido-cliente p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.pedido-detalles {
+  margin-bottom: 1.5rem;
+}
+
+.pedido-detalles h4 {
+  margin-bottom: 1rem;
+  font-size: 1.1rem;
+}
+
+.pedido-items {
+  list-style-type: none;
+}
+
+.pedido-items li {
+  padding: 1rem;
+  border-bottom: 1px solid #f5f5f5;
+}
+
+.pedido-item-info {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+
+.item-nombre {
+  font-weight: bold;
+}
+
+.item-fechas {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.pedido-total {
+  text-align: right;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+}
+
+.pedido-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn-rechazar,
+.btn-aprobar,
+.btn-detalles,
+.btn-contactar {
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-rechazar {
+  background-color: #ffebee;
+  color: #c62828;
+}
+
+.btn-aprobar {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.btn-detalles,
+.btn-contactar {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.btn-rechazar:hover {
+  background-color: #ffcdd2;
+}
+
+.btn-aprobar:hover {
+  background-color: #c8e6c9;
+}
+
+.btn-detalles:hover,
+.btn-contactar:hover {
+  background-color: #e0e0e0;
+}
+
+/* Responsive para paneles */
+@media (max-width: 768px) {
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .panel-acciones {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .pedido-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .pedido-item-info {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .pedido-acciones {
+    flex-direction: column;
+  }
+
+  .btn-rechazar,
+  .btn-aprobar,
+  .btn-detalles,
+  .btn-contactar {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .herramienta-card {
+    max-width: 300px;
+  }
+}
+
+@media (min-width: 1025px) {
+  .panel-section {
+    padding: 3rem;
+  }
+
+  .herramientas-container {
+    gap: 2.5rem;
+  }
+}
+
+/* Panel de Devoluciones */
+.devoluciones-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.devolucion-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.devolucion-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.devolucion-info-principal {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
+.devolucion-id {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.devolucion-fecha {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.devolucion-estado {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.devolucion-estado.pendiente {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.devolucion-estado.aceptada {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.devolucion-estado.daños {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.devolucion-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.devolucion-info p {
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.devolucion-items h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.devolucion-items ul {
+  list-style-type: none;
+}
+
+.devolucion-items li {
+  display: flex;
+  justify-content: space-between;
+  padding: 0.75rem;
+  background-color: #f9f9f9;
+  border-radius: 5px;
+  margin-bottom: 0.5rem;
+}
+
+.item-nombre {
+  font-weight: bold;
+}
+
+.item-periodo {
+  font-size: 0.9rem;
+  color: #777;
+}
+
+.reporte-daños {
+  background-color: #fff8e1;
+  padding: 1rem;
+  border-radius: 5px;
+  margin-bottom: 1.5rem;
+}
+
+.reporte-daños h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+  color: #e65100;
+}
+
+.reporte-fecha {
+  font-size: 0.9rem;
+  color: #777;
+  margin-bottom: 0.5rem;
+}
+
+.reporte-descripcion {
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.devolucion-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn-aceptar-devolucion,
+.btn-reportar-danos,
+.btn-ver-factura,
+.btn-contactar-cliente {
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-aceptar-devolucion {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.btn-reportar-danos {
+  background-color: #fff3e0;
+  color: #e65100;
+}
+
+.btn-ver-factura,
+.btn-contactar-cliente {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.btn-aceptar-devolucion:hover {
+  background-color: #c8e6c9;
+}
+
+.btn-reportar-danos:hover {
+  background-color: #ffe0b2;
+}
+
+.btn-ver-factura:hover,
+.btn-contactar-cliente:hover {
+  background-color: #e0e0e0;
+}
+
+/* Formulario de teléfono en registro */
+.telefono-container {
+  transition: all 0.3s ease;
+}
+
+/* Responsive para devoluciones */
+@media (max-width: 768px) {
+  .devolucion-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .devolucion-items li {
+    flex-direction: column;
+    gap: 0.3rem;
+  }
+
+  .devolucion-acciones {
+    flex-direction: column;
+  }
+
+  .btn-aceptar-devolucion,
+  .btn-reportar-danos,
+  .btn-ver-factura,
+  .btn-contactar-cliente {
+    width: 100%;
+  }
+}

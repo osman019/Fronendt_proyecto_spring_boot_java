@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>HerraRent</title>
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/panel.css">
 </head>
 <body>
     <header>
@@ -15,7 +16,8 @@
             <button class="boton2" id="register-btn">Registrarse</button>
             <button class="boton4" id="acerca-btn">Acerca de</button>
             <button class="boton3" id="ofertas-btn">Ofertas</button>
-           
+
+            <!-- Panel de cliente (oculto por defecto) -->
             <div class="cliente-panel" id="cliente-panel">
                 <button class="cliente-btn" id="cliente-nombre">
                     <span id="nombre-usuario">Usuario</span>
@@ -25,6 +27,21 @@
                     <a href="#" id="ver-productos-btn">Ver Productos</a>
                     <a href="#" id="mis-reservas-btn">Mis Reservas</a>
                     <a href="#" id="cerrar-sesion-btn">Cerrar Sesión</a>
+                </div>
+            </div>
+            
+            <!-- Panel de proveedor (oculto por defecto) -->
+            <div class="proveedor-panel" id="proveedor-panel">
+                <button class="proveedor-btn" id="proveedor-nombre">
+                    <span id="nombre-proveedor">Proveedor</span>
+                    
+                </button>
+                <div class="proveedor-dropdown">
+                    <a href="#" id="mis-herramientas-btn">Mis Herramientas</a>
+                    <a href="#" id="agregar-herramienta-btn">Agregar Herramienta</a>
+                    <a href="#" id="pedidos-pendientes-btn">Pedidos Pendientes</a>
+                    <a href="#" id="devoluciones-btn">Devoluciones</a>
+                    <a href="#" id="cerrar-sesion-proveedor-btn">Cerrar Sesión</a>
                 </div>
             </div>
         </div>
@@ -40,120 +57,136 @@
             <button class="boton2" id="mobile-register-btn">Registrarse</button>
             <button class="boton4" id="mobile-acerca-btn">Acerca de</button>
             <button class="boton3" id="mobile-ofertas-btn">Ofertas</button>
-          
+            
+            <!-- Panel móvil de cliente (oculto por defecto) -->
             <div class="mobile-cliente-panel" id="mobile-cliente-panel">
                 <p id="mobile-nombre-usuario">Usuario</p>
                 <button class="mobile-cliente-btn" id="mobile-ver-productos-btn">Ver Productos</button>
                 <button class="mobile-cliente-btn" id="mobile-mis-reservas-btn">Mis Reservas</button>
                 <button class="mobile-cliente-btn" id="mobile-cerrar-sesion-btn">Cerrar Sesión</button>
             </div>
+            
+            <!-- Panel móvil de proveedor (oculto por defecto) -->
+            <div class="mobile-proveedor-panel" id="mobile-proveedor-panel">
+                <p id="mobile-nombre-proveedor">Proveedor</p>
+                <button class="mobile-proveedor-btn" id="mobile-mis-herramientas-btn">Mis Herramientas</button>
+                <button class="mobile-proveedor-btn" id="mobile-agregar-herramienta-btn">Agregar Herramienta</button>
+                <button class="mobile-proveedor-btn" id="mobile-pedidos-pendientes-btn">Pedidos Pendientes</button>
+                <button class="mobile-proveedor-btn" id="mobile-devoluciones-btn">Devoluciones</button>
+                <button class="mobile-proveedor-btn" id="mobile-cerrar-sesion-proveedor-btn">Cerrar Sesión</button>
+            </div>
         </div>
     </header>
     
-    <main class="cuerpo">
-        <div class="text-container">
-            <h1 class="textodebienvenidad">Renta de herramientas <br>de alta calidad</h1>
-            <p class="brevedescripcion">En HerraRent, llevamos tus proyectos al siguiente nivel. <br> Encuentra, reserva y recibe las mejores herramientas sin complicaciones.</p>
-            
- 
-            <div class="process-steps">
-                <div class="step">
-                    <div class="step-number">1</div>
-                    <div class="step-content">
-                        <h3>Reserva</h3>
-                        <p>Selecciona las herramientas que necesitas</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">2</div>
-                    <div class="step-content">
-                        <h3>Paga</h3>
-                        <p>Realiza el pago de forma segura</p>
-                    </div>
-                </div>
-                <div class="step">
-                    <div class="step-number">3</div>
-                    <div class="step-content">
-                        <h3>Obtén</h3>
-                        <p>Recibe tus herramientas y comienza tu proyecto</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <img id="imagenCambia" src="img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png" alt="Herramientas de construcción">
-    </main>
-    
-   
-    <section id="ofertas-especiales" class="ofertas-section">
-        <h2 class="ofertas-title">Ofertas Especiales</h2>
-        
-        <div class="ofertas-container">
-            <div class="oferta-card">
-                <div class="oferta-img-container">
-                    <img src="img/pala.png" alt="Pala" class="oferta-img">
-                </div>
-                <h3 class="oferta-nombre">Pala</h3>
-                <p class="oferta-precio-antes">Antes <span>$18,000</span> cop x 1 día</p>
-                <p class="oferta-precio-ahora">Ahora <span>$10,000</span> cop x 1 día</p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <div class="oferta-card">
-                <div class="oferta-img-container">
-                    <img src="img/mazo.png" alt="Mazo" class="oferta-img">
-                </div>
-                <h3 class="oferta-nombre">Mazo</h3>
-                <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
-                <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <div class="oferta-card">
-                <div class="oferta-img-container">
-                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="oferta-img">
-                </div>
-                <h3 class="oferta-nombre">Mezcladora de concreto</h3>
-                <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
-                <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-        </div>
-    </section>
-    
-    
-    <section id="acerca-de" class="acerca-section">
-        <h2 class="acerca-title">Acerca de Nosotros</h2>
-        
-        <div class="acerca-container">
-            <div class="acerca-imagen">
-                <img src="img/herramientas-de-madera-de-vista-superior-en-el-escritorio 1.png" alt="Nuestro equipo" class="acerca-img">
-            </div>
-            
-            <div class="acerca-contenido">
-                <h3 class="acerca-subtitulo">Nuestra Historia</h3>
-                <p class="acerca-texto">
-                    HerraRent nació en 2025 con una misión clara: hacer que las herramientas de alta calidad sean accesibles para todos. Fundada por un grupo de profesionales de la construcción, nuestra empresa entiende las necesidades reales de quienes trabajan en proyectos de construcción y remodelación.
-                </p>
+    <!-- Contenido principal (se ocultará cuando el cliente inicie sesión) -->
+    <div id="contenido-principal">
+        <main class="cuerpo">
+            <div class="text-container">
+                <h1 class="textodebienvenidad">Renta de herramientas <br>de alta calidad</h1>
+                <p class="brevedescripcion">En HerraRent, llevamos tus proyectos al siguiente nivel. <br> Encuentra, reserva y recibe las mejores herramientas sin complicaciones.</p>
                 
-                <h3 class="acerca-subtitulo">Nuestra Misión</h3>
-                <p class="acerca-texto">
-                    Proporcionar acceso a herramientas profesionales de alta calidad a precios accesibles, permitiendo a nuestros clientes completar sus proyectos con eficiencia y excelencia.
-                </p>
-                
-                <h3 class="acerca-subtitulo">¿Por qué elegirnos?</h3>
-                <ul class="acerca-lista">
-                    <li>Herramientas de marcas reconocidas y alta calidad</li>
-                    <li>Proceso de reserva simple y rápido</li>
-                    <li>Precios transparentes sin cargos ocultos</li>
-                    <li>Servicio de entrega y recogida disponible</li>
-                    <li>Soporte técnico para el uso de las herramientas</li>
-                </ul>
+                <!-- Pasos del proceso -->
+                <div class="process-steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Reserva</h3>
+                            <p>Selecciona las herramientas que necesitas</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Paga</h3>
+                            <p>Realiza el pago de forma segura</p>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Obtén</h3>
+                            <p>Recibe tus herramientas y comienza tu proyecto</p>
+                        </div>
+                    </div>
+                </div>
             </div>
-        </div>
-    </section>
+            
+            <img id="imagenCambia" src="img/vista-del-martillo-de-acero-para-trabajos-de-construccion-con-clavos 1.png" alt="Herramientas de construcción">
+        </main>
+        
+        <!-- Sección de Ofertas Especiales -->
+        <section id="ofertas-especiales" class="ofertas-section">
+            <h2 class="ofertas-title">Ofertas Especiales</h2>
+            
+            <div class="ofertas-container">
+                <div class="oferta-card">
+                    <div class="oferta-img-container">
+                        <img src="img/pala.png" alt="Pala" class="oferta-img">
+                    </div>
+                    <h3 class="oferta-nombre">Pala</h3>
+                    <p class="oferta-precio-antes">Antes <span>$18,000</span> cop x 1 día</p>
+                    <p class="oferta-precio-ahora">Ahora <span>$10,000</span> cop x 1 día</p>
+                    <button class="reservar-btn">Reservar</button>
+                </div>
+                
+                <div class="oferta-card">
+                    <div class="oferta-img-container">
+                        <img src="img/mazo.png" alt="Mazo" class="oferta-img">
+                    </div>
+                    <h3 class="oferta-nombre">Mazo</h3>
+                    <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
+                    <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
+                    <button class="reservar-btn">Reservar</button>
+                </div>
+                
+                <div class="oferta-card">
+                    <div class="oferta-img-container">
+                        <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="oferta-img">
+                    </div>
+                    <h3 class="oferta-nombre">Mezcladora de concreto</h3>
+                    <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
+                    <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
+                    <button class="reservar-btn">Reservar</button>
+                </div>
+            </div>
+        </section>
+        
+        <!-- Sección Acerca de Nosotros -->
+        <section id="acerca-de" class="acerca-section">
+            <h2 class="acerca-title">Acerca de Nosotros</h2>
+            
+            <div class="acerca-container">
+                <div class="acerca-imagen">
+                    <img src="img/herramientas-de-madera-de-vista-superior-en-el-escritorio 1.png">
+                </div>
+                
+                <div class="acerca-contenido">
+                    <h3 class="acerca-subtitulo">Nuestra Historia</h3>
+                    <p class="acerca-texto">
+                        HerraRent nació en 2020 con una misión clara: hacer que las herramientas de alta calidad sean accesibles para todos. Fundada por un grupo de profesionales de la construcción, nuestra empresa entiende las necesidades reales de quienes trabajan en proyectos de construcción y remodelación.
+                    </p>
+                    
+                    <h3 class="acerca-subtitulo">Nuestra Misión</h3>
+                    <p class="acerca-texto">
+                        Proporcionar acceso a herramientas profesionales de alta calidad a precios accesibles, permitiendo a nuestros clientes completar sus proyectos con eficiencia y excelencia.
+                    </p>
+                    
+                    <h3 class="acerca-subtitulo">¿Por qué elegirnos?</h3>
+                    <ul class="acerca-lista">
+                        <li>Herramientas de marcas reconocidas y alta calidad</li>
+                        <li>Proceso de reserva simple y rápido</li>
+                        <li>Precios transparentes sin cargos ocultos</li>
+                        <li>Servicio de entrega y recogida disponible</li>
+                        <li>Soporte técnico para el uso de las herramientas</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
     
+    <!-- PANEL DE CLIENTE -->
     
+    <!-- Panel de Cliente - Productos -->
     <section id="panel-productos" class="panel-section">
         <h2 class="panel-title">Catálogo de Productos</h2>
         
@@ -169,7 +202,7 @@
         </div>
         
         <div class="productos-container">
-           
+            <!-- Producto 1 -->
             <div class="producto-card" data-categoria="manuales">
                 <div class="producto-img-container">
                     <img src="img/pala.png" alt="Pala" class="producto-img">
@@ -180,7 +213,7 @@
                 <button class="reservar-btn">Reservar</button>
             </div>
             
-          
+            <!-- Producto 2 -->
             <div class="producto-card" data-categoria="manuales">
                 <div class="producto-img-container">
                     <img src="img/mazo.png" alt="Mazo" class="producto-img">
@@ -191,7 +224,7 @@
                 <button class="reservar-btn">Reservar</button>
             </div>
             
-           
+            <!-- Producto 3 -->
             <div class="producto-card" data-categoria="construccion">
                 <div class="producto-img-container">
                     <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="producto-img">
@@ -202,7 +235,7 @@
                 <button class="reservar-btn">Reservar</button>
             </div>
             
-          
+            <!-- Producto 4 -->
             <div class="producto-card" data-categoria="electricas">
                 <div class="producto-img-container">
                     <img src="img/taladro.png" alt="Taladro eléctrico" class="producto-img">
@@ -212,7 +245,8 @@
                 <p class="producto-precio">$25,000 cop x 1 día</p>
                 <button class="reservar-btn">Reservar</button>
             </div>
-       
+            
+            <!-- Producto 5 -->
             <div class="producto-card" data-categoria="electricas">
                 <div class="producto-img-container">
                     <img src="img/sierra.png" alt="Sierra circular" class="producto-img">
@@ -223,7 +257,7 @@
                 <button class="reservar-btn">Reservar</button>
             </div>
             
-         
+            <!-- Producto 6 -->
             <div class="producto-card" data-categoria="construccion">
                 <div class="producto-img-container">
                     <img src="img/andamio.png" alt="Andamio" class="producto-img">
@@ -236,12 +270,12 @@
         </div>
     </section>
     
-   
+    <!-- Panel de Cliente - Mis Reservas -->
     <section id="panel-reservas" class="panel-section">
         <h2 class="panel-title">Mis Reservas</h2>
         
         <div class="reservas-container">
-           
+            <!-- Reserva 1 -->
             <div class="reserva-card">
                 <div class="reserva-header">
                     <h3 class="reserva-id">Reserva #12345</h3>
@@ -271,7 +305,7 @@
                 </div>
             </div>
             
-       
+            <!-- Reserva 2 -->
             <div class="reserva-card">
                 <div class="reserva-header">
                     <h3 class="reserva-id">Reserva #12289</h3>
@@ -302,7 +336,449 @@
         </div>
     </section>
     
-   
+    <!-- PANEL DE PROVEEDOR -->
+    
+    <!-- Panel de Proveedor - Mis Herramientas -->
+    <section id="panel-mis-herramientas" class="panel-section">
+        <h2 class="panel-title">Mis Herramientas</h2>
+        
+        <div class="panel-acciones">
+            <button id="btn-agregar-nueva" class="btn-accion">Agregar nueva herramienta</button>
+            <div class="panel-filtros">
+                <select id="filtro-estado" class="filtro-select">
+                    <option value="todos">Todos los estados</option>
+                    <option value="disponible">Disponible</option>
+                    <option value="reservada">Reservada</option>
+                    <option value="mantenimiento">En mantenimiento</option>
+                </select>
+                <input type="text" id="buscar-herramienta" class="filtro-buscar" placeholder="Buscar en mis herramientas...">
+            </div>
+        </div>
+        
+        <div class="herramientas-container">
+            <!-- Herramienta 1 -->
+            <div class="herramienta-card" data-estado="disponible">
+                <div class="herramienta-header">
+                    <span class="herramienta-estado disponible">Disponible</span>
+                    <div class="herramienta-acciones">
+                        <button class="btn-editar" title="Editar"><i class="icon-edit"></i></button>
+                        <button class="btn-eliminar" title="Eliminar"><i class="icon-delete"></i></button>
+                    </div>
+                </div>
+                
+                <div class="herramienta-img-container">
+                    <img src="img/taladro.png" alt="Taladro eléctrico" class="herramienta-img">
+                </div>
+                
+                <div class="herramienta-info">
+                    <h3 class="herramienta-nombre">Taladro eléctrico</h3>
+                    <p class="herramienta-categoria">Herramientas eléctricas</p>
+                    <p class="herramienta-precio">$25,000 cop x 1 día</p>
+                    <p class="herramienta-stock">Stock: 5 unidades</p>
+                </div>
+                
+                <div class="herramienta-stats">
+                    <div class="stat">
+                        <span class="stat-valor">12</span>
+                        <span class="stat-label">Reservas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-valor">4.8</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Herramienta 2 -->
+            <div class="herramienta-card" data-estado="reservada">
+                <div class="herramienta-header">
+                    <span class="herramienta-estado reservada">Reservada</span>
+                    <div class="herramienta-acciones">
+                        <button class="btn-editar" title="Editar"><i class="icon-edit"></i></button>
+                        <button class="btn-eliminar" title="Eliminar"><i class="icon-delete"></i></button>
+                    </div>
+                </div>
+                
+                <div class="herramienta-img-container">
+                    <img src="img/sierra.png" alt="Sierra circular" class="herramienta-img">
+                </div>
+                
+                <div class="herramienta-info">
+                    <h3 class="herramienta-nombre">Sierra circular</h3>
+                    <p class="herramienta-categoria">Herramientas eléctricas</p>
+                    <p class="herramienta-precio">$30,000 cop x 1 día</p>
+                    <p class="herramienta-stock">Stock: 2 unidades</p>
+                </div>
+                
+                <div class="herramienta-stats">
+                    <div class="stat">
+                        <span class="stat-valor">8</span>
+                        <span class="stat-label">Reservas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-valor">4.5</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Herramienta 3 -->
+            <div class="herramienta-card" data-estado="mantenimiento">
+                <div class="herramienta-header">
+                    <span class="herramienta-estado mantenimiento">En mantenimiento</span>
+                    <div class="herramienta-acciones">
+                        <button class="btn-editar" title="Editar"><i class="icon-edit"></i></button>
+                        <button class="btn-eliminar" title="Eliminar"><i class="icon-delete"></i></button>
+                    </div>
+                </div>
+                
+                <div class="herramienta-img-container">
+                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="herramienta-img">
+                </div>
+                
+                <div class="herramienta-info">
+                    <h3 class="herramienta-nombre">Mezcladora de concreto</h3>
+                    <p class="herramienta-categoria">Equipo de construcción</p>
+                    <p class="herramienta-precio">$50,000 cop x 1 día</p>
+                    <p class="herramienta-stock">Stock: 1 unidad</p>
+                </div>
+                
+                <div class="herramienta-stats">
+                    <div class="stat">
+                        <span class="stat-valor">15</span>
+                        <span class="stat-label">Reservas</span>
+                    </div>
+                    <div class="stat">
+                        <span class="stat-valor">4.9</span>
+                        <span class="stat-label">Rating</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Panel de Proveedor - Agregar Herramienta -->
+    <section id="panel-agregar-herramienta" class="panel-section">
+    <h2 class="panel-title">Agregar Nueva Herramienta</h2>
+    
+    <form id="form-agregar-herramienta" class="form-panel">
+        <div class="form-grid">
+            <div class="form-group">
+                <label for="herramienta-nombre">Nombre de la herramienta *</label>
+                <input type="text" id="herramienta-nombre" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="herramienta-categoria">Categoría *</label>
+                <select id="herramienta-categoria" required>
+                    <option value="">Seleccionar categoría</option>
+                    <option value="manuales">Herramientas manuales</option>
+                    <option value="electricas">Herramientas eléctricas</option>
+                    <option value="construccion">Equipo de construcción</option>
+                </select>
+            </div>
+            
+            <div class="form-group">
+                <label for="herramienta-costo">Costo diario (COP) *</label>
+                <input type="number" id="herramienta-costo" min="1000" step="500" required>
+            </div>
+            
+            <div class="form-group">
+                <label for="herramienta-disponibilidad">Disponibilidad *</label>
+                <input type="number" id="herramienta-disponibilidad" min="1" required>
+            </div>
+        </div>
+        
+        <div class="form-group full-width">
+            <label for="herramienta-descripcion">Descripción *</label>
+            <textarea id="herramienta-descripcion" rows="4" required></textarea>
+        </div>
+        
+        <div class="form-group full-width">
+            <label for="herramienta-imagen">Imagen de la herramienta</label>
+            <div class="upload-container">
+                <input type="file" id="herramienta-imagen" accept="image/*">
+                <div class="upload-preview" id="imagen-preview">
+                    <span>Vista previa de la imagen</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="form-actions">
+            <button type="button" id="btn-cancelar-agregar" class="btn-secondary">Cancelar</button>
+            <button type="submit" class="btn-primary">Guardar herramienta</button>
+        </div>
+    </form>
+</section>
+    
+    <!-- Panel de Proveedor - Pedidos Pendientes -->
+    <section id="panel-pedidos-pendientes" class="panel-section">
+        <h2 class="panel-title">Pedidos Pendientes</h2>
+        
+        <div class="panel-filtros">
+            <select id="filtro-pedidos" class="filtro-select">
+                <option value="todos">Todos los pedidos</option>
+                <option value="pendientes">Pendientes de aprobación</option>
+                <option value="aprobados">Aprobados</option>
+                <option value="rechazados">Rechazados</option>
+            </select>
+            <input type="text" id="buscar-pedido" class="filtro-buscar" placeholder="Buscar por cliente o ID...">
+        </div>
+        
+        <div class="pedidos-container">
+            <!-- Pedido 1 -->
+            <div class="pedido-card" data-estado="pendiente">
+                <div class="pedido-header">
+                    <div class="pedido-info-principal">
+                        <h3 class="pedido-id">Pedido #54321</h3>
+                        <span class="pedido-fecha">15/05/2025</span>
+                    </div>
+                    <span class="pedido-estado pendiente">Pendiente de aprobación</span>
+                </div>
+                
+                <div class="pedido-cliente">
+                    <p><strong>Cliente:</strong> Juan Pérez</p>
+                    <p><strong>Email:</strong> juan.perez@email.com</p>
+                    <p><strong>Teléfono:</strong> +57 300 123 4567</p>
+                </div>
+                
+                <div class="pedido-detalles">
+                    <h4>Herramientas solicitadas:</h4>
+                    <ul class="pedido-items">
+                        <li>
+                            <div class="pedido-item-info">
+                                <span class="item-nombre">Taladro eléctrico</span>
+                                <span class="item-cantidad">1 unidad</span>
+                                <span class="item-precio">$25,000 cop</span>
+                            </div>
+                            <div class="item-fechas">
+                                <span>Del 20/05/2025 al 22/05/2025 (3 días)</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pedido-total">
+                        <p><strong>Total:</strong> $75,000 cop</p>
+                    </div>
+                </div>
+                
+                <div class="pedido-acciones">
+                    <button class="btn-rechazar">Rechazar</button>
+                    <button class="btn-aprobar">Aprobar</button>
+                </div>
+            </div>
+            
+            <!-- Pedido 2 -->
+            <div class="pedido-card" data-estado="pendiente">
+                <div class="pedido-header">
+                    <div class="pedido-info-principal">
+                        <h3 class="pedido-id">Pedido #54322</h3>
+                        <span class="pedido-fecha">15/05/2025</span>
+                    </div>
+                    <span class="pedido-estado pendiente">Pendiente de aprobación</span>
+                </div>
+                
+                <div class="pedido-cliente">
+                    <p><strong>Cliente:</strong> María López</p>
+                    <p><strong>Email:</strong> maria.lopez@email.com</p>
+                    <p><strong>Teléfono:</strong> +57 300 765 4321</p>
+                </div>
+                
+                <div class="pedido-detalles">
+                    <h4>Herramientas solicitadas:</h4>
+                    <ul class="pedido-items">
+                        <li>
+                            <div class="pedido-item-info">
+                                <span class="item-nombre">Sierra circular</span>
+                                <span class="item-cantidad">1 unidad</span>
+                                <span class="item-precio">$30,000 cop</span>
+                            </div>
+                            <div class="item-fechas">
+                                <span>Del 18/05/2025 al 19/05/2025 (2 días)</span>
+                            </div>
+                        </li>
+                        <li>
+                            <div class="pedido-item-info">
+                                <span class="item-nombre">Mezcladora de concreto</span>
+                                <span class="item-cantidad">1 unidad</span>
+                                <span class="item-precio">$50,000 cop</span>
+                            </div>
+                            <div class="item-fechas">
+                                <span>Del 18/05/2025 al 19/05/2025 (2 días)</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pedido-total">
+                        <p><strong>Total:</strong> $160,000 cop</p>
+                    </div>
+                </div>
+                
+                <div class="pedido-acciones">
+                    <button class="btn-rechazar">Rechazar</button>
+                    <button class="btn-aprobar">Aprobar</button>
+                </div>
+            </div>
+            
+            <!-- Pedido 3 (Aprobado) -->
+            <div class="pedido-card" data-estado="aprobado">
+                <div class="pedido-header">
+                    <div class="pedido-info-principal">
+                        <h3 class="pedido-id">Pedido #54320</h3>
+                        <span class="pedido-fecha">14/05/2025</span>
+                    </div>
+                    <span class="pedido-estado aprobado">Aprobado</span>
+                </div>
+                
+                <div class="pedido-cliente">
+                    <p><strong>Cliente:</strong> Carlos Rodríguez</p>
+                    <p><strong>Email:</strong> carlos.rodriguez@email.com</p>
+                    <p><strong>Teléfono:</strong> +57 300 987 6543</p>
+                </div>
+                
+                <div class="pedido-detalles">
+                    <h4>Herramientas solicitadas:</h4>
+                    <ul class="pedido-items">
+                        <li>
+                            <div class="pedido-item-info">
+                                <span class="item-nombre">Andamio</span>
+                                <span class="item-cantidad">1 unidad</span>
+                                <span class="item-precio">$45,000 cop</span>
+                            </div>
+                            <div class="item-fechas">
+                                <span>Del 16/05/2025 al 20/05/2025 (5 días)</span>
+                            </div>
+                        </li>
+                    </ul>
+                    <div class="pedido-total">
+                        <p><strong>Total:</strong> $225,000 cop</p>
+                    </div>
+                </div>
+                
+                <div class="pedido-acciones">
+                    <button class="btn-detalles">Ver detalles</button>
+                    <button class="btn-contactar">Contactar cliente</button>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Panel de Proveedor - Devoluciones -->
+<section id="panel-devoluciones" class="panel-section">
+    <h2 class="panel-title">Devoluciones</h2>
+    
+    <div class="panel-filtros">
+        <select id="filtro-devoluciones" class="filtro-select">
+            <option value="todos">Todas las devoluciones</option>
+            <option value="pendientes">Pendientes de revisión</option>
+            <option value="aceptadas">Aceptadas</option>
+            <option value="dañadas">Con reporte de daños</option>
+        </select>
+        <input type="text" id="buscar-devolucion" class="filtro-buscar" placeholder="Buscar por cliente o ID...">
+    </div>
+    
+    <div class="devoluciones-container">
+        <!-- Devolución 1 -->
+        <div class="devolucion-card" data-estado="pendiente">
+            <div class="devolucion-header">
+                <div class="devolucion-info-principal">
+                    <h3 class="devolucion-id">Devolución #8765</h3>
+                    <span class="devolucion-fecha">18/05/2025</span>
+                </div>
+                <span class="devolucion-estado pendiente">Pendiente de revisión</span>
+            </div>
+            
+            <div class="devolucion-detalles">
+                <div class="devolucion-info">
+                    <p><strong>Cliente:</strong> Juan Pérez</p>
+                    <p><strong>Reserva ID:</strong> #54321</p>
+                    <p><strong>Fecha de devolución:</strong> 18/05/2025</p>
+                </div>
+                
+                <div class="devolucion-items">
+                    <h4>Herramientas devueltas:</h4>
+                    <ul>
+                        <li>
+                            <span class="item-nombre">Taladro eléctrico</span>
+                            <span class="item-periodo">20/05/2025 - 22/05/2025 (3 días)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="devolucion-acciones">
+                <button class="btn-aceptar-devolucion">Aceptar devolucion</button>
+                <button class="btn-reportar-danos">Reportar daños</button>
+            </div>
+        </div>
+        
+        <!-- Devolución 2 -->
+        <div class="devolucion-card" data-estado="dañada">
+            <div class="devolucion-header">
+                <div class="devolucion-info-principal">
+                    <h3 class="devolucion-id">Devolución #8764</h3>
+                    <span class="devolucion-fecha">17/05/2025</span>
+                </div>
+                <span class="devolucion-estado daños">Con reporte de daños</span>
+            </div>
+            
+            <div class="devolucion-detalles">
+                <div class="devolucion-info">
+                    <p><strong>Cliente:</strong> María López</p>
+                    <p><strong>Reserva ID:</strong> #54322</p>
+                    <p><strong>Fecha de devolución:</strong> 17/05/2025</p>
+                </div>
+                
+                <div class="devolucion-items">
+                    <h4>Herramientas devueltas:</h4>
+                    <ul>
+                        <li>
+                            <span class="item-nombre">Sierra circular</span>
+                            <span class="item-periodo">15/05/2025 - 17/05/2025 (2 días)</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            
+            <div class="reporte-daños">
+                <h4>Reporte de daños:</h4>
+                <p class="reporte-fecha">Fecha del reporte: 17/05/2025</p>
+                <p class="reporte-descripcion">El disco de la sierra presenta desgaste excesivo y la carcasa tiene golpes en la parte frontal. Se requiere reemplazo del disco y reparación de la carcasa.</p>
+            </div>
+            
+            <div class="devolucion-acciones">
+                <button class="btn-ver-factura">Ver factura</button>
+                <button class="btn-contactar-cliente">Contactar cliente</button>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- Modal de Reporte de Daños -->
+<div class="modal" id="reporte-daños-modal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h2 class="modal-title">Reportar Daños</h2>
+            <button class="close-modal" id="close-reporte-daños">&times;</button>
+        </div>
+        <form id="reporte-daños-form">
+            <div class="form-group">
+                <label for="reporte-id-devolucion">ID Devolución</label>
+                <input type="text" id="reporte-id-devolucion" readonly>
+            </div>
+            <div class="form-group">
+                <label for="reporte-fecha">Fecha del reporte</label>
+                <input type="text" id="reporte-fecha" readonly>
+            </div>
+            <div class="form-group">
+                <label for="reporte-descripcion">Descripción de los daños *</label>
+                <textarea id="reporte-descripcion" rows="5" required></textarea>
+                <div class="error-message" id="reporte-descripcion-error">Por favor ingresa una descripción de los daños</div>
+            </div>
+            <button type="submit" class="submit-btn">Enviar reporte</button>
+        </form>
+    </div>
+</div>
+
+<!-- Modal de Inicio de Sesión -->
     <div class="modal" id="login-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -320,6 +796,13 @@
                     <input type="password" id="login-password" required>
                     <div class="error-message" id="login-password-error">La contraseña debe tener al menos 6 caracteres</div>
                 </div>
+                <div class="form-group">
+                    <label for="login-tipo">Tipo de cuenta</label>
+                    <select id="login-tipo" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="proveedor">Proveedor</option>
+                    </select>
+                </div>
                 <button type="submit" class="submit-btn">Iniciar Sesión</button>
                 <div class="form-footer">
                     ¿No tienes una cuenta? <a id="switch-to-register">Regístrate aquí</a>
@@ -328,7 +811,7 @@
         </div>
     </div>
     
-   
+    <!-- Modal de Registro -->
     <div class="modal" id="register-modal">
         <div class="modal-content">
             <div class="modal-header">
@@ -337,7 +820,7 @@
             </div>
             <form id="register-form">
                 <div class="form-group">
-                    <label for="register-name">Nombre Completo</label>
+                    <label for="register-name">Nombre de Usuario</label>
                     <input type="text" id="register-name" required>
                     <div class="error-message" id="register-name-error">Por favor ingresa tu nombre</div>
                 </div>
@@ -356,6 +839,18 @@
                     <input type="password" id="register-confirm-password" required>
                     <div class="error-message" id="register-confirm-password-error">Las contraseñas no coinciden</div>
                 </div>
+                <div class="form-group">
+                    <label for="register-tipo">Tipo de cuenta</label>
+                    <select id="register-tipo" required>
+                        <option value="cliente">Cliente</option>
+                        <option value="proveedor">Proveedor</option>
+                    </select>
+                </div>
+<div class="form-group telefono-container" style="display: none;">
+    <label for="register-telefono">Teléfono (Solo para proveedores)</label>
+    <input type="tel" id="register-telefono" placeholder="+57 300 123 4567">
+    <div class="error-message" id="register-telefono-error">Por favor ingresa un número de teléfono válido</div>
+</div>
                 <button type="submit" class="submit-btn">Crear Cuenta</button>
                 <div class="form-footer">
                     ¿Ya tienes una cuenta? <a id="switch-to-login">Inicia sesión aquí</a>
