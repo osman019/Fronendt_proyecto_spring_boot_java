@@ -39,8 +39,8 @@ import { CerrarmodalesFuera } from "./moduls/CerrarmodalesFuera.js"
 CerrarmodalesFuera()
 
 // Cambiar entre modales
-import { CambiarModales } from "./moduls/CambiarModales.js"
-CambiarModales()
+
+
 // Validación de formularios
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault()
@@ -76,6 +76,7 @@ loginForm.addEventListener("submit", (e) => {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
+        
       },
       body: JSON.stringify(loginData),
     })
