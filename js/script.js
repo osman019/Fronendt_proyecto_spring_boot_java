@@ -1,67 +1,24 @@
+// cambio de imagen de fondo
+import { cambiarImagen } from "./moduls/cambiarImagen.js"
+cambiarImagen()
 
-let indiceActual = 0
-const imagenElemento = document.getElementById("imagenCambia")
-
-function cambiarImagen() {
-  indiceActual = (indiceActual + 1) % imagenes.length
-  imagenElemento.src = imagenes[indiceActual]
-}
-
-setInterval(cambiarImagen, 2000)
 // Menú hamburguesa para móviles
-const hamburger = document.getElementById("hamburger-menu")
 const mobileNav = document.getElementById("mobile-nav")
 
-hamburger.addEventListener("click", () => {
-  mobileNav.classList.toggle("active")
-
-  // Animar las barras del menú hamburguesa
-  const spans = hamburger.querySelectorAll("span")
-  spans.forEach((span) => {
-    span.classList.toggle("active")
-  })
-})
+import { configurarMenuHamburguesa } from "./moduls/Hamburger.js"
+configurarMenuHamburguesa()
 
 // Cerrar el menú al hacer clic en un botón
-const mobileButtons = mobileNav.querySelectorAll("button")
-mobileButtons.forEach((button) => {
-  button.addEventListener("click", () => {
-    mobileNav.classList.remove("active")
-  })
-})
+import { cerrarMenu } from "./moduls/cerrarMenu.js"
+cerrarMenu()
 
 // Ajustar el diseño en función del tamaño de la pantalla
-function adjustLayout() {
-  const windowWidth = window.innerWidth
-  const imageElement = document.getElementById("imagenCambia")
-  const textContainer = document.querySelector(".text-container")
-
-  if (windowWidth <= 768) {
-    // Móvil: imagen debajo del texto
-    document.querySelector(".cuerpo").style.flexDirection = "column"
-    textContainer.style.width = "100%"
-  } else if (windowWidth <= 1024) {
-    // Tablet: imagen a la derecha
-    document.querySelector(".cuerpo").style.flexDirection = "row"
-    textContainer.style.width = "50%"
-  } else {
-    // Desktop: imagen a la derecha
-    document.querySelector(".cuerpo").style.flexDirection = "row"
-    textContainer.style.width = "50%"
-  }
-}
-
-// Ejecutar al cargar y al cambiar el tamaño de la ventana
-window.addEventListener("load", adjustLayout)
-window.addEventListener("resize", adjustLayout)
+import { ajustarLayout } from "./moduls/adjustLayout.js"
+ajustarLayout()
 
 // Funcionalidad de modales de inicio de sesión y registro
 const loginModal = document.getElementById("login-modal")
 const registerModal = document.getElementById("register-modal")
-const loginBtn = document.getElementById("login-btn")
-const registerBtn = document.getElementById("register-btn")
-const mobileLoginBtn = document.getElementById("mobile-login-btn")
-const mobileRegisterBtn = document.getElementById("mobile-register-btn")
 const closeLoginBtn = document.getElementById("close-login")
 const closeRegisterBtn = document.getElementById("close-register")
 const switchToRegister = document.getElementById("switch-to-register")
@@ -70,24 +27,12 @@ const loginForm = document.getElementById("login-form")
 const registerForm = document.getElementById("register-form")
 
 // Abrir modal de inicio de sesión
-loginBtn.addEventListener("click", () => {
-  loginModal.classList.add("active")
-})
-
-mobileLoginBtn.addEventListener("click", () => {
-  loginModal.classList.add("active")
-  mobileNav.classList.remove("active")
-})
+import { modalInicioSesion } from "./moduls/modalInicioSesion.js"
+modalInicioSesion()
 
 // Abrir modal de registro
-registerBtn.addEventListener("click", () => {
-  registerModal.classList.add("active")
-})
-
-mobileRegisterBtn.addEventListener("click", () => {
-  registerModal.classList.add("active")
-  mobileNav.classList.remove("active")
-})
+import { modalRegistro } from "./moduls/modalRegistro.js"
+modalRegistro()
 
 // Cerrar modales
 closeLoginBtn.addEventListener("click", () => {
