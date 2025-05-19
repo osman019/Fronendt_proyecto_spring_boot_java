@@ -19,10 +19,6 @@ ajustarLayout()
 // Funcionalidad de modales de inicio de sesión y registro
 const loginModal = document.getElementById("login-modal")
 const registerModal = document.getElementById("register-modal")
-const closeLoginBtn = document.getElementById("close-login")
-const closeRegisterBtn = document.getElementById("close-register")
-const switchToRegister = document.getElementById("switch-to-register")
-const switchToLogin = document.getElementById("switch-to-login")
 const loginForm = document.getElementById("login-form")
 const registerForm = document.getElementById("register-form")
 
@@ -35,35 +31,16 @@ import { modalRegistro } from "./moduls/modalRegistro.js"
 modalRegistro()
 
 // Cerrar modales
-closeLoginBtn.addEventListener("click", () => {
-  loginModal.classList.remove("active")
-})
-
-closeRegisterBtn.addEventListener("click", () => {
-  registerModal.classList.remove("active")
-})
+import { CerrarModales } from "./moduls/CerrarModales.js"
+CerrarModales()
 
 // Cerrar modales al hacer clic fuera del contenido
-window.addEventListener("click", (e) => {
-  if (e.target === loginModal) {
-    loginModal.classList.remove("active")
-  }
-  if (e.target === registerModal) {
-    registerModal.classList.remove("active")
-  }
-})
+import { CerrarmodalesFuera } from "./moduls/CerrarmodalesFuera.js"
+CerrarmodalesFuera()
 
 // Cambiar entre modales
-switchToRegister.addEventListener("click", () => {
-  loginModal.classList.remove("active")
-  registerModal.classList.add("active")
-})
-
-switchToLogin.addEventListener("click", () => {
-  registerModal.classList.remove("active")
-  loginModal.classList.add("active")
-})
-
+import { CambiarModales } from "./moduls/CambiarModales.js"
+CambiarModales()
 // Validación de formularios
 loginForm.addEventListener("submit", (e) => {
   e.preventDefault()
