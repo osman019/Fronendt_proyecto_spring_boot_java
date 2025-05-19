@@ -161,6 +161,7 @@ loginForm.addEventListener("submit", (e) => {
       // Mostrar directamente la sección de mis herramientas
       mostrarMisHerramientas()
     }
+    
   }
 })
 
@@ -345,6 +346,10 @@ function mostrarPanelProveedor(nombre) {
   document.getElementById("mobile-register-btn").style.display = "none"
   document.getElementById("ofertas-btn").style.display = "none"
    document.getElementById("acerca-btn").style.display = "none"
+
+    document.getElementById("cerrar-sesion-admin-btn").style.display = "none"
+   document.getElementById("nombre-admin").style.display = "none"
+
   
 
   // Mostrar panel de proveedor

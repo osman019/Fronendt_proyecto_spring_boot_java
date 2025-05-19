@@ -144,6 +144,13 @@ header {
   margin-bottom: 0.5rem;
 }
 
+.nombre-usuario {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  
+}
+
 .mobile-cliente-btn {
   background-color: white;
   border: none;

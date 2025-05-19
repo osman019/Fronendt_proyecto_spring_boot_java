@@ -1,10 +1,10 @@
-/* Panel CSS - Estilos específicos para paneles de cliente y proveedor */
+
 
 /* Estilos generales para paneles */
 .panel-section {
   padding: 2rem 1rem;
   background-color: #f9f9f9;
-  display: none; /* Oculto por defecto */
+  display: none;
 }
 
 .panel-title {
@@ -20,23 +20,33 @@
   position: relative;
   display: none; /
 }
-
+#cerrar-sesion-proveedor-btn{
+  cursor: pointer;
+  padding: 0.5rem 1rem;
+  font-size: 1.6rem;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-color: transparent;
+ border-radius: 0.6rem;
+  background-color: rgb(0, 0, 0);
+  color: white;
+}
 .proveedor-btn {
    display: flex;
   gap: 1rem;
    top: 3vh;
   align-items: center;
   position: relative;
-  right: 24vw;
+  left: 50vw;
    border: none;
   padding: 0.5rem 1rem;
    font-size: 1.9rem;
-  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.582);
   transition: all 0.3s ease;
   background-color: transparent;
-  background-color: #777;
+
   border-radius: 1vw;
-  color: white;
+ 
 }
 
 .proveedor-btn:hover {
@@ -79,7 +89,7 @@
 
 /* Panel móvil de proveedor */
 .mobile-proveedor-panel {
-  display: none; /* Oculto por defecto */
+  display: none; 
   flex-direction: column;
   gap: 1rem;
   margin-top: 1rem;
