@@ -145,24 +145,48 @@ loginForm.addEventListener("submit", (e) => {
   }
 
   if (isValid) {
-    // Simulación de inicio de sesión exitoso
-    loginModal.classList.remove("active")
+    const loginData = {
+      username: email,
+      password: password,
+    };
 
-    // Ocultar contenido principal
-    document.getElementById("contenido-principal").style.display = "none"
+    fetch('http://localhost:8080/auth/authenticate', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(loginData),
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Credenciales incorrectas');
+      }
+      return response.json();
+    })
+    .then(data => {
+      // data.token probablemente viene en la respuesta
+      console.log("Token recibido:", data.token);
+      // Guardar token si lo necesitas para futuras peticiones
+      localStorage.setItem('token', data.token);
 
-    // Mostrar panel según tipo de usuario
-    if (tipoUsuario === "cliente") {
-      mostrarPanelCliente(email.split("@")[0]) // Usar la parte del email antes del @ como nombre
-      // Mostrar directamente la sección de productos
-      mostrarProductos()
-    } else if (tipoUsuario === "proveedor") {
-      mostrarPanelProveedor(email.split("@")[0])
-      // Mostrar directamente la sección de mis herramientas
-      mostrarMisHerramientas()
-    }
-    
+      // Cerrar el modal y mostrar el panel correspondiente
+      loginModal.classList.remove("active");
+      document.getElementById("contenido-principal").style.display = "none";
+
+      if (tipoUsuario === "cliente") {
+        mostrarPanelCliente(email.split("@")[0]);
+        mostrarProductos();
+      } else if (tipoUsuario === "proveedor") {
+        mostrarPanelProveedor(email.split("@")[0]);
+        mostrarMisHerramientas();
+      }
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      alert('Error al iniciar sesión: ' + error.message);
+    });
   }
+
 })
 
 registerForm.addEventListener("submit", (e) => {
@@ -218,24 +242,49 @@ registerForm.addEventListener("submit", (e) => {
     }
   }
 
-  if (isValid) {
-    // Simulación de registro exitoso
-    registerModal.classList.remove("active")
+if (isValid) {
+  // Preparar datos para enviar a la API
+  const data = {
+    name: name,
+    username: email,
+    password: password,
+    repeatedPassword: confirmPassword,
+    // Puedes agregar aquí otros campos que el backend permita (o extender SaveUser)
+  };
 
-    // Ocultar contenido principal
-    document.getElementById("contenido-principal").style.display = "none"
-
-    // Mostrar panel según tipo de usuario
-    if (tipoUsuario === "cliente") {
-      mostrarPanelCliente(name)
-      // Mostrar directamente la sección de productos
-      mostrarProductos()
-    } else if (tipoUsuario === "proveedor") {
-      mostrarPanelProveedor(name)
-      // Mostrar directamente la sección de mis herramientas
-      mostrarMisHerramientas()
+  // Enviar datos a la API
+  fetch('http://localhost:8080/customers', {
+    method: 'POST',
+    headers: {
+      'Content-Type': 'application/json',
+    },
+    body: JSON.stringify(data),
+  })
+  .then(response => {
+    if (!response.ok) {
+      throw new Error('Error en la solicitud');
     }
-  }
+    return response.json();
+  })
+  .then(data => {
+    // Si el registro fue exitoso, cerrar modal y mostrar panel
+    registerModal.classList.remove("active");
+    document.getElementById("contenido-principal").style.display = "none";
+
+    if (tipoUsuario === "cliente") {
+      mostrarPanelCliente(name);
+      mostrarProductos();
+    } else if (tipoUsuario === "proveedor") {
+      mostrarPanelProveedor(name);
+      mostrarMisHerramientas();
+    }
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    alert('Ocurrió un error al registrar el usuario.');
+  });
+}
+
 })
 
 // Función para validar email
