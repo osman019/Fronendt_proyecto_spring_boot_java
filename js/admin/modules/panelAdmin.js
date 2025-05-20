@@ -22,6 +22,8 @@ export function mostrarPanelAdmin(nombre) {
   ocultarElemento("panel-proveedor")
   ocultarElemento("mobile-cliente-panel")
   ocultarElemento("mobile-proveedor-panel")
+  
+  
 
   // Ocultar botones de navegación
   const elementosAOcultar = [

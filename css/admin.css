@@ -121,6 +121,8 @@
   font-size: 1.8rem;
   font-weight: bold;
   color: #333;
+  position: relative;
+  right: vw;
 }
 
 .admin-actions {

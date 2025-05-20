@@ -882,104 +882,17 @@
     </div>
     
     <div class="admin-nav">
-      <div class="admin-nav-item active" data-section="dashboard">Dashboard</div>
+
       <div class="admin-nav-item" data-section="herramientas">Herramientas</div>
       <div class="admin-nav-item" data-section="proveedores">Proveedores</div>
       <div class="admin-nav-item" data-section="clientes">Clientes</div>
       <div class="admin-nav-item" data-section="reservas">Reservas</div>
       <div class="admin-nav-item" data-section="reportes">Reportes</div>
-      <div class="admin-nav-item" data-section="configuracion">Configuración</div>
+      
     </div>
     
     <div class="admin-content">
-      <!-- Dashboard -->
-      <div class="admin-section active" id="admin-dashboard">
-        <div class="admin-section-header">
-          <h2 class="admin-section-title">Dashboard</h2>
-          <div class="admin-actions">
-            <button class="admin-btn admin-btn-secondary">Exportar Datos</button>
-          </div>
-        </div>
-        
-        <div class="admin-stats">
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Total Herramientas</div>
-            <div class="admin-stat-value">124</div>
-            <div class="admin-stat-change positive">+12% desde el mes pasado</div>
-          </div>
-          
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Total Proveedores</div>
-            <div class="admin-stat-value">28</div>
-            <div class="admin-stat-change positive">+5% desde el mes pasado</div>
-          </div>
-          
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Total Clientes</div>
-            <div class="admin-stat-value">356</div>
-            <div class="admin-stat-change positive">+18% desde el mes pasado</div>
-          </div>
-          
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Reservas Activas</div>
-            <div class="admin-stat-value">42</div>
-            <div class="admin-stat-change negative">-3% desde el mes pasado</div>
-          </div>
-        </div>
-        
-        <div class="admin-section-header">
-          <h3 class="admin-section-title">Actividad Reciente</h3>
-        </div>
-        
-        <table class="admin-table">
-          <thead>
-            <tr>
-              <th>ID</th>
-              <th>Tipo</th>
-              <th>Descripción</th>
-              <th>Usuario</th>
-              <th>Fecha</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>#12345</td>
-              <td>Reserva</td>
-              <td>Nueva reserva de Taladro eléctrico</td>
-              <td>Juan Pérez</td>
-              <td>18/05/2025</td>
-            </tr>
-            <tr>
-              <td>#12344</td>
-              <td>Herramienta</td>
-              <td>Herramienta agregada: Sierra circular</td>
-              <td>María López (Proveedor)</td>
-              <td>18/05/2025</td>
-            </tr>
-            <tr>
-              <td>#12343</td>
-              <td>Cliente</td>
-              <td>Nuevo cliente registrado</td>
-              <td>Carlos Rodríguez</td>
-              <td>17/05/2025</td>
-            </tr>
-            <tr>
-              <td>#12342</td>
-              <td>Devolución</td>
-              <td>Devolución de Mezcladora de concreto</td>
-              <td>Ana Martínez</td>
-              <td>17/05/2025</td>
-            </tr>
-            <tr>
-              <td>#12341</td>
-              <td>Proveedor</td>
-              <td>Nuevo proveedor registrado</td>
-              <td>Luis Sánchez</td>
-              <td>16/05/2025</td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+    
       
       <!-- Herramientas -->
       <div class="admin-section" id="admin-herramientas">
@@ -1111,10 +1024,8 @@
         
         <div class="admin-pagination">
           <div class="admin-pagination-item active">1</div>
-          <div class="admin-pagination-item">2</div>
-          <div class="admin-pagination-item">3</div>
-          <div class="admin-pagination-item">4</div>
-          <div class="admin-pagination-item">5</div>
+        
+       
         </div>
       </div>
       
@@ -1240,8 +1151,7 @@
         
         <div class="admin-pagination">
           <div class="admin-pagination-item active">1</div>
-          <div class="admin-pagination-item">2</div>
-          <div class="admin-pagination-item">3</div>
+      
         </div>
       </div>
       
@@ -1366,9 +1276,7 @@
         
         <div class="admin-pagination">
           <div class="admin-pagination-item active">1</div>
-          <div class="admin-pagination-item">2</div>
-          <div class="admin-pagination-item">3</div>
-          <div class="admin-pagination-item">4</div>
+        
         </div>
       </div>
       
@@ -1490,68 +1398,15 @@
         
         <div class="admin-pagination">
           <div class="admin-pagination-item active">1</div>
-          <div class="admin-pagination-item">2</div>
-          <div class="admin-pagination-item">3</div>
-          <div class="admin-pagination-item">4</div>
+     
         </div>
       </div>
       
       <!-- Reportes -->
       <div class="admin-section" id="admin-reportes">
         <div class="admin-section-header">
-          <h2 class="admin-section-title">Reportes</h2>
-          <div class="admin-actions">
-            <button class="admin-btn admin-btn-secondary">Exportar a Excel</button>
-            <button class="admin-btn admin-btn-secondary">Exportar a PDF</button>
-          </div>
-        </div>
-        
-        <div class="admin-filters">
-          <div class="admin-filter">
-            <select>
-              <option value="mensual">Reporte Mensual</option>
-              <option value="trimestral">Reporte Trimestral</option>
-              <option value="anual">Reporte Anual</option>
-              <option value="personalizado">Personalizado</option>
-            </select>
-          </div>
-          <div class="admin-filter">
-            <select>
-              <option value="todos">Todos los tipos</option>
-              <option value="ingresos">Ingresos</option>
-              <option value="reservas">Reservas</option>
-              <option value="herramientas">Herramientas</option>
-              <option value="clientes">Clientes</option>
-            </select>
-          </div>
-        </div>
-        
-        <div class="admin-stats">
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Ingresos Totales</div>
-            <div class="admin-stat-value">$12,450,000</div>
-            <div class="admin-stat-change positive">+15% desde el mes pasado</div>
-          </div>
-          
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Reservas Totales</div>
-            <div class="admin-stat-value">248</div>
-            <div class="admin-stat-change positive">+8% desde el mes pasado</div>
-          </div>
-          
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Herramientas Más Reservadas</div>
-            <div class="admin-stat-value">Taladro eléctrico</div>
-            <div class="admin-stat-change">42 reservas este mes</div>
-          </div>
-          
-          <div class="admin-stat-card">
-            <div class="admin-stat-title">Tasa de Cancelación</div>
-            <div class="admin-stat-value">5.2%</div>
-            <div class="admin-stat-change negative">+0.8% desde el mes pasado</div>
-          </div>
-        </div>
-        
+   
+    <br>
         <div class="admin-section-header">
           <h3 class="admin-section-title">Ingresos por Categoría</h3>
         </div>
@@ -1592,96 +1447,6 @@
         </table>
       </div>
       
-      <!-- Configuración -->
-      <div class="admin-section" id="admin-configuracion">
-        <div class="admin-section-header">
-          <h2 class="admin-section-title">Configuración</h2>
-          <div class="admin-actions">
-            <button class="admin-btn admin-btn-primary" id="btn-guardar-config">Guardar Cambios</button>
-          </div>
-        </div>
-        
-        <div class="admin-form">
-          <div class="admin-form-grid">
-            <div class="admin-form-group">
-              <label for="config-nombre-sitio">Nombre del Sitio</label>
-              <input type="text" id="config-nombre-sitio" value="HerraRent">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-email-contacto">Email de Contacto</label>
-              <input type="email" id="config-email-contacto" value="contacto@herrarent.com">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-telefono-contacto">Teléfono de Contacto</label>
-              <input type="tel" id="config-telefono-contacto" value="+57 300 123 4567">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-moneda">Moneda</label>
-              <select id="config-moneda">
-                <option value="COP" selected>Peso Colombiano (COP)</option>
-                <option value="USD">Dólar Estadounidense (USD)</option>
-                <option value="EUR">Euro (EUR)</option>
-              </select>
-            </div>
-          </div>
-          
-          <div class="admin-form-group full-width">
-            <label for="config-direccion">Dirección</label>
-            <input type="text" id="config-direccion" value="Calle 123 #45-67, Bogotá, Colombia">
-          </div>
-          
-          <div class="admin-form-group full-width">
-            <label for="config-descripcion">Descripción del Sitio</label>
-            <textarea id="config-descripcion" rows="4">HerraRent es una plataforma de alquiler de herramientas de alta calidad para proyectos de construcción y remodelación.</textarea>
-          </div>
-          
-          <h3 class="admin-section-title">Configuración de Reservas</h3>
-          
-          <div class="admin-form-grid">
-            <div class="admin-form-group">
-              <label for="config-dias-max">Días Máximos de Reserva</label>
-              <input type="number" id="config-dias-max" value="30">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-anticipo">Porcentaje de Anticipo</label>
-              <input type="number" id="config-anticipo" value="20">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-cancelacion">Tiempo Máximo de Cancelación (horas)</label>
-              <input type="number" id="config-cancelacion" value="24">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-extension">Permitir Extensión de Reserva</label>
-              <select id="config-extension">
-                <option value="si" selected>Sí</option>
-                <option value="no">No</option>
-              </select>
-            </div>
-          </div>
-          
-          <h3 class="admin-section-title">Configuración de Cuenta</h3>
-          
-          <div class="admin-form-grid">
-            <div class="admin-form-group">
-              <label for="config-admin-email">Email de Administrador</label>
-              <input type="email" id="config-admin-email" value="admin@herrarent.com">
-            </div>
-            
-            <div class="admin-form-group">
-              <label for="config-admin-password">Contraseña</label>
-              <input type="password" id="config-admin-password" value="********">
-            </div>
-          </div>
-        </div>
-      </div>
-    </div>
-  </div>
   
   <!-- Modales para el Panel de Administrador -->
   
