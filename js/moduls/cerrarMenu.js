@@ -1,10 +1,12 @@
 export function cerrarMenu() {
-  const mobileNav = document.getElementById("mobile-nav");
-  const mobileButtons = mobileNav.querySelectorAll("button");
+  const menuButtons = document.querySelectorAll("#mobile-nav a")
+  const mobileNav = document.getElementById("mobile-nav")
 
-  mobileButtons.forEach((button) => {
-    button.addEventListener("click", () => {
-      mobileNav.classList.remove("active");
-    });
-  });
+  if (menuButtons.length > 0 && mobileNav) {
+    menuButtons.forEach((btn) => {
+      btn.addEventListener("click", () => {
+        mobileNav.classList.remove("active")
+      })
+    })
+  }
 }

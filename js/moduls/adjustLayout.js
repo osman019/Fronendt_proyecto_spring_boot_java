@@ -1,24 +1,31 @@
 export function ajustarLayout() {
-function adjustLayout() {
-  const windowWidth = window.innerWidth
-  const imageElement = document.getElementById("imagenCambia")
-  const textContainer = document.querySelector(".text-container")
+  // Función para ajustar el diseño en función del tamaño de la pantalla
+  function adjustLayout() {
+    const width = window.innerWidth
 
-  if (windowWidth <= 768) {
-    // Móvil: imagen debajo del texto
-    document.querySelector(".cuerpo").style.flexDirection = "column"
-    textContainer.style.width = "100%"
-  } else if (windowWidth <= 1024) {
-    // Tablet: imagen a la derecha
-    document.querySelector(".cuerpo").style.flexDirection = "row"
-    textContainer.style.width = "50%"
-  } else {
-    // Desktop: imagen a la derecha
-    document.querySelector(".cuerpo").style.flexDirection = "row"
-    textContainer.style.width = "50%"
+    // Ejemplo de ajuste basado en el ancho de la pantalla
+    if (width < 768) {
+      // Ajustes para móviles
+      document.querySelectorAll(".desktop-only").forEach((el) => {
+        el.style.display = "none"
+      })
+      document.querySelectorAll(".mobile-only").forEach((el) => {
+        el.style.display = "block"
+      })
+    } else {
+      // Ajustes para desktop
+      document.querySelectorAll(".desktop-only").forEach((el) => {
+        el.style.display = "block"
+      })
+      document.querySelectorAll(".mobile-only").forEach((el) => {
+        el.style.display = "none"
+      })
+    }
   }
-}
-    // Ejecutar al cargar y al cambiar el tamaño de la ventana
-    window.addEventListener("load", adjustLayout())
-    window.addEventListener("resize", adjustLayout())
+
+  // Ejecutar al cargar la página
+  adjustLayout()
+
+  // Ejecutar cuando cambie el tamaño de la ventana
+  window.addEventListener("resize", adjustLayout)
 }

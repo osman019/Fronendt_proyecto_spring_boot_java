@@ -1,11 +1,15 @@
-export function cambiarImagen(){
-    let indiceActual = 0
-    const imagenElemento = document.getElementById("imagenCambia")
+export function cambiarImagen() {
+  // Implementación de cambio de imagen de fondo
+  const backgroundImages = ["/img/background1.jpg", "/img/background2.jpg", "/img/background3.jpg"]
 
-    function cambiarImagen() {
-    indiceActual = (indiceActual + 1) % imagenes.length
-    imagenElemento.src = imagenes[indiceActual]
-    }
+  let currentImageIndex = 0
+  const heroSection = document.querySelector(".hero-section")
 
-    setInterval(cambiarImagen, 2000)
-} 
+  if (heroSection) {
+    // Cambiar imagen cada 5 segundos
+    setInterval(() => {
+      currentImageIndex = (currentImageIndex + 1) % backgroundImages.length
+      heroSection.style.backgroundImage = `url(${backgroundImages[currentImageIndex]})`
+    }, 5000)
+  }
+}
