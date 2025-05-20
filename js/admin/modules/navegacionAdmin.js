@@ -1,6 +1,3 @@
-/**
- * Configura la navegación entre secciones del panel de administrador
- */
 export function configurarNavegacionAdmin() {
   const adminNavItems = document.querySelectorAll(".admin-nav-item")
   const adminSections = document.querySelectorAll(".admin-section")
@@ -29,4 +26,14 @@ export function configurarNavegacionAdmin() {
       })
     })
   })
+
+  //  Mostrar "Herramientas" por defecto al cargar
+  const defaultSection = "herramientas"
+  const defaultNavItem = document.querySelector(`.admin-nav-item[data-section="${defaultSection}"]`)
+  const defaultSectionElement = document.getElementById(`admin-${defaultSection}`)
+
+  if (defaultNavItem && defaultSectionElement) {
+    defaultNavItem.classList.add("active")
+    defaultSectionElement.classList.add("active")
+  }
 }
