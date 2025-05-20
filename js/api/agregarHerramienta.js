@@ -1,76 +1,89 @@
-document.addEventListener("DOMContentLoaded", () => {
-  const formAgregarHerramienta = document.getElementById("form-agregar-herramienta");
+document.addEventListener('DOMContentLoaded', () => {
+  const form = document.getElementById('form-agregar-herramienta');
+  const imageInput = document.getElementById('herramienta-imagen');
+  const previewContainer = document.getElementById('imagen-preview');
+  const btnCancelar = document.getElementById('btn-cancelar-agregar');
 
-  formAgregarHerramienta.addEventListener("submit", async (e) => {
+  // Mostrar preview de la imagen seleccionada
+  imageInput.addEventListener('change', () => {
+    const file = imageInput.files[0];
+    if (!file) {
+      previewContainer.innerHTML = '<span>Vista previa de la imagen</span>';
+      return;
+    }
+    const reader = new FileReader();
+    reader.onload = e => {
+      previewContainer.innerHTML = `<img src="${e.target.result}" alt="Vista previa" style="max-width: 100%; max-height: 150px;">`;
+    };
+    reader.readAsDataURL(file);
+  });
+
+  // Cancelar (limpiar formulario y preview)
+  btnCancelar.addEventListener('click', () => {
+    form.reset();
+    previewContainer.innerHTML = '<span>Vista previa de la imagen</span>';
+  });
+
+  // Enviar formulario
+  form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    const nombre = document.getElementById("herramienta-nombre").value.trim();
-    const categoria = document.getElementById("herramienta-categoria").value;
-    const costo = parseInt(document.getElementById("herramienta-costo").value);
-    const disponibilidad = parseInt(document.getElementById("herramienta-disponibilidad").value);
-    const descripcion = document.getElementById("herramienta-descripcion").value.trim();
-    const token = localStorage.getItem("token");
+    const toolData = {
+      name: document.getElementById('herramienta-nombre').value.trim(),
+      category: document.getElementById('herramienta-categoria').value,
+      costoDiario: parseFloat(document.getElementById('herramienta-costo').value),
+      disponibilidad: parseInt(document.getElementById('herramienta-disponibilidad').value),
+      descripcion: document.getElementById('herramienta-descripcion').value.trim(),
+      supplierId: null
+    };
 
-    if (!token) {
-      alert("Debe iniciar sesión para agregar una herramienta.");
+    if (!toolData.category) {
+      alert('Por favor selecciona una categoría.');
       return;
     }
 
-    let isValid = true;
-
-    if (!nombre || !categoria || isNaN(costo) || costo < 1000 || isNaN(disponibilidad) || disponibilidad < 1 || !descripcion) {
-      alert("Por favor, completa todos los campos obligatorios correctamente.");
-      isValid = false;
+    const imageFile = imageInput.files[0];
+    if (!imageFile) {
+      alert('Por favor selecciona una imagen para la herramienta.');
+      return;
     }
 
-    if (isValid) {
-      const herramientaData = {
-        nombre,
-        categoria,
-        costoDiario: costo,
-        disponibilidad,
-        descripcion
-      };
+    // Aquí cambiamos para obtener el token con la clave correcta "token"
+    const jwtToken = localStorage.setItem("token", data.jwt);
 
-      try {
-        const response = await fetch("http://localhost:8080/api/Tools", {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-            "Authorization": `Bearer ${token}`
-          },
-          body: JSON.stringify(herramientaData)
-        });
-
-        if (!response.ok) {
-          const error = await response.json();
-          throw new Error(error.error || "Error al guardar la herramienta.");
-        }
-
-        const data = await response.json();
-        alert("Herramienta agregada correctamente.");
-        formAgregarHerramienta.reset();
-        document.getElementById("imagen-preview").innerHTML = "<span>Vista previa de la imagen</span>";
-      } catch (error) {
-        console.error("Error al guardar herramienta:", error);
-        alert("Error: " + error.message);
-      }
+    if (!jwtToken) {
+      alert('No estás autenticado. Por favor inicia sesión.');
+      return;
     }
+
+    const formData = new FormData();
+    formData.append('tool', JSON.stringify(toolData));
+    formData.append('imagen', imageFile);
+
+try {
+  const response = await fetch('http://localhost:8080/api/tools', {
+    method: 'POST',
+    headers: {
+      'Authorization': `Bearer ${jwtToken}`
+    },
+    body: formData
   });
 
-  // Vista previa de imagen
-  document.getElementById("herramienta-imagen").addEventListener("change", function () {
-    const preview = document.getElementById("imagen-preview");
-    const file = this.files[0];
-    preview.innerHTML = file
-      ? `<img src="${URL.createObjectURL(file)}" style="max-width: 100%" />`
-      : "<span>Vista previa de la imagen</span>";
-  });
+  if (!response.ok) {
+    const errorMsg = await response.text();
+    throw new Error(errorMsg || 'Error al guardar la herramienta');
+  }
 
-  // Botón cancelar
-  document.getElementById("btn-cancelar-agregar").addEventListener("click", () => {
-    formAgregarHerramienta.reset();
-    document.getElementById("imagen-preview").innerHTML = "<span>Vista previa de la imagen</span>";
-  });
+  // Esta línea solo se ejecuta si response.ok es true
+  const data = await response.json();
+
+  alert('Herramienta creada con éxito, ID: ' + data.id);
+  form.reset();
+  previewContainer.innerHTML = '<span>Vista previa de la imagen</span>';
+
+} catch (error) {
+  console.error('Error al crear herramienta:', error);
+  alert('Error: ' + error.message);
+}}
+);
 });
-    

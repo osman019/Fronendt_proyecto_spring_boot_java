@@ -62,10 +62,10 @@ function handleLoginSubmit(e) {
         return response.json()
       })
       .then((data) => {
-        // data.token probablemente viene en la respuesta
-        console.log("Token recibido:", data.token)
-        // Guardar token si lo necesitas para futuras peticiones
-        localStorage.setItem("token", data.token)
+
+          console.log("Respuesta del login:", data); // <-- agrega esto
+          localStorage.setItem("token", data.token);
+          console.log("Token guardado:", localStorage.getItem("token")); // <-- y esto también
 
         // Cerrar el modal y mostrar el panel correspondiente
         const loginModal = document.getElementById("login-modal")
