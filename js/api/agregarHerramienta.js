@@ -28,14 +28,22 @@ document.addEventListener('DOMContentLoaded', () => {
   form.addEventListener('submit', async (e) => {
     e.preventDefault();
 
+    const supplierId = localStorage.getItem("userId");
+
+    if (!supplierId) {
+      alert('No se encontró el ID del usuario. Por favor inicia sesión de nuevo.');
+      return;
+    }
+
     const toolData = {
       name: document.getElementById('herramienta-nombre').value.trim(),
       category: document.getElementById('herramienta-categoria').value,
       costoDiario: parseFloat(document.getElementById('herramienta-costo').value),
       disponibilidad: parseInt(document.getElementById('herramienta-disponibilidad').value),
       descripcion: document.getElementById('herramienta-descripcion').value.trim(),
-      supplierId: null
+      supplierId: parseInt(supplierId) 
     };
+
 
     if (!toolData.category) {
       alert('Por favor selecciona una categoría.');

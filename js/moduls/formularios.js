@@ -62,12 +62,8 @@ function handleLoginSubmit(e) {
         return response.json()
       })
       .then((data) => {
-
-          console.log("Respuesta del login:", data); 
           localStorage.setItem("token", data.jwt);
-          console.log("Token guardado:", localStorage.getItem("token"));
-
-        // Cerrar el modal y mostrar el panel correspondiente
+          
         const loginModal = document.getElementById("login-modal")
         loginModal.classList.remove("active")
         document.getElementById("contenido-principal").style.display = "none"
