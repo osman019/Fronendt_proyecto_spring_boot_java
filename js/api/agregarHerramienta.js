@@ -48,8 +48,7 @@ document.addEventListener('DOMContentLoaded', () => {
       return;
     }
 
-    // Aquí cambiamos para obtener el token con la clave correcta "token"
-    const jwtToken = localStorage.setItem("token", data.jwt);
+    const jwtToken = localStorage.getItem("token");
 
     if (!jwtToken) {
       alert('No estás autenticado. Por favor inicia sesión.');
@@ -57,33 +56,34 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     const formData = new FormData();
-    formData.append('tool', JSON.stringify(toolData));
+    formData.append(
+      'tool',
+      new Blob([JSON.stringify(toolData)], { type: 'application/json' })
+    );
     formData.append('imagen', imageFile);
 
-try {
-  const response = await fetch('http://localhost:8080/api/tools', {
-    method: 'POST',
-    headers: {
-      'Authorization': `Bearer ${jwtToken}`
-    },
-    body: formData
+    try {
+      const response = await fetch('http://localhost:8080/api/Tools', {
+        method: 'POST',
+        headers: {
+          'Authorization': `Bearer ${jwtToken}`
+        },
+        body: formData
+      });
+
+      if (!response.ok) {
+        const errorMsg = await response.text();
+        throw new Error(errorMsg || 'Error al guardar la herramienta');
+      }
+
+      const data = await response.json();
+      alert('Herramienta creada con éxito, ID: ' + data.id);
+      form.reset();
+      previewContainer.innerHTML = '<span>Vista previa de la imagen</span>';
+
+    } catch (error) {
+      console.error('Error al crear herramienta:', error);
+      alert('Error: ' + error.message);
+    }
   });
-
-  if (!response.ok) {
-    const errorMsg = await response.text();
-    throw new Error(errorMsg || 'Error al guardar la herramienta');
-  }
-
-  // Esta línea solo se ejecuta si response.ok es true
-  const data = await response.json();
-
-  alert('Herramienta creada con éxito, ID: ' + data.id);
-  form.reset();
-  previewContainer.innerHTML = '<span>Vista previa de la imagen</span>';
-
-} catch (error) {
-  console.error('Error al crear herramienta:', error);
-  alert('Error: ' + error.message);
-}}
-);
 });
