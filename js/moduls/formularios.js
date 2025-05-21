@@ -46,48 +46,64 @@ function handleLoginSubmit(e) {
     const loginData = {
       username: email,
       password: password,
-    }
+      role: tipoUsuario === "cliente" 
+          ? "ROLE_CUSTOMER" 
+          : tipoUsuario === "proveedor" 
+          ? "ROLE_PROVIDER" 
+          : tipoUsuario === "administrador" 
+          ? "ROLE_ADMINISTRATOR"
+          : "ROLE_GUEST"  
+    };
 
-    fetch("http://localhost:8080/auth/authenticate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
+  fetch("http://localhost:8080/auth/authenticate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Credenciales incorrectas");
+      }
+      return response.json();
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Credenciales incorrectas")
-        }
-        return response.json()
-      })
-      .then((data) => {
-         localStorage.setItem("token", data.jwt);
-localStorage.setItem("userId", data.id); // 👈 GUARDA EL ID AQUÍ
+    .then((data) => {
+      if (data.role?.toUpperCase().trim() !== loginData.role.toUpperCase().trim()) {
+        alert("El rol seleccionado no coincide con el registrado en el sistema.");
+        return;
+      }
+        // Guardar token y userId
+        localStorage.setItem("token", data.jwt);
+        localStorage.setItem("userId", data.id);
+        localStorage.setItem("tipoUsuario", data.role);
+        console.log("",data.role)
 
-          
-        const loginModal = document.getElementById("login-modal")
-        loginModal.classList.remove("active")
-        document.getElementById("contenido-principal").style.display = "none"
+        const loginModal = document.getElementById("login-modal");
+        loginModal.classList.remove("active");
+        document.getElementById("contenido-principal").style.display = "none";
 
         if (tipoUsuario === "cliente") {
           import("./panelCliente.js").then((module) => {
-            module.mostrarPanelCliente(email.split("@")[0])
-            module.mostrarProductos()
-          })
+            module.mostrarPanelCliente(email.split("@")[0]);
+            module.mostrarProductos();
+          });
         } else if (tipoUsuario === "proveedor") {
           import("./panelProveedor.js").then((module) => {
-            module.mostrarPanelProveedor(email.split("@")[0])
-            module.mostrarMisHerramientas()
-          })
+            module.mostrarPanelProveedor(email.split("@")[0]);
+            module.mostrarMisHerramientas();
+          });
+        } else if (tipoUsuario === "administrador") {
+          import("../admin/modules/panelAdmin.js").then((module) => {
+            module.mostrarPanelAdmin(email.split("@")[0]);
+          });
         }
       })
-      .catch((error) => {
-        console.error("Error:", error)
-        alert("Error al iniciar sesión: " + error.message)
-      })
-  }
-}
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Error al iniciar sesión: " + error.message);
+    });
+}}
 
 function handleRegisterSubmit(e) {
   e.preventDefault()
