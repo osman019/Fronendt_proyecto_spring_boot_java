@@ -169,4 +169,5 @@ export function mostrarReservas() {
   // Cerrar menú móvil si está abierto
   const mobileNav = document.getElementById("mobile-nav")
   if (mobileNav) mobileNav.classList.remove("active")
+    
 }
