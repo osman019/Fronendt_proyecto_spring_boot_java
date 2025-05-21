@@ -55,33 +55,27 @@ function handleLoginSubmit(e) {
           : "ROLE_GUEST"  
     };
 
-  fetch("http://localhost:8080/auth/authenticate", {
-    method: "POST",
-    headers: {
-      "Content-Type": "application/json",
-    },
-    body: JSON.stringify(loginData),
-  })
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error("Credenciales incorrectas");
-      }
-      return response.json();
+    fetch("http://localhost:8080/auth/authenticate", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(loginData),
     })
-    .then((data) => {
-      if (data.role?.toUpperCase().trim() !== loginData.role.toUpperCase().trim()) {
-        alert("El rol seleccionado no coincide con el registrado en el sistema.");
-        return;
-      }
-        // Guardar token y userId
-        localStorage.setItem("token", data.jwt);
-        localStorage.setItem("userId", data.id);
-        localStorage.setItem("tipoUsuario", data.role);
-        console.log("",data.role)
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error("Credenciales incorrectas")
+        }
+        return response.json()
+      })
+      .then((data) => {
+         localStorage.setItem("token", data.jwt);
+localStorage.setItem("userId", data.id); // 👈 GUARDA EL ID AQUÍ
 
-        const loginModal = document.getElementById("login-modal");
-        loginModal.classList.remove("active");
-        document.getElementById("contenido-principal").style.display = "none";
+          
+        const loginModal = document.getElementById("login-modal")
+        loginModal.classList.remove("active")
+        document.getElementById("contenido-principal").style.display = "none"
 
         if (tipoUsuario === "cliente") {
           import("./panelCliente.js").then((module) => {
@@ -113,6 +107,7 @@ function handleRegisterSubmit(e) {
   const password = document.getElementById("register-password").value
   const confirmPassword = document.getElementById("register-confirm-password").value
   const tipoUsuario = document.getElementById("register-tipo").value
+  const telefono = document.getElementById("register-telefono").value
   let isValid = true
 
   // Validar nombre
@@ -157,11 +152,21 @@ function handleRegisterSubmit(e) {
       document.getElementById("register-telefono-error").style.display = "none"
     }
   }
+   if (tipoUsuario === "customer") {
+    const telefono = document.getElementById("register-telefono").value
+    if (telefono.trim() === "") {
+      document.getElementById("register-telefono-error").style.display = "block"
+      isValid = false
+    } else {
+      document.getElementById("register-telefono-error").style.display = "none"
+    }
+  }
 
   if (isValid) {
     // Preparar datos para enviar a la API
     const data = {
       name: name,
+      telefono: telefono,
       username: email,
       password: password,
       repeatedPassword: confirmPassword,
@@ -172,6 +177,7 @@ function handleRegisterSubmit(e) {
     const url = tipoUsuario === "proveedor" 
   ? "http://localhost:8080/suppliers" 
   : "http://localhost:8080/customers";
+
 
 fetch(url, {
   method: "POST",
