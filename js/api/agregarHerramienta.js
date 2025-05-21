@@ -41,7 +41,7 @@ document.addEventListener('DOMContentLoaded', () => {
       costoDiario: parseFloat(document.getElementById('herramienta-costo').value),
       disponibilidad: parseInt(document.getElementById('herramienta-disponibilidad').value),
       descripcion: document.getElementById('herramienta-descripcion').value.trim(),
-      supplierId: parseInt(supplierId) 
+      
     };
 
 

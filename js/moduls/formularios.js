@@ -62,7 +62,9 @@ function handleLoginSubmit(e) {
         return response.json()
       })
       .then((data) => {
-          localStorage.setItem("token", data.jwt);
+         localStorage.setItem("token", data.jwt);
+localStorage.setItem("userId", data.id); // 👈 GUARDA EL ID AQUÍ
+
           
         const loginModal = document.getElementById("login-modal")
         loginModal.classList.remove("active")
@@ -151,12 +153,14 @@ function handleRegisterSubmit(e) {
     }
 
     // Enviar datos a la API
-    fetch("http://localhost:8080/customers", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(data),
+    const url = tipoUsuario === "proveedor" 
+  ? "http://localhost:8080/suppliers" 
+  : "http://localhost:8080/customers";
+
+fetch(url, {
+  method: "POST",
+  headers: { "Content-Type": "application/json" },
+  body: JSON.stringify(data),
     })
       .then((response) => {
         if (!response.ok) {
