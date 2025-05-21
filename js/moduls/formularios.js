@@ -63,7 +63,7 @@ function handleLoginSubmit(e) {
       })
       .then((data) => {
          localStorage.setItem("token", data.jwt);
-localStorage.setItem("userId", data.id); // 👈 GUARDA EL ID AQUÍ
+localStorage.setItem("userId", data.id); 
 
           
         const loginModal = document.getElementById("login-modal")
@@ -97,6 +97,7 @@ function handleRegisterSubmit(e) {
   const password = document.getElementById("register-password").value
   const confirmPassword = document.getElementById("register-confirm-password").value
   const tipoUsuario = document.getElementById("register-tipo").value
+  const telefono = document.getElementById("register-telefono").value
   let isValid = true
 
   // Validar nombre
@@ -141,11 +142,21 @@ function handleRegisterSubmit(e) {
       document.getElementById("register-telefono-error").style.display = "none"
     }
   }
+   if (tipoUsuario === "customer") {
+    const telefono = document.getElementById("register-telefono").value
+    if (telefono.trim() === "") {
+      document.getElementById("register-telefono-error").style.display = "block"
+      isValid = false
+    } else {
+      document.getElementById("register-telefono-error").style.display = "none"
+    }
+  }
 
   if (isValid) {
     // Preparar datos para enviar a la API
     const data = {
       name: name,
+      telefono: telefono,
       username: email,
       password: password,
       repeatedPassword: confirmPassword,
@@ -156,6 +167,7 @@ function handleRegisterSubmit(e) {
     const url = tipoUsuario === "proveedor" 
   ? "http://localhost:8080/suppliers" 
   : "http://localhost:8080/customers";
+
 
 fetch(url, {
   method: "POST",
