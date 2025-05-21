@@ -1,6 +1,6 @@
-// Al cargar la página, trae las herramientas reales
+
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('http://localhost:8080/api/Tools') // Cambia la URL según tu API
+  fetch('http://localhost:8080/api/Tools') 
     .then(res => res.json())
     .then(herramientas => mostrarHerramientas(herramientas))
     .catch(err => console.error('Error cargando herramientas:', err));
