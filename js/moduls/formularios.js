@@ -1,4 +1,4 @@
-// Email validation utility
+
 export function validateEmail(email) {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -55,27 +55,33 @@ function handleLoginSubmit(e) {
           : "ROLE_GUEST"  
     };
 
-    fetch("http://localhost:8080/auth/authenticate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
+  fetch("http://localhost:8080/auth/authenticate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  })
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Credenciales incorrectas");
+      }
+      return response.json();
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Credenciales incorrectas")
-        }
-        return response.json()
-      })
-      .then((data) => {
-         localStorage.setItem("token", data.jwt);
-localStorage.setItem("userId", data.id); // 👈 GUARDA EL ID AQUÍ
+    .then((data) => {
+      if (data.role?.toUpperCase().trim() !== loginData.role.toUpperCase().trim()) {
+        alert("El rol seleccionado no coincide con el registrado en el sistema.");
+        return;
+      }
+        // Guardar token y userId
+        localStorage.setItem("token", data.jwt);
+        localStorage.setItem("userId", data.id);
+        localStorage.setItem("tipoUsuario", data.role);
+        console.log("",data.role)
 
-          
-        const loginModal = document.getElementById("login-modal")
-        loginModal.classList.remove("active")
-        document.getElementById("contenido-principal").style.display = "none"
+        const loginModal = document.getElementById("login-modal");
+        loginModal.classList.remove("active");
+        document.getElementById("contenido-principal").style.display = "none";
 
         if (tipoUsuario === "cliente") {
           import("./panelCliente.js").then((module) => {
@@ -98,6 +104,7 @@ localStorage.setItem("userId", data.id); // 👈 GUARDA EL ID AQUÍ
       alert("Error al iniciar sesión: " + error.message);
     });
 }}
+
 
 function handleRegisterSubmit(e) {
   e.preventDefault()
