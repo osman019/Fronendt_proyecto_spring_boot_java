@@ -40,6 +40,7 @@ export function configurarModales() {
     if (modal.openBtn) {
       modal.openBtn.addEventListener("click", () => {
         modal.modal.classList.add("active")
+        
       })
     }
 

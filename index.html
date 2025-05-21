@@ -1405,7 +1405,61 @@
       <!-- Reportes -->
       <div class="admin-section" id="admin-reportes">
         <div class="admin-section-header">
-   
+             <h2 class="admin-section-title">Reportes</h2>
+          <div class="admin-actions">
+            <button class="admin-btn admin-btn-secondary">Exportar a Excel</button>
+            <button class="admin-btn admin-btn-secondary">Exportar a PDF</button>
+          </div>
+        </div>
+       
+  
+        <div class="admin-filters">
+          <div class="admin-filter">
+            <select>
+              <option value="mensual">Reporte Mensual</option>
+              <option value="trimestral">Reporte Trimestral</option>
+              <option value="anual">Reporte Anual</option>
+              <option value="personalizado">Personalizado</option>
+            </select>
+          </div>
+          <div class="admin-filter">
+            <select>
+              <option value="todos">Todos los tipos</option>
+              <option value="ingresos">Ingresos</option>
+              <option value="reservas">Reservas</option>
+              <option value="herramientas">Herramientas</option>
+              <option value="clientes">Clientes</option>
+            </select>
+          </div>
+        </div>
+       
+  
+        <div class="admin-stats">
+          <div class="admin-stat-card">
+            <div class="admin-stat-title">Ingresos Totales</div>
+            <div class="admin-stat-value">$12,450,000</div>
+            <div class="admin-stat-change positive">+15% desde el mes pasado</div>
+          </div>
+          
+          <div class="admin-stat-card">
+            <div class="admin-stat-title">Reservas Totales</div>
+            <div class="admin-stat-value">248</div>
+            <div class="admin-stat-change positive">+8% desde el mes pasado</div>
+          </div>
+          
+          <div class="admin-stat-card">
+            <div class="admin-stat-title">Herramientas Más Reservadas</div>
+            <div class="admin-stat-value">Taladro eléctrico</div>
+            <div class="admin-stat-change">42 reservas este mes</div>
+          </div>
+          
+          <div class="admin-stat-card">
+            <div class="admin-stat-title">Tasa de Cancelación</div>
+            <div class="admin-stat-value">5.2%</div>
+            <div class="admin-stat-change negative">+0.8% desde el mes pasado</div>
+          </div>
+        </div>
+        
    
         <div class="admin-section-header">
           <h3 class="admin-section-title">Ingresos por Categoría</h3>
@@ -1607,10 +1661,7 @@
             </div>
             
             <div class="admin-form-group">
-              <label for="cliente-estado">Estado *</label>
-              <select id="cliente-estado" required>
-                <option value="activo">Activo</option>
-                <option value="inactivo">Inactivo</option>
+              
               </select>
             </div>
           </div>
