@@ -1,76 +1,983 @@
-*{
- background-color: rgba(221, 221, 221, 1);
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
 
-.footer{
-grid-area: a;
+body {
+  background-color: rgba(221, 221, 221, 1);
 }
 
-.logo{width: 10vw;
-margin-left: 2vw;
-margin-top: 1vw;}
-.boton1{
-    cursor: pointer;
-    border: none;
-    right: 9vw;
-    position: absolute;
-    height: 2.5vw;
-    font-size: 1vw; 
-     text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
-    margin-left: 2vw;
 
-      
-    
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem;
+  position: relative;
+  background-color: rgba(221, 221, 221, 1);
+  position: sticky;
+  top: 0;
+  z-index: 10;
 }
-.boton1:hover{
-   background-color: black;
-   color: aliceblue;
-   border-radius: 0.6vw;
+
+.logo {
+  width: 200px;
+  height: auto;
 }
-.boton2:hover{
-   background-color: black;
-   color: aliceblue;
-   border-radius: 0.6vw;
+
+.nav-buttons {
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  right: 10vw;
+  font-size: 5rem;
 }
-.boton2{
-     cursor: pointer;
+
+.boton1,
+.boton2,
+.boton3,
+.boton4 {
+  cursor: pointer;
   border: none;
-    right: 16vw;
-    position: absolute;
-     height: 2.5vw;
-      font-size: 1vw;
-          text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  padding: 0.5rem 1rem;
+   font-size: 1.2rem;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-color: transparent;
 }
-.boton3{
-     cursor: pointer;
-      border-radius: 0.6vw;
-     color: aliceblue;
-    right: 3vw;
-    position: absolute;
-    height: 2.5vw;
-    background-color: black;
-     font-size: 1vw;
-}
-#imagenCambia{
 
-    right: 4vw;
-    position: absolute;
-    top: 10vw;
+.boton1:hover,
+.boton2:hover,
+.boton4:hover {
+  background-color: black;
+  color: aliceblue;
+  border-radius: 0.6rem;
+}
+
+.boton3 {
+  border-radius: 0.6rem;
+  color: aliceblue;
+  background-color: black;
 }
 
 
-
-.textodebienvenidad{
-    font-size: 4vw;
-    text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
-    margin-left: 2vw;
-    margin-top: 8vw;
+.cliente-panel {
+  position: relative;
+  display: none; 
 }
-.brevedescripcion{
-    color: rgb(58, 57, 57);
-    top: 30vw;
-    position: absolute;
-        font-size: 2vw;
-            margin-left: 2vw;
-    margin-top: 4vw;
+
+.cliente-btn {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background-color: transparent;
+  border: none;
+  padding: 0.5rem 1rem;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.cliente-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+  border-radius: 0.6rem;
+}
+
+.dropdown-icon {
+  font-size: 0.8rem;
+  transition: transform 0.3s ease;
+}
+#cerrar-sesion-btn{
+  color: #ddd;
+  background-color: black;
+  border-radius: 10px;}
+.cliente-btn.active .dropdown-icon {
+  transform: rotate(180deg);
+}
+
+.cliente-dropdown {
+ display: flex;
+  gap: 1rem;
+  align-items: center;
+  position: relative;
+  left: 8vw;
+   border: none;
+  padding: 0.5rem 1rem;
+   font-size: 1.3rem;
+  text-shadow: 0px 2px 3px rgba(0, 0, 0, 0.5);
+  transition: all 0.3s ease;
+  background-color: transparent;
+}
+
+.cliente-dropdown.active {
+  display: flex;
+}
+
+.cliente-dropdown a {
+  padding: 0.75rem 1rem;
+  text-decoration: none;
+  color: #333;
+  transition: background-color 0.3s ease;
+}
+
+.cliente-dropdown a:hover {
+  background-color: black;
+  border-radius: 10px;
+  color: white;
+}
+
+
+.mobile-cliente-panel {
+  display: none; 
+  flex-direction: column;
+  gap: 1rem;
+  margin-top: 1rem;
+  width: 100%;
+}
+
+#mobile-nombre-usuario {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+}
+
+.nombre-usuario {
+  font-weight: bold;
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  
+}
+
+.mobile-cliente-btn {
+  background-color: white;
+  border: none;
+  padding: 0.75rem 1rem;
+  border-radius: 0.5rem;
+  font-size: 1rem;
+  cursor: pointer;
+  text-align: left;
+  transition: background-color 0.3s ease;
+}
+
+.mobile-cliente-btn:hover {
+  background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+.hamburger {
+  display: none;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 30px;
+  height: 21px;
+  cursor: pointer;
+  z-index: 10;
+}
+
+.hamburger span {
+  display: block;
+  height: 3px;
+  width: 100%;
+  background-color: black;
+  border-radius: 3px;
+  transition: all 0.3s ease;
+}
+
+.mobile-nav {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(221, 221, 221, 0.95);
+  z-index: 5;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 2rem;
+}
+
+.mobile-nav.active {
+  display: flex;
+}
+
+
+.cuerpo {
+  position: relative;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+#imagenCambia {
+  max-width: 26%;
+  height: auto;
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+
+.text-container {
+  margin-top: 2rem;
+}
+
+.textodebienvenidad {
+  font-size: 2.5rem;
+  text-shadow: 2px 2px 3px rgba(0, 0, 0, 0.5);
+  margin-bottom: 1rem;
+  position: relative;
+  top: 7vw;
+}
+
+.brevedescripcion {
+  color: rgb(58, 57, 57);
+  font-size: 1.2rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+   position: relative;
+  top: 10vw;
+}
+
+
+.process-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 2rem;
+  max-width: 100%;
+   position: relative;
+  top: 10vw;
+}
+
+.step {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.step-number {
+  background-color: black;
+  color: white;
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  font-weight: bold;
+  flex-shrink: 0;
+}
+
+.step-content {
+  flex-grow: 1;
+}
+
+.step-content h3 {
+  font-size: 1.2rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+}
+
+.step-content p {
+  font-size: 0.9rem;
+  color: #555;
+}
+
+
+.ofertas-section {
+  padding: 3rem 1rem;
+  text-align: center;
+  scroll-margin-top: 80px; 
+}
+
+.ofertas-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.ofertas-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.oferta-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.oferta-card:hover {
+  transform: translateY(-5px);
+}
+
+.oferta-img-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.oferta-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.oferta-nombre {
+  font-size: 1.5rem;
+  margin-bottom: 1rem;
+  font-weight: bold;
+}
+
+.oferta-precio-antes {
+  color: #777;
+  text-decoration: line-through;
+  margin-bottom: 0.5rem;
+  font-size: 0.9rem;
+}
+
+.oferta-precio-ahora {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+.oferta-precio-ahora span {
+  color: #000;
+  font-weight: bold;
+}
+
+.reservar-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.reservar-btn:hover {
+  background-color: #333;
+}
+
+
+.acerca-section {
+  padding: 3rem 1rem;
+  background-color: #f5f5f5;
+  scroll-margin-top: 80px;
+}
+
+.acerca-title {
+  font-size: 2.5rem;
+  margin-bottom: 3rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+.acerca-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.acerca-imagen {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+}
+
+.acerca-img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.acerca-contenido {
+  flex: 1;
+}
+
+.acerca-subtitulo {
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.acerca-texto {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  margin-bottom: 2rem;
+  color: #555;
+}
+
+.acerca-lista {
+  list-style-position: inside;
+  margin-left: 1rem;
+}
+
+.acerca-lista li {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: #555;
+}
+
+/* Panel de Cliente - Secciones */
+.panel-section {
+  padding: 3rem 1rem;
+  display: none; /* Oculto por defecto */
+  scroll-margin-top: 80px;
+}
+
+.panel-title {
+  font-size: 2.5rem;
+  margin-bottom: 2rem;
+  text-align: center;
+  font-weight: bold;
+}
+
+/* Panel de Productos */
+.panel-filtros {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-bottom: 2rem;
+  flex-wrap: wrap;
+}
+
+.filtro-select,
+.filtro-buscar {
+  padding: 0.75rem 1rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.filtro-buscar {
+  min-width: 250px;
+}
+
+.productos-container {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 2rem;
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+.producto-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  width: 100%;
+  max-width: 300px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  transition: transform 0.3s ease;
+}
+
+.producto-card:hover {
+  transform: translateY(-5px);
+}
+
+.producto-img-container {
+  width: 150px;
+  height: 150px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 1rem;
+}
+
+.producto-img {
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
+}
+
+.producto-nombre {
+  font-size: 1.5rem;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  text-align: center;
+}
+
+.producto-descripcion {
+  font-size: 0.9rem;
+  color: #555;
+  margin-bottom: 1rem;
+  text-align: center;
+}
+
+.producto-precio {
+  font-size: 1.1rem;
+  margin-bottom: 1.5rem;
+  font-weight: bold;
+}
+
+
+.reservas-container {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.reserva-card {
+  background-color: white;
+  border-radius: 10px;
+  padding: 1.5rem;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+.reserva-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+  padding-bottom: 1rem;
+  border-bottom: 1px solid #eee;
+}
+
+.reserva-id {
+  font-size: 1.3rem;
+  font-weight: bold;
+}
+
+.reserva-estado {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: bold;
+}
+
+.reserva-estado.activa {
+  background-color: #e6f7e6;
+  color: #2e7d32;
+}
+
+.reserva-estado.completada {
+  background-color: #e3f2fd;
+  color: #1565c0;
+}
+
+.reserva-detalles {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.reserva-info p {
+  margin-bottom: 0.5rem;
+  font-size: 1rem;
+}
+
+.reserva-items h4 {
+  margin-bottom: 0.5rem;
+  font-size: 1.1rem;
+}
+
+.reserva-items ul {
+  list-style-type: none;
+}
+
+.reserva-items li {
+  padding: 0.5rem 0;
+  border-bottom: 1px solid #f5f5f5;
+  font-size: 0.95rem;
+}
+
+.reserva-acciones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 1rem;
+}
+
+.btn-extender,
+.btn-cancelar,
+.btn-factura,
+.btn-reservar-nuevamente {
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  font-size: 0.9rem;
+  cursor: pointer;
+  border: none;
+  transition: background-color 0.3s ease;
+}
+
+.btn-extender,
+.btn-reservar-nuevamente {
+  background-color: black;
+  color: white;
+}
+
+.btn-cancelar {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.btn-factura {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+.btn-extender:hover,
+.btn-reservar-nuevamente:hover {
+  background-color: #333;
+}
+
+.btn-cancelar:hover,
+.btn-factura:hover {
+  background-color: #e0e0e0;
+}
+
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 100;
+  justify-content: center;
+  align-items: center;
+  backdrop-filter: blur(5px); 
+ 
+}
+
+.modal.active {
+  display: flex;
+}
+
+.modal-content {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 10px;
+  width: 90%;
+  max-width: 500px;
+  position: relative;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.modal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1.5rem;
+}
+
+.modal-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.close-modal {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+  color: #777;
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: bold;
+  color: #555;
+}
+
+.form-group input {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+  font-size: 1rem;
+}
+
+.form-group input:focus {
+  outline: none;
+  border-color: #000;
+}
+
+.error-message {
+  color: red;
+  font-size: 0.85rem;
+  margin-top: 0.25rem;
+  display: none;
+}
+
+.submit-btn {
+  background-color: black;
+  color: white;
+  border: none;
+  padding: 0.75rem 1.5rem;
+  border-radius: 5px;
+  font-size: 1rem;
+  cursor: pointer;
+  width: 100%;
+  transition: all 0.3s ease;
+}
+
+.submit-btn:hover {
+  background-color: #333;
+}
+
+.form-footer {
+  margin-top: 1rem;
+  text-align: center;
+  font-size: 0.9rem;
+}
+
+.form-footer a {
+  color: #000;
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+
+@media (max-width: 768px) {
+  .nav-buttons {
+    display: none;
+  }
+
+  .hamburger {
+    display: flex;
+  }
+
+  .textodebienvenidad {
+    font-size: 2rem;
+    text-align: center;
+  }
+
+  .brevedescripcion {
+    font-size: 1rem;
+    text-align: center;
+  }
+
+  #imagenCambia {
+    margin-top: 1rem;
+    max-width: 80%;
+  }
+
+  .modal-content {
+    width: 95%;
+    padding: 1.5rem;
+  }
+
+  .process-steps {
+    margin: 2rem auto;
+  }
+
+  .step-number {
+    width: 2rem;
+    height: 2rem;
+    font-size: 1rem;
+  }
+
+  .step-content h3 {
+    font-size: 1.1rem;
+  }
+
+  .step-content p {
+    font-size: 0.85rem;
+  }
+
+  .ofertas-title,
+  .acerca-title,
+  .panel-title {
+    font-size: 2rem;
+  }
+
+  .oferta-card,
+  .producto-card {
+    max-width: 100%;
+  }
+
+  .acerca-container {
+    flex-direction: column;
+  }
+
+  .acerca-imagen {
+    margin-bottom: 1.5rem;
+  }
+
+  .reserva-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .reserva-detalles {
+    flex-direction: column;
+  }
+
+  .reserva-acciones {
+    flex-direction: column;
+    gap: 0.5rem;
+  }
+
+  .btn-extender,
+  .btn-cancelar,
+  .btn-factura,
+  .btn-reservar-nuevamente {
+    width: 100%;
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1024px) {
+  .logo {
+    width: 100px;
+  }
+
+  .textodebienvenidad {
+    font-size: 2.2rem;
+  }
+
+  #imagenCambia {
+    max-width: 45%;
+    float: right;
+    margin-top: 2rem;
+  }
+
+  .text-container {
+    width: 50%;
+  }
+
+  .process-steps {
+    margin-top: 3rem;
+  }
+
+  .ofertas-container,
+  .productos-container {
+    gap: 1.5rem;
+  }
+
+  .oferta-card,
+  .producto-card {
+    max-width: 220px;
+  }
+
+  .acerca-container {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .reserva-detalles {
+    flex-direction: row;
+  }
+
+  .reserva-info {
+    width: 40%;
+  }
+
+  .reserva-items {
+    width: 60%;
+  }
+}
+
+@media (min-width: 1025px) {
+  header {
+    padding: 1rem 3rem;
+  }
+
+  .cuerpo {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 2rem 3rem;
+  }
+
+  .text-container {
+    width: 50%;
+    margin-top: 4rem;
+  }
+
+  #imagenCambia {
+    width: 40%;
+    margin-top: 2rem;
+  }
+
+  .textodebienvenidad {
+    font-size: 3rem;
+  }
+
+  .brevedescripcion {
+    font-size: 1.5rem;
+    margin-top: 2rem;
+  }
+
+  .process-steps {
+    margin-top: 4rem;
+  }
+
+  .step {
+    max-width: 80%;
+  }
+
+  .step-content h3 {
+    font-size: 1.3rem;
+  }
+
+  .step-content p {
+    font-size: 1rem;
+  }
+
+  .ofertas-section,
+  .acerca-section,
+  .panel-section {
+    padding: 4rem 3rem;
+  }
+
+  .acerca-container {
+    flex-direction: row;
+    align-items: center;
+    gap: 4rem;
+  }
+
+  .reserva-detalles {
+    flex-direction: row;
+  }
+
+  .reserva-info {
+    width: 30%;
+  }
+
+  .reserva-items {
+    width: 70%;
+  }
 }
