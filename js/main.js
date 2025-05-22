@@ -16,7 +16,7 @@ import { configurarReservas } from "./moduls/reservas.js"
 import { configurarHerramientas } from "./moduls/herramientas.js"
 import { configurarPedidos } from "./moduls/pedidos.js"
 import { configurarDevoluciones } from "./moduls/devoluciones.js"
-
+import { mostrarHerramientas } from "./api/MostrarHerramienta.js"
 console.log("Archivo main.js cargado correctamente")
 
 // Función para inicializar todos los módulos cuando el DOM esté listo
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", () => {
     configurarHerramientas()
     configurarPedidos()
     configurarDevoluciones()
+    
 
     // Inicializar estado de la UI
     ocultarPaneles()
@@ -101,3 +102,4 @@ function ocultarPaneles() {
     })
   }
 }
+

@@ -16,7 +16,7 @@
             <button class="boton1" id="login-btn">Iniciar sesión</button>
             <button class="boton2" id="register-btn">Registrarse</button>
             <button class="boton4" id="acerca-btn">Acerca de</button>
-            <button class="boton3" id="ofertas-btn">Ofertas</button>
+            <button class="boton3" id="ofertas-btn">Herramientas</button>
 
             <!-- Panel de cliente (oculto por defecto) -->
             <div class="cliente-panel" id="cliente-panel">
@@ -62,7 +62,7 @@
             <button class="boton1" id="mobile-login-btn">Iniciar sesión</button>
             <button class="boton2" id="mobile-register-btn">Registrarse</button>
             <button class="boton4" id="mobile-acerca-btn">Acerca de</button>
-            <button class="boton3" id="mobile-ofertas-btn">Ofertas</button>
+            <button class="boton3" id="mobile-ofertas-btn">herramientas</button>
             
             <!-- Panel móvil de cliente (oculto por defecto) -->
             <div class="mobile-cliente-panel" id="mobile-cliente-panel">
@@ -127,40 +127,28 @@
         
         <!-- Sección de Ofertas Especiales -->
         <section id="ofertas-especiales" class="ofertas-section">
-            <h2 class="ofertas-title">Ofertas Especiales</h2>
-            
-            <div class="ofertas-container">
-                <div class="oferta-card">
-                    <div class="oferta-img-container">
-                        <img src="img/pala.png" alt="Pala" class="oferta-img">
-                    </div>
-                    <h3 class="oferta-nombre">Pala</h3>
-                    <p class="oferta-precio-antes">Antes <span>$18,000</span> cop x 1 día</p>
-                    <p class="oferta-precio-ahora">Ahora <span>$10,000</span> cop x 1 día</p>
-                    <button class="reservar-btn">Reservar</button>
-                </div>
-                
-                <div class="oferta-card">
-                    <div class="oferta-img-container">
-                        <img src="img/mazo.png" alt="Mazo" class="oferta-img">
-                    </div>
-                    <h3 class="oferta-nombre">Mazo</h3>
-                    <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
-                    <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
-                    <button class="reservar-btn">Reservar</button>
-                </div>
-                
-                <div class="oferta-card">
-                    <div class="oferta-img-container">
-                        <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="oferta-img">
-                    </div>
-                    <h3 class="oferta-nombre">Mezcladora de concreto</h3>
-                    <p class="oferta-precio-antes">Antes <span>$20,000</span> cop x 1 día</p>
-                    <p class="oferta-precio-ahora">Ahora <span>$17,500</span> cop x 1 día</p>
-                    <button class="reservar-btn">Reservar</button>
-                </div>
-            </div>
-        </section>
+    <h2 class="ofertas-title">Herramientas</h2>
+
+    <div class="ofertas-container">
+        <!-- Aquí se insertarán dinámicamente los productos -->
+    </div>
+    <!-- Modal Reservar Herramienta -->
+<div id="modal" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" id="cerrar-modal">&times;</span>
+    <h2>Reservar Herramienta</h2>
+    <form id="form-reservar">
+      <input type="hidden" id="modal-tool-id">
+      <div>
+        <label for="modal-customer-id">Cliente:</label>
+       
+      </div>
+      <button type="submit">Confirmar Reserva</button>
+    </form>
+  </div>
+</div>
+</section>
+
         
         <!-- Sección Acerca de Nosotros -->
         <section id="acerca-de" class="acerca-section">
@@ -200,7 +188,6 @@
     <!-- Panel de Cliente - Productos -->
     <section id="panel-productos" class="panel-section">
         <h2 class="panel-title">Catálogo de Productos</h2>
-        
         <div class="panel-filtros">
             <select id="filtro-categoria" class="filtro-select">
                 <option value="todos">Todas las categorías</option>
@@ -208,77 +195,24 @@
                 <option value="electricas">Herramientas eléctricas</option>
                 <option value="construccion">Equipo de construcción</option>
             </select>
-            
             <input type="text" id="buscar-producto" class="filtro-buscar" placeholder="Buscar herramientas...">
         </div>
-        
         <div class="productos-container">
-            <!-- Producto 1 -->
-            <div class="producto-card" data-categoria="manuales">
-                <div class="producto-img-container">
-                    <img src="img/pala.png" alt="Pala" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 2 -->
-            <div class="producto-card" data-categoria="manuales">
-                <div class="producto-img-container">
-                    <img src="img/mazo.png" alt="Mazo" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 3 -->
-            <div class="producto-card" data-categoria="construccion">
-                <div class="producto-img-container">
-                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 4 -->
-            <div class="producto-card" data-categoria="electricas">
-                <div class="producto-img-container">
-                    <img src="img/taladro.png" alt="Taladro eléctrico" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 5 -->
-            <div class="producto-card" data-categoria="electricas">
-                <div class="producto-img-container">
-                    <img src="img/sierra.png" alt="Sierra circular" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 6 -->
-            <div class="producto-card" data-categoria="construccion">
-                <div class="producto-img-container">
-                    <img src="img/andamio.png" alt="Andamio" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
+            <!-- Aquí se inyectarán dinámicamente las herramientas -->
         </div>
+        <div id="modal-reservar" class="modal" style="display:none;">
+  <div class="modal-content">
+    <span class="close" id="cerrar-modal">&times;</span>
+    <h2>Reservar Herramienta</h2>
+    <form id="form-reservar">
+      <input type="hidden" id="modal-tool-id">
+      <div>
+        <label for="modal-customer-id">Cliente:</label>
+        <input type="number" id="modal-customer-id" required>
+      </div>
+      <button type="submit">Confirmar Reserva</button>
+    </form>
+  </div>
     </section>
     
     <!-- Panel de Cliente - Mis Reservas -->
@@ -366,106 +300,7 @@
             </div>
         </div>
         
-        <div class="herramientas-container">
-            <!-- Herramienta 1 -->
-            <div class="herramienta-card" data-estado="disponible">
-                <div class="herramienta-header">
-                    <span class="herramienta-estado disponible">Disponible</span>
-                    <div class="herramienta-acciones">
-                        <button class="btn-editar" title="Editar"><i class="icon-edit"></i></button>
-                        <button class="btn-eliminar" title="Eliminar"><i class="icon-delete"></i></button>
-                    </div>
-                </div>
-                
-                <div class="herramienta-img-container">
-                    <img src="img/taladro.png" alt="Taladro eléctrico" class="herramienta-img">
-                </div>
-                
-                <div class="herramienta-info">
-                    <h3 class="herramienta-nombre">Taladro eléctrico</h3>
-                    <p class="herramienta-categoria">Herramientas eléctricas</p>
-                    <p class="herramienta-precio">$25,000 cop x 1 día</p>
-                    <p class="herramienta-stock">Stock: 5 unidades</p>
-                </div>
-                
-                <div class="herramienta-stats">
-                    <div class="stat">
-                        <span class="stat-valor">12</span>
-                        <span class="stat-label">Reservas</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-valor">4.8</span>
-                        <span class="stat-label">Rating</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Herramienta 2 -->
-            <div class="herramienta-card" data-estado="reservada">
-                <div class="herramienta-header">
-                    <span class="herramienta-estado reservada">Reservada</span>
-                    <div class="herramienta-acciones">
-                        <button class="btn-editar" title="Editar"><i class="icon-edit"></i></button>
-                        <button class="btn-eliminar" title="Eliminar"><i class="icon-delete"></i></button>
-                    </div>
-                </div>
-                
-                <div class="herramienta-img-container">
-                    <img src="img/sierra.png" alt="Sierra circular" class="herramienta-img">
-                </div>
-                
-                <div class="herramienta-info">
-                    <h3 class="herramienta-nombre">Sierra circular</h3>
-                    <p class="herramienta-categoria">Herramientas eléctricas</p>
-                    <p class="herramienta-precio">$30,000 cop x 1 día</p>
-                    <p class="herramienta-stock">Stock: 2 unidades</p>
-                </div>
-                
-                <div class="herramienta-stats">
-                    <div class="stat">
-                        <span class="stat-valor">8</span>
-                        <span class="stat-label">Reservas</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-valor">4.5</span>
-                        <span class="stat-label">Rating</span>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Herramienta 3 -->
-            <div class="herramienta-card" data-estado="mantenimiento">
-                <div class="herramienta-header">
-                    <span class="herramienta-estado mantenimiento">En mantenimiento</span>
-                    <div class="herramienta-acciones">
-                        <button class="btn-editar" title="Editar"><i class="icon-edit"></i></button>
-                        <button class="btn-eliminar" title="Eliminar"><i class="icon-delete"></i></button>
-                    </div>
-                </div>
-                
-                <div class="herramienta-img-container">
-                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="herramienta-img">
-                </div>
-                
-                <div class="herramienta-info">
-                    <h3 class="herramienta-nombre">Mezcladora de concreto</h3>
-                    <p class="herramienta-categoria">Equipo de construcción</p>
-                    <p class="herramienta-precio">$50,000 cop x 1 día</p>
-                    <p class="herramienta-stock">Stock: 1 unidad</p>
-                </div>
-                
-                <div class="herramienta-stats">
-                    <div class="stat">
-                        <span class="stat-valor">15</span>
-                        <span class="stat-label">Reservas</span>
-                    </div>
-                    <div class="stat">
-                        <span class="stat-valor">4.9</span>
-                        <span class="stat-label">Rating</span>
-                    </div>
-                </div>
-            </div>
-        </div>
+        <div class="herramientas-container"></div>
     </section>
     
     <!-- Panel de Proveedor - Agregar Herramienta -->
@@ -812,6 +647,7 @@
                     <select id="login-tipo" required>
                         <option value="cliente">Cliente</option>
                         <option value="proveedor">Proveedor</option>
+                        <option value="administrador">Administrador</option>
                     </select>
                 </div>
                 <button type="submit" class="submit-btn">Iniciar Sesión</button>
@@ -857,8 +693,8 @@
                         <option value="proveedor">Proveedor</option>
                     </select>
                 </div>
-<div class="form-group telefono-container" style="display: none;">
-    <label for="register-telefono">Teléfono (Solo para proveedores)</label>
+<div class="form-group telefono-container" >
+  
     <input type="tel" id="register-telefono" placeholder="+57 3222167943">
     <div class="error-message" id="register-telefono-error">Por favor ingresa un número de teléfono válido</div>
 </div>
@@ -1686,5 +1522,6 @@
   <script type="module" src="js/admin/main.js"></script>
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/api/agregarHerramienta.js"></script>
+  <script type="module" src="js/admin/modules/herramientas-container.js"></script>
 </body> 
 </html>
