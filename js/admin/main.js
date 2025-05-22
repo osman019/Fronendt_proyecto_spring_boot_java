@@ -46,60 +46,6 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// Configurar inicio de sesión como administrador
-function configurarInicioSesionAdmin() {
-  const loginForm = document.getElementById("login-form")
-
-  if (loginForm) {
-    // Guardar el handler original si existe
-    const originalSubmitHandler = loginForm.onsubmit
-
-    loginForm.addEventListener("submit", (e) => {
-      const email = document.getElementById("login-email")?.value
-      const tipoUsuario = document.getElementById("login-tipo")
-
-      // Si existe un select de tipo de usuario y se ha seleccionado "administrador"
-      if (tipoUsuario && tipoUsuario.value === "administrador") {
-        e.preventDefault()
-
-        // Cerrar modal de login
-        const loginModal = document.getElementById("login-modal")
-        if (loginModal) {
-          loginModal.classList.remove("active")
-        }
-
-        // Mostrar panel de administrador
-        if (email) {
-          mostrarPanelAdmin(email.split("@")[0])
-        }
-      } else if (originalSubmitHandler) {
-        // Si no es administrador, usar el handler original
-        originalSubmitHandler(e)
-      }
-    })
-
-    // Agregar opción de administrador al select de tipo de cuenta
-    const loginTipo = document.getElementById("login-tipo")
-    if (loginTipo) {
-      // Verificar si ya existe la opción para evitar duplicados
-      let adminOptionExists = false
-      for (let i = 0; i < loginTipo.options.length; i++) {
-        if (loginTipo.options[i].value === "administrador") {
-          adminOptionExists = true
-          break
-        }
-      }
-
-      if (!adminOptionExists) {
-        const adminOption = document.createElement("option")
-        adminOption.value = "administrador"
-        adminOption.textContent = "Administrador"
-        loginTipo.appendChild(adminOption)
-      }
-    }
-  }
-}
-
 // Configurar botones de cerrar sesión
 function configurarCerrarSesion() {
   const cerrarSesionAdminBtn = document.getElementById("cerrar-sesion-admin-btn")

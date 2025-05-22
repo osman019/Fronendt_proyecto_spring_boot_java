@@ -1,4 +1,4 @@
-// Email validation utility
+
 export function validateEmail(email) {
   const re =
     /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
@@ -17,7 +17,6 @@ export function configurarFormularios() {
     registerForm.addEventListener("submit", handleRegisterSubmit)
   }
 }
-
 function handleLoginSubmit(e) {
   e.preventDefault()
 
@@ -46,7 +45,14 @@ function handleLoginSubmit(e) {
     const loginData = {
       username: email,
       password: password,
-    }
+      role: tipoUsuario === "cliente" 
+          ? "ROLE_CUSTOMER" 
+          : tipoUsuario === "proveedor" 
+          ? "ROLE_SUPPLIER" 
+          : tipoUsuario === "administrador" 
+          ? "ROLE_ADMINISTRATOR"
+          : "ROLE_GUEST"  
+    };
 
     fetch("http://localhost:8080/auth/authenticate", {
       method: "POST",
@@ -55,37 +61,58 @@ function handleLoginSubmit(e) {
       },
       body: JSON.stringify(loginData),
     })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Credenciales incorrectas")
-        }
-        return response.json()
-      })
-      .then((data) => {
-         localStorage.setItem("token", data.jwt);
-localStorage.setItem("userId", data.id); 
+    .then((response) => {
+      if (!response.ok) {
+        throw new Error("Credenciales incorrectas");
+      }
+      return response.json();
+    })
+    .then((data) => {
+      const serverRole = data.role?.toUpperCase().trim();
+      const requestedRole = loginData.role.toUpperCase().trim();
 
-          
-        const loginModal = document.getElementById("login-modal")
-        loginModal.classList.remove("active")
-        document.getElementById("contenido-principal").style.display = "none"
+      if (serverRole !== requestedRole) {
+        alert("El rol seleccionado no coincide con el registrado en el sistema.");
+        return;
+      }
+      
+      // Guardar token y userId
+      localStorage.setItem("token", data.jwt);
+      localStorage.setItem("userId", data.userId);
+      localStorage.setItem("tipoUsuario", serverRole); // Usar serverRole en lugar de data.role
+        console.log("serverRole recibido:", serverRole);
 
-        if (tipoUsuario === "cliente") {
+      const loginModal = document.getElementById("login-modal");
+      loginModal.classList.remove("active");
+      document.getElementById("contenido-principal").style.display = "none";
+
+      // Cambio clave: Usar serverRole en lugar de tipoUsuario
+      switch(serverRole) {
+        case "ROLE_CUSTOMER":
           import("./panelCliente.js").then((module) => {
-            module.mostrarPanelCliente(email.split("@")[0])
-            module.mostrarProductos()
-          })
-        } else if (tipoUsuario === "proveedor") {
+            module.mostrarPanelCliente(email.split("@")[0]);
+            module.mostrarProductos();
+          });
+          break;
+        case "ROLE_SUPPLIER":
           import("./panelProveedor.js").then((module) => {
-            module.mostrarPanelProveedor(email.split("@")[0])
-            module.mostrarMisHerramientas()
-          })
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error)
-        alert("Error al iniciar sesión: " + error.message)
-      })
+            module.mostrarPanelProveedor(email.split("@")[0]);
+            module.mostrarMisHerramientas();
+          });
+          break;
+        case "ROLE_ADMINISTRATOR":
+          import("../admin/modules/panelAdmin.js").then((module) => {
+            module.mostrarPanelAdmin(email.split("@")[0]);
+          });
+          break;
+        default:
+          console.warn("Rol no reconocido:", serverRole);
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Error al iniciar sesión: " + error.message);
+    });
   }
 }
 
