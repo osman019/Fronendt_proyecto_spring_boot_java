@@ -42,4 +42,53 @@
 
     contenedor.appendChild(producto);
   });
+  document.addEventListener('click', function(e) {
+  if (e.target.classList.contains('reservar-btn')) {
+    const toolId = e.target.getAttribute('data-tool-id');
+    document.getElementById('modal-tool-id').value = toolId;
+    document.getElementById('modal').style.display = 'flex';
+  }
+  if (e.target.id === 'cerrar-modal') {
+    document.getElementById('modal').style.display = 'none';
+  }
+});
+
+
+document.getElementById('form-reservar').addEventListener('submit', function(e) {
+  e.preventDefault();
+  const toolId = document.getElementById('modal-tool-id').value;
+  const customerId = document.getElementById('modal-customer-id').value;
+
+  fetch('http://localhost:8080/api/reservations', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({
+      tools_id: toolId,
+      customer_id: customerId
+    
+    })
+  })
+  .then(res => {
+    if (res.ok) {
+      alert('¡Reserva realizada!');
+      document.getElementById('modal-reservar').style.display = 'none';
+    } else {
+      alert('Error al reservar');
+    }
+  });
+});
+document.addEventListener('click', function(e) {
+
+  if (e.target.classList.contains('reservar-btn')) {
+   
+    alert('Debes iniciar sesión para reservar una herramienta.');
+    
+    document.getElementById('login-modal').style.display = 'flex';
+  }
+});
+
+
+document.getElementById('close-login').onclick = function() {
+  document.getElementById('login-modal').style.display = 'none';
+};
 }
