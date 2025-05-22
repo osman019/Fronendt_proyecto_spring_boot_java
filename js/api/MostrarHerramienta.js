@@ -3,41 +3,38 @@ document.addEventListener('DOMContentLoaded', () =>
 {
 fetch('http://localhost:8080/api/Tools')
   .then(res => res.json())
-  .then(herramientas => {
-    console.log("Datos obtenidos:", herramientas); //  Verifica que los datos llegan
-    mostrarHerramientas(herramientas);
-    console.log("📌 Se ha llamado a mostrarHerramientas()");
+  .then(data => {
+    mostrarHerramientas(data, ".productos-container");
+    mostrarHerramientas(data, ".ofertas-container"); 
   })
-  .catch(err => console.error('Error cargando herramientas:', err));
+  .catch(err => console.error('❌ Error al cargar herramientas:', err));
+
 
 });
 
- export function mostrarHerramientas(herramientas) {
-  const contenedor = document.querySelector('.productos-container');
+export function mostrarHerramientas(herramientas, contenedorSelector) {
+  const contenedor = document.querySelector(contenedorSelector);
   if (!contenedor) {
-    console.error("❌ No se encontró el contenedor '.productos-container'");
+    console.error(`❌ No se encontró el contenedor '${contenedorSelector}'`);
     return;
   }
-
-  console.log("📌 Mostrando herramientas en el DOM...");
 
   contenedor.innerHTML = ""; // Limpiar contenido previo
 
   herramientas.forEach(h => {
-    console.log("➕ Agregando herramienta:", h.name); // Verifica que se está procesando cada herramienta
-
     const producto = document.createElement('div');
-    producto.className = 'producto-card';
+    producto.className = contenedorSelector.includes("ofertas") ? "oferta-card" : "producto-card"; // Adaptar estilo según sección
 
     producto.innerHTML = `
-      <h3 class="producto-nombre">${h.name}</h3>
+      <h3 class="${contenedorSelector.includes("ofertas") ? "oferta-nombre" : "producto-nombre"}">${h.name}</h3>
+      <p class="${contenedorSelector.includes("ofertas") ? "oferta-precio-ahora" : "producto-precio"}">
       <p class="producto-descripcion">${h.descripcion}</p>
-      <p class="producto-precio">$${h.costoDiario.toLocaleString('es-CO')} COP x 1 día</p>
-       <button class="reservar-btn">Reservar</button>
+        Precio: $${h.costoDiario.toLocaleString('es-CO')} COP x 1 día
+      </p>
+      <br>
+      <button class="reservar-btn" data-tool-id="${h.id}">Reservar</button>
     `;
 
     contenedor.appendChild(producto);
   });
-
-  console.log("✅ Elementos agregados al DOM.");
 }
