@@ -1,16 +1,16 @@
 
-document.addEventListener('DOMContentLoaded', () => 
-{
-fetch('http://localhost:8080/api/Tools')
-  .then(res => res.json())
-  .then(data => {
-    mostrarHerramientas(data, ".productos-container");
-    mostrarHerramientas(data, ".ofertas-container"); 
-  })
-  .catch(err => console.error('❌ Error al cargar herramientas:', err));
+  document.addEventListener('DOMContentLoaded', () => 
+  {
+  fetch('http://localhost:8080/api/Tools')
+    .then(res => res.json())
+    .then(data => {
+      mostrarHerramientas(data, ".productos-container");
+      mostrarHerramientas(data, ".ofertas-container"); 
+    })
+    .catch(err => console.error('❌ Error al cargar herramientas:', err));
 
 
-});export function mostrarHerramientas(herramientas, contenedorSelector) {
+  });export function mostrarHerramientas(herramientas, contenedorSelector) {
   const contenedor = document.querySelector(contenedorSelector);
   if (!contenedor) {
     console.error(`❌ No se encontró el contenedor '${contenedorSelector}'`);
@@ -30,7 +30,7 @@ fetch('http://localhost:8080/api/Tools')
       : 'img/default.png';
 
     producto.innerHTML = `
-      <img src="${imagenSrc}" alt="${h.name}" class="producto-imagen">
+      <img src="${imagenSrc}" alt="${h.name}" class="oferta-img"">
       <h3 class="${contenedorSelector.includes("ofertas") ? "oferta-nombre" : "producto-nombre"}">${h.name}</h3>
       <p class="${contenedorSelector.includes("ofertas") ? "oferta-precio-ahora" : "producto-precio"}">
       <p class="producto-descripcion">${h.descripcion}</p>

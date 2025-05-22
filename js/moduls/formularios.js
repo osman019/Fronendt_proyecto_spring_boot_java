@@ -76,17 +76,14 @@ function handleLoginSubmit(e) {
         return;
       }
       
-      // Guardar token y userId
       localStorage.setItem("token", data.jwt);
       localStorage.setItem("userId", data.userId);
-      localStorage.setItem("tipoUsuario", serverRole); // Usar serverRole en lugar de data.role
-        console.log("serverRole recibido:", serverRole);
+      localStorage.setItem("tipoUsuario", serverRole); 
 
       const loginModal = document.getElementById("login-modal");
       loginModal.classList.remove("active");
       document.getElementById("contenido-principal").style.display = "none";
 
-      // Cambio clave: Usar serverRole en lugar de tipoUsuario
       switch(serverRole) {
         case "ROLE_CUSTOMER":
           import("./panelCliente.js").then((module) => {
@@ -180,54 +177,53 @@ function handleRegisterSubmit(e) {
   }
 
   if (isValid) {
-    // Preparar datos para enviar a la API
     const data = {
       name: name,
       telefono: telefono,
       username: email,
       password: password,
       repeatedPassword: confirmPassword,
-      // Puedes agregar aquí otros campos que el backend permita (o extender SaveUser)
     }
 
-    // Enviar datos a la API
     const url = tipoUsuario === "proveedor" 
   ? "http://localhost:8080/suppliers" 
   : "http://localhost:8080/customers";
 
 
-fetch(url, {
-  method: "POST",
-  headers: { "Content-Type": "application/json" },
-  body: JSON.stringify(data),
-    })
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error("Error en la solicitud")
-        }
-        return response.json()
+  fetch(url, {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify(data),
       })
-      .then((data) => {
-        // Si el registro fue exitoso, cerrar modal y mostrar panel
-        const registerModal = document.getElementById("register-modal")
-        registerModal.classList.remove("active")
-        document.getElementById("contenido-principal").style.display = "none"
+        .then((response) => {
+          if (!response.ok) {
+            throw new Error("Error en la solicitud")
+          }
+          return response.json()
+        })
+        .then((data) => {
+          localStorage.setItem("token", data.jwt);
+          localStorage.setItem("userId", data.id);
 
-        if (tipoUsuario === "cliente") {
-          import("./panelCliente.js").then((module) => {
-            module.mostrarPanelCliente(name)
-            module.mostrarProductos()
-          })
-        } else if (tipoUsuario === "proveedor") {
-          import("./panelProveedor.js").then((module) => {
-            module.mostrarPanelProveedor(name)
-            module.mostrarMisHerramientas()
-          })
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error)
-        alert("Ocurrió un error al registrar el usuario.")
-      })
-  }
+          const registerModal = document.getElementById("register-modal")
+          registerModal.classList.remove("active")
+          document.getElementById("contenido-principal").style.display = "none"
+
+          if (tipoUsuario === "cliente") {
+            import("./panelCliente.js").then((module) => {
+              module.mostrarPanelCliente(name)
+              module.mostrarProductos()
+            })
+          } else if (tipoUsuario === "proveedor") {
+            import("./panelProveedor.js").then((module) => {
+              module.mostrarPanelProveedor(name)
+              module.mostrarMisHerramientas()
+            })
+          }
+        })
+        .catch((error) => {
+          console.error("Error:", error)
+          alert("Ocurrió un error al registrar el usuario.")
+        })
+    }
 }
