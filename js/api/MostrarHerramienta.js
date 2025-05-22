@@ -10,22 +10,27 @@ fetch('http://localhost:8080/api/Tools')
   .catch(err => console.error('❌ Error al cargar herramientas:', err));
 
 
-});
-
-export function mostrarHerramientas(herramientas, contenedorSelector) {
+});export function mostrarHerramientas(herramientas, contenedorSelector) {
   const contenedor = document.querySelector(contenedorSelector);
   if (!contenedor) {
     console.error(`❌ No se encontró el contenedor '${contenedorSelector}'`);
     return;
   }
 
-  contenedor.innerHTML = ""; // Limpiar contenido previo
+  contenedor.innerHTML = "";
+  console.log(herramientas);
 
   herramientas.forEach(h => {
     const producto = document.createElement('div');
-    producto.className = contenedorSelector.includes("ofertas") ? "oferta-card" : "producto-card"; // Adaptar estilo según sección
+    producto.className = contenedorSelector.includes("ofertas") ? "oferta-card" : "producto-card";
+
+   
+    const imagenSrc = h.datosImagen
+      ? `data:image/png;base64,${h.datosImagen}`
+      : 'img/default.png';
 
     producto.innerHTML = `
+      <img src="${imagenSrc}" alt="${h.name}" class="producto-imagen">
       <h3 class="${contenedorSelector.includes("ofertas") ? "oferta-nombre" : "producto-nombre"}">${h.name}</h3>
       <p class="${contenedorSelector.includes("ofertas") ? "oferta-precio-ahora" : "producto-precio"}">
       <p class="producto-descripcion">${h.descripcion}</p>
