@@ -200,7 +200,6 @@
     <!-- Panel de Cliente - Productos -->
     <section id="panel-productos" class="panel-section">
         <h2 class="panel-title">Catálogo de Productos</h2>
-        
         <div class="panel-filtros">
             <select id="filtro-categoria" class="filtro-select">
                 <option value="todos">Todas las categorías</option>
@@ -208,76 +207,10 @@
                 <option value="electricas">Herramientas eléctricas</option>
                 <option value="construccion">Equipo de construcción</option>
             </select>
-            
             <input type="text" id="buscar-producto" class="filtro-buscar" placeholder="Buscar herramientas...">
         </div>
-        
         <div class="productos-container">
-            <!-- Producto 1 -->
-            <div class="producto-card" data-categoria="manuales">
-                <div class="producto-img-container">
-                    <img src="img/pala.png" alt="Pala" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 2 -->
-            <div class="producto-card" data-categoria="manuales">
-                <div class="producto-img-container">
-                    <img src="img/mazo.png" alt="Mazo" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 3 -->
-            <div class="producto-card" data-categoria="construccion">
-                <div class="producto-img-container">
-                    <img src="img/mezcladora.png" alt="Mezcladora de concreto" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 4 -->
-            <div class="producto-card" data-categoria="electricas">
-                <div class="producto-img-container">
-                    <img src="img/taladro.png" alt="Taladro eléctrico" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 5 -->
-            <div class="producto-card" data-categoria="electricas">
-                <div class="producto-img-container">
-                    <img src="img/sierra.png" alt="Sierra circular" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
-            
-            <!-- Producto 6 -->
-            <div class="producto-card" data-categoria="construccion">
-                <div class="producto-img-container">
-                    <img src="img/andamio.png" alt="Andamio" class="producto-img">
-                </div>
-                <h3 class="producto-nombre"></h3>
-                <p class="producto-descripcion"></p>
-                <p class="producto-precio"></p>
-                <button class="reservar-btn">Reservar</button>
-            </div>
+            <!-- Aquí se inyectarán dinámicamente las herramientas -->
         </div>
     </section>
     
