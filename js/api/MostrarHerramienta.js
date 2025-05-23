@@ -37,6 +37,7 @@ export function mostrarHerramientas(herramientas, contenedorSelector) {
       <img src="${imagenSrc}" alt="${h.name}" class="oferta-img">
       <h3 class="${contenedorSelector.includes("ofertas") ? "oferta-nombre" : "producto-nombre"}">${h.name}</h3>
       <p class="producto-descripcion">${h.descripcion}</p>
+      <p class="category">${h.category}</p>
       <p class="${contenedorSelector.includes("ofertas") ? "oferta-precio-ahora" : "producto-precio"}">
         Precio: $${h.costoDiario.toLocaleString('es-CO')} COP x 1 día
       </p>
