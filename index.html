@@ -137,14 +137,7 @@
   <div class="modal-content">
     <span class="close" id="cerrar-modal">&times;</span>
     <h2>Reservar Herramienta</h2>
-    <form id="form-reservar">
-      <input type="hidden" id="modal-tool-id">
-      <div>
-        <label for="modal-customer-id">Cliente:</label>
-       
-      </div>
-      <button type="submit">Confirmar Reserva</button>
-    </form>
+
   </div>
 </div>
 </section>
@@ -205,13 +198,17 @@
     <span class="close" id="cerrar-modal">&times;</span>
     <h2>Reservar Herramienta</h2>
     <form id="form-reservar">
-      <input type="hidden" id="modal-tool-id">
-      <div>
-        <label for="modal-customer-id">Cliente:</label>
-        <input type="number" id="modal-customer-id" required>
-      </div>
-      <button type="submit">Confirmar Reserva</button>
-    </form>
+  <input type="hidden" id="modal-tool-id">
+  <div>
+    <label for="fecha-reserva">Fecha de reserva:</label>
+    <input type="date" id="fecha-reserva" required>
+  </div>
+  <div>
+    <label for="fecha-devolucion">Fecha de devolución:</label>
+    <input type="date" id="fecha-devolucion" required>
+  </div>
+  <button type="submit">Confirmar Reserva</button>
+</form>
   </div>
     </section>
     
@@ -1523,5 +1520,6 @@
   <script type="module" src="js/main.js"></script>
   <script type="module" src="js/api/agregarHerramienta.js"></script>
   <script type="module" src="js/admin/modules/herramientas-container.js"></script>
+  <script type="module" src="js/api/generarReservas.js"></script>
 </body> 
 </html>
