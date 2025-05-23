@@ -187,36 +187,36 @@
 
   <!-- Panel de Cliente - Productos -->
   <section id="panel-productos" class="panel-section">
-    <h2 class="panel-title">Catálogo de Productos</h2>
-    <div class="panel-filtros">
-      <select id="filtro-categoria" class="filtro-select">
-        <option value="todos">Todas las categorías</option>
-        <option value="manuales">Herramientas manuales</option>
-        <option value="electricas">Herramientas eléctricas</option>
-        <option value="construccion">Equipo de construcción</option>
-      </select>
-      <input type="text" id="buscar-producto" class="filtro-buscar" placeholder="Buscar herramientas...">
-    </div>
-    <div class="productos-container">
-      <!-- Aquí se inyectarán dinámicamente las herramientas -->
-    </div>
-    <div id="modal-reservar" class="modal" style="display:none;">
-      <div class="modal-content">
-        <span class="close" id="cerrar-modal">&times;</span>
-        <h2>Reservar Herramienta</h2>
-       <form id="form-reservar" class="form-panel">
-  <input type="hidden" id="modal-tool-id">
-  <div class="form-group">
-    <label for="fecha-reserva">Fecha de reserva:</label>
-    <input type="date" id="fecha-reserva" class="input" required>
-  </div>
-  <div class="form-group">
-    <label for="fecha-devolucion">Fecha de devolución:</label>
-    <input type="date" id="fecha-devolucion" class="input" required>
-  </div>
-  <button type="submit" class="btn-primary">Confirmar Reserva</button>
-</form>
+        <h2 class="panel-title">Catálogo de Productos</h2>
+        <div class="panel-filtros">
+          <select id="filtro-categoria" class="filtro-select">
+            <option value="todos">Todas las categorías</option>
+            <option value="manuales">Herramientas manuales</option>
+            <option value="electricas">Herramientas eléctricas</option>
+            <option value="construccion">Equipo de construcción</option>
+          </select>
+          <input type="text" id="buscar-producto" class="filtro-buscar" placeholder="Buscar herramientas...">
+        </div>
+        <div class="productos-container">
+          <!-- Aquí se inyectarán dinámicamente las herramientas -->
+        </div>
+        <div id="modal-reservar" class="modal" style="display:none;">
+          <div class="modal-content">
+            <span class="close" id="cerrar-modal">&times;</span>
+            <h2>Reservar Herramienta</h2>
+          <form id="form-reservar" class="form-panel">
+      <input type="hidden" id="modal-tool-id">
+      <div class="form-group">
+        <label for="fecha-reserva">Fecha de reserva:</label>
+        <input type="date" id="fecha-reserva" class="input" required>
       </div>
+      <div class="form-group">
+        <label for="fecha-devolucion">Fecha de devolución:</label>
+        <input type="date" id="fecha-devolucion" class="input" required>
+      </div>
+      <button type="submit" class="btn-primary">Confirmar Reserva</button>
+    </form>
+          </div>
   </section>
 
   <!-- Panel de Cliente - Mis Reservas -->
@@ -740,7 +740,7 @@
         <div class="admin-section-header">
           <h2 class="admin-section-title">Gestión de Herramientas</h2>
           <div class="admin-actions">
-            <button class="admin-btn admin-btn-primary" id="btn-agregar-herramienta-admin">Agregar Herramienta</button>
+            <button class="admin-btn admin-btn-" id="btn-agregar-herramienta-admin">Agregar Herramienta</button>
           </div>
         </div>
 
@@ -1341,87 +1341,67 @@
           </tbody>
         </table>
       </div>
+      <!-- Botón para abrir el modal -->
+      <button id="btn-agregar-herramienta-admin" class="btn-primary">Agregar herramienta</button>
+      <!-- Modal -->
 
-
-      <!-- Modales para el Panel de Administrador -->
-
-      <!-- Modal para Agregar/Editar Herramienta -->
-      <div class="admin-modal" id="modal-herramienta">
-        <div class="admin-modal-content">
-          <div class="admin-modal-header">
-            <h2 class="admin-modal-title">Agregar Herramienta</h2>
-            <button class="admin-modal-close" id="close-modal-herramienta">&times;</button>
-          </div>
+      <div id="modal-herramienta" class="admin-modal">
+        <section id="panel-agregar-herramientas" class="panel-section">
+          <div class="admin-modal-content">
           <div class="admin-modal-body">
-            <form id="form-herramienta" class="admin-form">
-              <div class="admin-form-grid">
-                <div class="admin-form-group">
-                  <label for="herramienta-nombre-admin">Nombre de la herramienta *</label>
-                  <input type="text" id="herramienta-nombre-admin" required>
+            <h2 class="panel-title">Agregar Nueva Herramienta</h2>
+            <form id="form-agregar-herramienta" class="form-panel">
+              <div class="form-grid">
+                <div class="form-group">
+                  <label for="herramienta-nombre">Nombre de la herramienta *</label>
+                  <input type="text" id="herramienta-nombre" required>
                 </div>
 
-                <div class="admin-form-group">
-                  <label for="herramienta-categoria-admin">Categoría *</label>
-                  <select id="herramienta-categoria-admin" required>
+                <div class="form-group">
+                  <label for="herramienta-categoria">Categoría *</label>
+                  <select id="herramienta-categoria" required>
                     <option value="">Seleccionar categoría</option>
-                    <option value="manuales">Herramientas manuales</option>
-                    <option value="electricas">Herramientas eléctricas</option>
-                    <option value="construccion">Equipo de construcción</option>
+                    <option value="MANUALES">Herramientas manuales</option>
+                    <option value="ELECTRICAS">Herramientas eléctricas</option>
+                    <option value="CONSTRUCCION">Equipo de construcción</option>
                   </select>
                 </div>
 
-                <div class="admin-form-group">
-                  <label for="herramienta-costo-admin">Costo diario (COP) *</label>
-                  <input type="number" id="herramienta-costo-admin" min="1000" step="500" required>
+                <div class="form-group">
+                  <label for="herramienta-costo">Costo diario (COP) *</label>
+                  <input type="number" id="herramienta-costo" min="1000" step="500" required>
                 </div>
 
-                <div class="admin-form-group">
-                  <label for="herramienta-disponibilidad-admin">Disponibilidad *</label>
-                  <input type="number" id="herramienta-disponibilidad-admin" min="1" required>
-                </div>
-
-                <div class="admin-form-group">
-                  <label for="herramienta-proveedor-admin">Proveedor *</label>
-                  <select id="herramienta-proveedor-admin" required>
-                    <option value="">Seleccionar proveedor</option>
-                    <option value="1">María López</option>
-                    <option value="2">Luis Sánchez</option>
-                    <option value="3">Carlos Gómez</option>
-                  </select>
-                </div>
-
-                <div class="admin-form-group">
-                  <label for="herramienta-estado-admin">Estado *</label>
-                  <select id="herramienta-estado-admin" required>
-                    <option value="disponible">Disponible</option>
-                    <option value="reservada">Reservada</option>
-                    <option value="mantenimiento">En mantenimiento</option>
-                  </select>
+                <div class="form-group">
+                  <label for="herramienta-disponibilidad">Disponibilidad *</label>
+                  <input type="number" id="herramienta-disponibilidad" min="1" required>
                 </div>
               </div>
 
-              <div class="admin-form-group full-width">
-                <label for="herramienta-descripcion-admin">Descripción *</label>
-                <textarea id="herramienta-descripcion-admin" rows="4" required></textarea>
+              <div class="form-group full-width">
+                <label for="herramienta-descripcion">Descripción *</label>
+                <textarea id="herramienta-descripcion" rows="4" required></textarea>
               </div>
 
-              <div class="admin-form-group full-width">
-                <label for="herramienta-imagen-admin">Imagen de la herramienta</label>
+              <div class="form-group full-width">
+                <label for="herramienta-imagen">Imagen de la herramienta</label>
                 <div class="upload-container">
-                  <input type="file" id="herramienta-imagen-admin" accept="image/*">
-                  <div class="upload-preview" id="imagen-preview-admin">
+                  <input type="file" id="herramienta-imagen" accept="image/*">
+                  <div class="upload-preview" id="imagen-preview">
                     <span>Vista previa de la imagen</span>
                   </div>
                 </div>
               </div>
+              <div class="form-actions">
+                <button type="button" id="btn-cancelar-agregar" class="btn-secondary">Cancelar</button>
+                <button type="submit" class="btn-primary">Guardar herramienta</button>
+              </div>
             </form>
           </div>
-          <div class="admin-modal-footer">
-            <button class="admin-btn admin-btn-secondary" id="btn-cancelar-herramienta">Cancelar</button>
-            <button class="admin-btn admin-btn-primary" id="btn-guardar-herramienta">Guardar</button>
-          </div>
         </div>
+        </section>
       </div>
+
 
       <!-- Modal para Agregar/Editar Proveedor -->
       <div class="admin-modal" id="modal-proveedor">
@@ -1529,6 +1509,8 @@
       <script type="module" src="js/api/agregarHerramienta.js"></script>
       <script type="module" src="js/admin/modules/herramientas-container.js"></script>
       <script type="module" src="js/api/generarReservas.js"></script>
+      <script type="module" src="js/api/mostrarHerramientasAdmin.js"></script>
+      <script type="module" src="js/admin/modules/agregarHerramientasAdmin.js"></script>
 </body>
 
 </html>

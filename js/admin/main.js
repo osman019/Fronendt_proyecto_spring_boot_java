@@ -8,6 +8,8 @@ import { configurarPaginacion } from "./modules/paginacion.js"
 import { configurarFiltros } from "./modules/filtros.js"
 import { configurarConfiguracion } from "./modules/configuracion.js"
 
+
+
 // Inicializar todos los módulos de administrador cuando el DOM esté listo
 document.addEventListener("DOMContentLoaded", () => {
   try {

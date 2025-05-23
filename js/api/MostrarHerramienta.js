@@ -4,6 +4,7 @@ document.addEventListener('DOMContentLoaded', () => {
     .then(data => {
       mostrarHerramientas(data, ".productos-container");
       mostrarHerramientas(data, ".ofertas-container");
+
     })
     .catch(err => console.error('❌ Error al cargar herramientas:', err));
 });
