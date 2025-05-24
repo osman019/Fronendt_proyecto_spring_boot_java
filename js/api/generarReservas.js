@@ -1,3 +1,4 @@
+import { mostrarReservas } from './mostrarReservas.js';
 document.addEventListener('DOMContentLoaded', function () {
   // Listener para abrir/cerrar el modal
   document.addEventListener('click', function (e) {
@@ -18,28 +19,26 @@ document.addEventListener('DOMContentLoaded', function () {
       e.preventDefault();
       console.log('¡Evento submit capturado!');
       const toolId = document.getElementById('modal-tool-id').value;
-      const customerId = localStorage.getItem("userId");
+      const userId = localStorage.getItem("userId");
       const fechaReserva = document.getElementById('fecha-reserva').value;
       const fechaDevolucion = document.getElementById('fecha-devolucion').value;
 
       console.log('toolId:', toolId);
-      console.log('customerId:', customerId);
+      console.log('userId:', userId);
       console.log('fechaReserva:', fechaReserva);
       console.log('fechaDevolucion:', fechaDevolucion);
-      if (!toolId || !customerId || !fechaReserva || !fechaDevolucion) {
+      if (!toolId || !userId || !fechaReserva || !fechaDevolucion) {
         alert('Faltan datos para la reserva.');
         return;
       }
 
-      fetch('http://localhost:8080/api/Reservations', {
+      fetch(`http://localhost:8080/api/Reservations?userId=${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
-
         },
         body: JSON.stringify({
           toolsId: { id: toolId },
-          customerId: { id: customerId },
           fechaReserva: fechaReserva,
           fechaDevolucion: fechaDevolucion
         })
@@ -48,6 +47,7 @@ document.addEventListener('DOMContentLoaded', function () {
           if (res.ok) {
             alert('¡Reserva realizada!');
             document.getElementById('modal-reservar').style.display = 'none';
+            mostrarReservas();
           } else {
             alert('Error al reservar');
           }

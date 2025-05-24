@@ -10,6 +10,7 @@ body {
 }
 
 
+
 header {
   display: flex;
   justify-content: space-between;
@@ -382,6 +383,44 @@ header {
   background-color: #333;
 }
 
+/* Diseño para la tabla de reservas */
+.tabla-reservas {
+  width: 100%;
+  border-collapse: collapse;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;
+  box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+  margin-bottom: 2rem;
+}
+
+.tabla-reservas th, .tabla-reservas td {
+  padding: 1rem 0.75rem;
+  text-align: center;
+}
+
+.tabla-reservas th {
+  background: #222;
+  color: #fff;
+  font-weight: bold;
+  font-size: 1.1rem;
+  letter-spacing: 1px;
+}
+
+.tabla-reservas tr:nth-child(even) {
+  background: #f7f7f7;
+}
+
+.tabla-reservas tr:hover {
+  background: #e0e0e0;
+  transition: background 0.2s;
+}
+
+.tabla-reservas td {
+  font-size: 1rem;
+  color: #333;
+  border-bottom: 1px solid #eee;
+}
 
 .acerca-section {
   padding: 3rem 1rem;
