@@ -1,90 +1,76 @@
-
 export function validateEmail(email) {
   const re =
-    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
-  return re.test(String(email).toLowerCase())
+    /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+  return re.test(String(email).toLowerCase());
 }
 
 export function configurarFormularios() {
-  const loginForm = document.getElementById("login-form")
-  const registerForm = document.getElementById("register-form")
+  const loginForm = document.getElementById("login-form");
+  const registerForm = document.getElementById("register-form");
 
   if (loginForm) {
-    loginForm.addEventListener("submit", handleLoginSubmit)
+    loginForm.addEventListener("submit", handleLoginSubmit);
   }
 
   if (registerForm) {
-    registerForm.addEventListener("submit", handleRegisterSubmit)
+    registerForm.addEventListener("submit", handleRegisterSubmit);
   }
 }
+
 function handleLoginSubmit(e) {
-  e.preventDefault()
+  e.preventDefault();
 
-  const email = document.getElementById("login-email").value
-  const password = document.getElementById("login-password").value
-  const tipoUsuario = document.getElementById("login-tipo").value
-  let isValid = true
+  const email = document.getElementById("login-email").value;
+  const password = document.getElementById("login-password").value;
 
-  // Validar email
+  let isValid = true;
+
   if (!validateEmail(email)) {
-    document.getElementById("login-email-error").style.display = "block"
-    isValid = false
+    document.getElementById("login-email-error").style.display = "block";
+    isValid = false;
   } else {
-    document.getElementById("login-email-error").style.display = "none"
+    document.getElementById("login-email-error").style.display = "none";
   }
 
-  // Validar contraseña
   if (password.length < 6) {
-    document.getElementById("login-password-error").style.display = "block"
-    isValid = false
+    document.getElementById("login-password-error").style.display = "block";
+    isValid = false;
   } else {
-    document.getElementById("login-password-error").style.display = "none"
+    document.getElementById("login-password-error").style.display = "none";
   }
 
-  if (isValid) {
-    const loginData = {
-      username: email,
-      password: password,
-      role: tipoUsuario === "cliente" 
-          ? "ROLE_CUSTOMER" 
-          : tipoUsuario === "proveedor" 
-          ? "ROLE_SUPPLIER" 
-          : tipoUsuario === "administrador" 
-          ? "ROLE_ADMINISTRATOR"
-          : "ROLE_GUEST"  
-    };
+  if (!isValid) return;
 
-    fetch("http://localhost:8080/auth/authenticate", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(loginData),
-    })
+  const loginData = {
+    username: email,
+    password: password,
+  };
+
+  fetch("http://localhost:8080/auth/authenticate", {
+    method: "POST",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    body: JSON.stringify(loginData),
+  })
     .then((response) => {
-      if (!response.ok) {
-        throw new Error("Credenciales incorrectas");
-      }
+      if (!response.ok) throw new Error("Credenciales incorrectas");
       return response.json();
     })
     .then((data) => {
-      const serverRole = data.role?.toUpperCase().trim();
-      const requestedRole = loginData.role.toUpperCase().trim();
+      const serverRole = (data.role || "").toUpperCase().trim();
 
-      if (serverRole !== requestedRole) {
-        alert("El rol seleccionado no coincide con el registrado en el sistema.");
-        return;
-      }
-      
+      // Guardar datos
       localStorage.setItem("token", data.jwt);
       localStorage.setItem("userId", data.userId);
-      localStorage.setItem("tipoUsuario", serverRole); 
+      localStorage.setItem("tipoUsuario", serverRole);
 
-      const loginModal = document.getElementById("login-modal");
-      loginModal.classList.remove("active");
+      // Cerrar modal y ocultar contenido principal
+      document.getElementById("login-modal").classList.remove("active");
       document.getElementById("contenido-principal").style.display = "none";
 
-      switch(serverRole) {
+      // Redirigir según rol
+      switch (serverRole) {
         case "ROLE_CUSTOMER":
           import("./panelCliente.js").then((module) => {
             module.mostrarPanelCliente(email.split("@")[0]);
@@ -103,127 +89,108 @@ function handleLoginSubmit(e) {
           });
           break;
         default:
-          console.warn("Rol no reconocido:", serverRole);
+          alert("Rol no reconocido, contacte al administrador.");
       }
     })
     .catch((error) => {
       console.error("Error:", error);
       alert("Error al iniciar sesión: " + error.message);
     });
-  }
 }
 
 function handleRegisterSubmit(e) {
-  e.preventDefault()
+  e.preventDefault();
 
-  const name = document.getElementById("register-name").value
-  const email = document.getElementById("register-email").value
-  const password = document.getElementById("register-password").value
-  const confirmPassword = document.getElementById("register-confirm-password").value
-  const tipoUsuario = document.getElementById("register-tipo").value
-  const telefono = document.getElementById("register-telefono").value
-  let isValid = true
+  const name = document.getElementById("register-name").value;
+  const email = document.getElementById("register-email").value;
+  const password = document.getElementById("register-password").value;
+  const confirmPassword = document.getElementById("register-confirm-password").value;
+  const tipoUsuario = document.getElementById("register-tipo").value.toLowerCase();
+  const telefono = document.getElementById("register-telefono").value;
 
-  // Validar nombre
+  let isValid = true;
+
   if (name.trim() === "") {
-    document.getElementById("register-name-error").style.display = "block"
-    isValid = false
+    document.getElementById("register-name-error").style.display = "block";
+    isValid = false;
   } else {
-    document.getElementById("register-name-error").style.display = "none"
+    document.getElementById("register-name-error").style.display = "none";
   }
 
-  // Validar email
   if (!validateEmail(email)) {
-    document.getElementById("register-email-error").style.display = "block"
-    isValid = false
+    document.getElementById("register-email-error").style.display = "block";
+    isValid = false;
   } else {
-    document.getElementById("register-email-error").style.display = "none"
+    document.getElementById("register-email-error").style.display = "none";
   }
 
-  // Validar contraseña
   if (password.length < 6) {
-    document.getElementById("register-password-error").style.display = "block"
-    isValid = false
+    document.getElementById("register-password-error").style.display = "block";
+    isValid = false;
   } else {
-    document.getElementById("register-password-error").style.display = "none"
+    document.getElementById("register-password-error").style.display = "none";
   }
 
-  // Validar confirmación de contraseña
   if (password !== confirmPassword) {
-    document.getElementById("register-confirm-password-error").style.display = "block"
-    isValid = false
+    document.getElementById("register-confirm-password-error").style.display = "block";
+    isValid = false;
   } else {
-    document.getElementById("register-confirm-password-error").style.display = "none"
+    document.getElementById("register-confirm-password-error").style.display = "none";
   }
 
-  // Validar teléfono para proveedores
-  if (tipoUsuario === "proveedor") {
-    const telefono = document.getElementById("register-telefono").value
-    if (telefono.trim() === "") {
-      document.getElementById("register-telefono-error").style.display = "block"
-      isValid = false
-    } else {
-      document.getElementById("register-telefono-error").style.display = "none"
-    }
-  }
-   if (tipoUsuario === "customer") {
-    const telefono = document.getElementById("register-telefono").value
-    if (telefono.trim() === "") {
-      document.getElementById("register-telefono-error").style.display = "block"
-      isValid = false
-    } else {
-      document.getElementById("register-telefono-error").style.display = "none"
-    }
+  // Teléfono obligatorio para proveedor y cliente (según tu código original)
+  if ((tipoUsuario === "proveedor" || tipoUsuario === "customer") && telefono.trim() === "") {
+    document.getElementById("register-telefono-error").style.display = "block";
+    isValid = false;
+  } else {
+    document.getElementById("register-telefono-error").style.display = "none";
   }
 
-  if (isValid) {
-    const data = {
-      name: name,
-      telefono: telefono,
-      username: email,
-      password: password,
-      repeatedPassword: confirmPassword,
-    }
+  if (!isValid) return;
 
-    const url = tipoUsuario === "proveedor" 
-  ? "http://localhost:8080/suppliers" 
-  : "http://localhost:8080/customers";
+  const data = {
+    name,
+    telefono,
+    username: email,
+    password,
+    repeatedPassword: confirmPassword,
+  };
 
+  const url =
+    tipoUsuario === "proveedor"
+      ? "http://localhost:8080/suppliers"
+      : "http://localhost:8080/customers";
 
   fetch(url, {
     method: "POST",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(data),
-      })
-        .then((response) => {
-          if (!response.ok) {
-            throw new Error("Error en la solicitud")
-          }
-          return response.json()
-        })
-        .then((data) => {
-          localStorage.setItem("token", data.jwt);
-          localStorage.setItem("userId", data.id);
+  })
+    .then((response) => {
+      if (!response.ok) throw new Error("Error en la solicitud");
+      return response.json();
+    })
+    .then((data) => {
+      localStorage.setItem("token", data.jwt);
+      localStorage.setItem("userId", data.id);
 
-          const registerModal = document.getElementById("register-modal")
-          registerModal.classList.remove("active")
-          document.getElementById("contenido-principal").style.display = "none"
+      document.getElementById("register-modal").classList.remove("active");
+      document.getElementById("contenido-principal").style.display = "none";
 
-          if (tipoUsuario === "cliente") {
-            import("./panelCliente.js").then((module) => {
-              module.mostrarPanelCliente(name)
-              module.mostrarProductos()
-            })
-          } else if (tipoUsuario === "proveedor") {
-            import("./panelProveedor.js").then((module) => {
-              module.mostrarPanelProveedor(name)
-              module.mostrarMisHerramientas()
-            })
-          }
-        })
-        .catch((error) => {
-          console.error("Error:", error)
-          alert("Ocurrió un error al registrar el usuario.")
-        })
-    }
+      if (tipoUsuario === "cliente" || tipoUsuario === "customer") {
+        import("./panelCliente.js").then((module) => {
+          module.mostrarPanelCliente(name);
+          module.mostrarProductos();
+        });
+      } else if (tipoUsuario === "proveedor") {
+        import("./panelProveedor.js").then((module) => {
+          module.mostrarPanelProveedor(name);
+          module.mostrarMisHerramientas();
+        });
+      }
+    })
+    .catch((error) => {
+      console.error("Error:", error);
+      alert("Ocurrió un error al registrar el usuario.");
+    });
 }

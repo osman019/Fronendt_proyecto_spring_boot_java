@@ -9,7 +9,34 @@ body {
   background-color: rgba(221, 221, 221, 1);
 }
 
+.boton-cancelar {
+  background-color: #e74c3c; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
 
+.boton-cancelar:hover {
+  background-color: #8f1305; 
+}
+.boton-factura{
+  background-color: #7a6c6b; 
+  color: white;
+  border: none;
+  padding: 6px 12px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.boton-factura:hover {
+  background-color: #c0392b; 
+}
 
 header {
   display: flex;
