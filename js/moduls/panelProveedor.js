@@ -1,3 +1,5 @@
+import { mostrarHerramientasProveedor } from '../api/mostrarHerramientasProveedor.js';
+
 export function configurarPanelProveedor() {
   const proveedorPanel = document.getElementById("proveedor-panel")
   const proveedorNombre = document.getElementById("proveedor-nombre")
@@ -180,7 +182,7 @@ export function mostrarMisHerramientas() {
     panelMisHerramientas.style.display = "block"
     panelMisHerramientas.scrollIntoView({ behavior: "smooth" })
   }
-
+mostrarHerramientasProveedor();
   // Cerrar dropdown en versión desktop
   const proveedorDropdown = document.querySelector(".proveedor-dropdown")
   if (proveedorDropdown) proveedorDropdown.classList.remove("active")

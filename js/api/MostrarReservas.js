@@ -1,19 +1,24 @@
-document.addEventListener('DOMContentLoaded', function () {
+export function mostrarReservas() {
   const userId = localStorage.getItem('userId');
   if (!userId) {
-    document.getElementById('panel-reservas').innerHTML = '<p>Debes iniciar sesión para ver tus reservas.</p>';
+    document.getElementById('reservas-lista').innerHTML = '<p>Debes iniciar sesión para ver tus reservas.</p>';
     return;
   }
 
-  fetch(`http://localhost:8080/api/Reservations/user`, {
+  fetch(`http://localhost:8080/api/Reservations/user/${userId}`, {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
   })
-    .then(res => res.json())
+    .then(res => {
+      if (!res.ok) {
+        throw new Error('HTTP status ' + res.status);
+      }
+      return res.json();
+    })
     .then(reservas => {
       if (!reservas.length) {
-        document.getElementById('panel-reservas').innerHTML = '<p>No tienes reservas.</p>';
+        document.getElementById('reservas-lista').innerHTML = '<p>No tienes reservas.</p>';
         return;
       }
 
@@ -36,16 +41,19 @@ document.addEventListener('DOMContentLoaded', function () {
             <td>${r.id}</td>
             <td>${r.fechaReserva || r.fecha_reserva || ''}</td>
             <td>${r.fechaDevolucion || r.fecha_devolucion || ''}</td>
-            <td>${r.toolsId?.nombre || r.tools_id || ''}</td>
+            <td>${r.toolsId?.name || r.tools_id || ''}</td>
             <td>${r.facturas || ''}</td>
           </tr>
         `;
       });
       html += '</tbody></table>';
-      document.getElementById('panel-reservas').innerHTML = html;
+      document.getElementById('reservas-lista').innerHTML = html;
     })
     .catch(err => {
-      document.getElementById('panel-reservas').innerHTML = '<p>Error al cargar reservas.</p>';
-      console.error(err);
+      document.getElementById('reservas-lista').innerHTML = '<p>Error al cargar reservas.</p>';
+      console.error('Error al cargar reservas:', err);
     });
-});
+}
+
+
+document.addEventListener('DOMContentLoaded', mostrarReservas);
