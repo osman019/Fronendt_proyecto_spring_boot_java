@@ -55,5 +55,5 @@ export function mostrarReservas() {
     });
 }
 
-// Llama la función al cargar la página
+
 document.addEventListener('DOMContentLoaded', mostrarReservas);
