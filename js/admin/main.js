@@ -15,32 +15,21 @@ document.addEventListener("DOMContentLoaded", () => {
   try {
     console.log("Inicializando módulos de administrador...")
 
-    // Configurar navegación entre secciones
     configurarNavegacionAdmin()
-
-    // Configurar modales
     configurarModales()
-
-    // Configurar vista previa de imagen
     configurarImagenPreview()
-
-    // Configurar botones de tabla
     configurarBotonesTabla()
-
-    // Configurar paginación
     configurarPaginacion()
-
-    // Configurar filtros y búsqueda
     configurarFiltros()
-
-    // Configurar guardado de configuración
     configurarConfiguracion()
 
-    // Configurar inicio de sesión como administrador
-    configurarInicioSesionAdmin()
+    document.addEventListener("click", (e) => {
+      if (e.target?.id === "cerrar-sesion-admin-btn" || e.target?.id === "mobile-cerrar-sesion-admin-btn") {
+        cerrarSesionAdmin()
+      }
+    })
 
-    // Configurar botones de cerrar sesión
-    configurarCerrarSesion()
+    // NO iniciar sesión automáticamente, solo inicializar la interfaz limpia
 
     console.log("Todos los módulos de administrador inicializados correctamente")
   } catch (error) {
@@ -48,19 +37,8 @@ document.addEventListener("DOMContentLoaded", () => {
   }
 })
 
-// Configurar botones de cerrar sesión
-function configurarCerrarSesion() {
-  const cerrarSesionAdminBtn = document.getElementById("cerrar-sesion-admin-btn")
-  const mobileCerrarSesionAdminBtn = document.getElementById("mobile-cerrar-sesion-admin-btn")
 
-  if (cerrarSesionAdminBtn) {
-    cerrarSesionAdminBtn.addEventListener("click", cerrarSesionAdmin)
-  }
 
-  if (mobileCerrarSesionAdminBtn) {
-    mobileCerrarSesionAdminBtn.addEventListener("click", cerrarSesionAdmin)
-  }
-}
 
 // Exportar funciones que pueden ser necesarias en otros módulos
 export { mostrarPanelAdmin, cerrarSesionAdmin }
