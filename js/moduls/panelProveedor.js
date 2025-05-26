@@ -1,3 +1,5 @@
+import { mostrarHerramientasProveedor } from '../api/mostrarHerramientasProveedor.js';
+
 export function configurarPanelProveedor() {
   const proveedorPanel = document.getElementById("proveedor-panel")
   const proveedorNombre = document.getElementById("proveedor-nombre")
@@ -9,12 +11,14 @@ export function configurarPanelProveedor() {
 
   if (cerrarSesionProveedorBtn) {
     cerrarSesionProveedorBtn.addEventListener("click", cerrarSesionProveedor)
+
   }
 
   if (mobileCerrarSesionProveedorBtn) {
     mobileCerrarSesionProveedorBtn.addEventListener("click", cerrarSesionProveedor)
-  }
 
+  }
+  
   // Configurar mis herramientas
   const misHerramientasBtn = document.getElementById("mis-herramientas-btn")
   const mobileMisHerramientasBtn = document.getElementById("mobile-mis-herramientas-btn")
@@ -80,6 +84,7 @@ export function configurarPanelProveedor() {
       if (!proveedorNombre.contains(e.target) && !proveedorDropdown.contains(e.target)) {
         proveedorDropdown.classList.remove("active")
         proveedorNombre.classList.remove("active")
+
       }
     })
   }
@@ -160,9 +165,11 @@ export function cerrarSesionProveedor() {
   // Mostrar contenido principal
   const contenidoPrincipal = document.getElementById("contenido-principal")
   if (contenidoPrincipal) contenidoPrincipal.style.display = "block"
-
+  localStorage.clear();
+  location.reload();
   // Mostrar alerta
   alert("Has cerrado sesión correctamente.")
+
 }
 
 export function mostrarMisHerramientas() {
@@ -180,7 +187,7 @@ export function mostrarMisHerramientas() {
     panelMisHerramientas.style.display = "block"
     panelMisHerramientas.scrollIntoView({ behavior: "smooth" })
   }
-
+mostrarHerramientasProveedor();
   // Cerrar dropdown en versión desktop
   const proveedorDropdown = document.querySelector(".proveedor-dropdown")
   if (proveedorDropdown) proveedorDropdown.classList.remove("active")

@@ -98,3 +98,37 @@ export function abrirModalEdicion(tipo, id, nombre) {
   // Mostrar el modal
   modal.classList.add("active")
 }
+document.addEventListener("DOMContentLoaded", () => {
+  const btnAbrirModal = document.getElementById("btn-agregar-herramienta-admin")
+  const modal = document.getElementById("modal-herramienta")
+  const btnCerrar = document.getElementById("close-modal-herramienta")
+  const btnCancelar = document.getElementById("btn-cancelar-herramienta")
+
+  if (!btnAbrirModal || !modal || !btnCerrar || !btnCancelar) {
+    console.error("No se encontraron uno o más elementos del modal.")
+    return
+  }
+
+  // Abrir modal
+  btnAbrirModal.addEventListener("click", () => {
+    modal.classList.add("active")
+  })
+
+  // Cerrar con botón (X)
+  btnCerrar.addEventListener("click", () => {
+    modal.classList.remove("active")
+  })
+
+  // Cerrar con botón Cancelar
+  btnCancelar.addEventListener("click", () => {
+    modal.classList.remove("active")
+  })
+
+  // Cerrar haciendo clic fuera del contenido
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) {
+      modal.classList.remove("active")
+    }
+  })
+})
+

@@ -124,7 +124,8 @@ export function cerrarSesionCliente() {
   // Mostrar contenido principal
   const contenidoPrincipal = document.getElementById("contenido-principal")
   if (contenidoPrincipal) contenidoPrincipal.style.display = "block"
-
+  localStorage.clear();
+  location.reload();
   // Mostrar alerta
   alert("Has cerrado sesión correctamente.")
 }
