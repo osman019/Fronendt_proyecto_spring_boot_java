@@ -1,3 +1,5 @@
+
+
 document.addEventListener('DOMContentLoaded', () => {
   fetch('http://localhost:8080/api/Tools')
     .then(res => res.json())
@@ -60,6 +62,15 @@ document.addEventListener('click', function(e) {
     document.getElementById('modal-reservar').style.display = 'none';
   }
 });
+export function actualizarHerramientas() {
+  fetch('http://localhost:8080/api/Tools')
+    .then(res => res.json())
+    .then(data => {
+      mostrarHerramientas(data, ".productos-container");
+      mostrarHerramientas(data, ".ofertas-container");
+    })
+    .catch(err => console.error('❌ Error al cargar herramientas:', err));
+}
 
 
 

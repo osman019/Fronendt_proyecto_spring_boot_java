@@ -42,8 +42,6 @@
         <div class="proveedor-dropdown">
           <a href="#" id="mis-herramientas-btn">Mis Herramientas</a>
           <a href="#" id="agregar-herramienta-btn">Agregar Herramienta</a>
-          <a href="#" id="pedidos-pendientes-btn">Pedidos Pendientes</a>
-          <a href="#" id="devoluciones-btn">Devoluciones</a>
           <a href="#" id="cerrar-sesion-proveedor-btn">Cerrar Sesión</a>
         </div>
       </div>
@@ -134,7 +132,7 @@
       <h2 class="ofertas-title">Herramientas</h2>
 
       <div class="ofertas-container">
-        <!-- Aquí se insertarán dinámicamente los productos -->
+   
       </div>
       <!-- Modal Reservar Herramienta -->
       <div id="modal" class="" style="display:none;">
@@ -159,7 +157,7 @@
         <div class="acerca-contenido">
           <h3 class="acerca-subtitulo">Nuestra Historia</h3>
           <p class="acerca-texto">
-            HerraRent nació en 2020 con una misión clara: hacer que las herramientas de alta calidad sean accesibles
+            HerraRent nació en 2025 con una misión clara: hacer que las herramientas de alta calidad sean accesibles
             para todos. Fundada por un grupo de profesionales de la construcción, nuestra empresa entiende las
             necesidades reales de quienes trabajan en proyectos de construcción y remodelación.
           </p>
@@ -301,155 +299,6 @@
     </form>
   </section>
 
-  <!-- Panel de Proveedor - Pedidos Pendientes -->
-  <section id="panel-pedidos-pendientes" class="panel-section">
-    <h2 class="panel-title">Pedidos Pendientes</h2>
-
-    <div class="panel-filtros">
-      <select id="filtro-pedidos" class="filtro-select">
-        <option value="todos">Todos los pedidos</option>
-        <option value="pendientes">Pendientes de aprobación</option>
-        <option value="aprobados">Aprobados</option>
-        <option value="rechazados">Rechazados</option>
-      </select>
-      <input type="text" id="buscar-pedido" class="filtro-buscar" placeholder="Buscar por cliente o ID...">
-    </div>
-
-    <div class="pedidos-container">
-      <!-- Pedido 1 -->
-      <div class="pedido-card" data-estado="pendiente">
-        <div class="pedido-header">
-          <div class="pedido-info-principal">
-            <h3 class="pedido-id">Pedido #54321</h3>
-            <span class="pedido-fecha">15/05/2025</span>
-          </div>
-          <span class="pedido-estado pendiente">Pendiente de aprobación</span>
-        </div>
-
-        <div class="pedido-cliente">
-          <p><strong>Cliente:</strong> Juan Pérez</p>
-          <p><strong>Email:</strong> juan.perez@email.com</p>
-          <p><strong>Teléfono:</strong> +57 300 123 4567</p>
-        </div>
-
-        <div class="pedido-detalles">
-          <h4>Herramientas solicitadas:</h4>
-          <ul class="pedido-items">
-            <li>
-              <div class="pedido-item-info">
-                <span class="item-nombre">Taladro eléctrico</span>
-                <span class="item-cantidad">1 unidad</span>
-                <span class="item-precio">$25,000 cop</span>
-              </div>
-              <div class="item-fechas">
-                <span>Del 20/05/2025 al 22/05/2025 (3 días)</span>
-              </div>
-            </li>
-          </ul>
-          <div class="pedido-total">
-            <p><strong>Total:</strong> $75,000 cop</p>
-          </div>
-        </div>
-
-        <div class="pedido-acciones">
-          <button class="btn-rechazar">Rechazar</button>
-          <button class="btn-aprobar">Aprobar</button>
-        </div>
-      </div>
-
-      <!-- Pedido 2 -->
-      <div class="pedido-card" data-estado="pendiente">
-        <div class="pedido-header">
-          <div class="pedido-info-principal">
-            <h3 class="pedido-id">Pedido #54322</h3>
-            <span class="pedido-fecha">15/05/2025</span>
-          </div>
-          <span class="pedido-estado pendiente">Pendiente de aprobación</span>
-        </div>
-
-        <div class="pedido-cliente">
-          <p><strong>Cliente:</strong> María López</p>
-          <p><strong>Email:</strong> maria.lopez@email.com</p>
-          <p><strong>Teléfono:</strong> +57 300 765 4321</p>
-        </div>
-
-        <div class="pedido-detalles">
-          <h4>Herramientas solicitadas:</h4>
-          <ul class="pedido-items">
-            <li>
-              <div class="pedido-item-info">
-                <span class="item-nombre">Sierra circular</span>
-                <span class="item-cantidad">1 unidad</span>
-                <span class="item-precio">$30,000 cop</span>
-              </div>
-              <div class="item-fechas">
-                <span>Del 18/05/2025 al 19/05/2025 (2 días)</span>
-              </div>
-            </li>
-            <li>
-              <div class="pedido-item-info">
-                <span class="item-nombre">Mezcladora de concreto</span>
-                <span class="item-cantidad">1 unidad</span>
-                <span class="item-precio">$50,000 cop</span>
-              </div>
-              <div class="item-fechas">
-                <span>Del 18/05/2025 al 19/05/2025 (2 días)</span>
-              </div>
-            </li>
-          </ul>
-          <div class="pedido-total">
-            <p><strong>Total:</strong> $160,000 cop</p>
-          </div>
-        </div>
-
-        <div class="pedido-acciones">
-          <button class="btn-rechazar">Rechazar</button>
-          <button class="btn-aprobar">Aprobar</button>
-        </div>
-      </div>
-
-      <!-- Pedido 3 (Aprobado) -->
-      <div class="pedido-card" data-estado="aprobado">
-        <div class="pedido-header">
-          <div class="pedido-info-principal">
-            <h3 class="pedido-id">Pedido #54320</h3>
-            <span class="pedido-fecha">14/05/2025</span>
-          </div>
-          <span class="pedido-estado aprobado">Aprobado</span>
-        </div>
-
-        <div class="pedido-cliente">
-          <p><strong>Cliente:</strong> Carlos Rodríguez</p>
-          <p><strong>Email:</strong> carlos.rodriguez@email.com</p>
-          <p><strong>Teléfono:</strong> +57 300 987 6543</p>
-        </div>
-
-        <div class="pedido-detalles">
-          <h4>Herramientas solicitadas:</h4>
-          <ul class="pedido-items">
-            <li>
-              <div class="pedido-item-info">
-                <span class="item-nombre">Andamio</span>
-                <span class="item-cantidad">1 unidad</span>
-                <span class="item-precio">$45,000 cop</span>
-              </div>
-              <div class="item-fechas">
-                <span>Del 16/05/2025 al 20/05/2025 (5 días)</span>
-              </div>
-            </li>
-          </ul>
-          <div class="pedido-total">
-            <p><strong>Total:</strong> $225,000 cop</p>
-          </div>
-        </div>
-
-        <div class="pedido-acciones">
-          <button class="btn-detalles">Ver detalles</button>
-          <button class="btn-contactar">Contactar cliente</button>
-        </div>
-      </div>
-    </div>
-  </section>
 
   <!-- Panel de Proveedor - Devoluciones -->
   <section id="panel-devoluciones" class="panel-section">
@@ -1136,6 +985,8 @@
       <script type="module" src="js/admin/modules/MostrarProveedores.js"></script>
       <script type="module" src="js/admin/modules/MostrarClientes.js"></script>
       <script type="module" src="js/admin/modules/MostrarReservations.js"></script>
+      <script type="module" src="js/api/actualizarHerramientas.js"></script>
+     
 </body>
 
 </html>
