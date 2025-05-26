@@ -30,7 +30,6 @@ export function mostrarReservas() {
               <th>Fecha Reserva</th>
               <th>Fecha Devolución</th>
               <th>Herramienta</th>
-              <th>Factura</th>
               <th>Acciones</th>
             </tr>
           </thead>
@@ -43,7 +42,7 @@ export function mostrarReservas() {
             <td>${r.fechaReserva || r.fecha_reserva || ''}</td>
             <td>${r.fechaDevolucion || r.fecha_devolucion || ''}</td>
             <td>${r.toolsId?.name || r.tools_id || ''}</td>
-            <td>${r.facturas || ''}</td>
+
             <td>
               <button class="boton-cancelar" onclick="cancelarReserva(${r.id})">Cancelar</button>
               <button class="boton-factura" onclick="descargarFactura(${r.id})">Factura</button>

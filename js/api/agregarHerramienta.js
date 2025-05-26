@@ -1,3 +1,5 @@
+import { actualizarHerramientas } from "./actualizarHerramientaInicio.js";
+
 document.addEventListener("DOMContentLoaded", () => {
     const form = document.getElementById("form-agregar-herramienta");
     const imageInput = document.getElementById("herramienta-imagen");
@@ -80,6 +82,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
             const data = await response.json();
             alert("Herramienta creada con éxito, ID: " + data.id);
+           
 
             // Verificar si la tabla ya existe, si no, crearla
             let tabla = document.querySelector(".tabla-reservas tbody");
@@ -116,6 +119,7 @@ document.addEventListener("DOMContentLoaded", () => {
             // Limpiar el formulario y la vista previa de la imagen
             form.reset();
             previewContainer.innerHTML = "<span>Vista previa de la imagen</span>";
+            actualizarHerramientas();
 
         } catch (error) {
             console.error("Error al crear herramienta:", error);
