@@ -1,7 +1,7 @@
 export function mostrarReservas() {
   const userId = localStorage.getItem('userId');
   if (!userId) {
-    document.getElementById('reservas-lista').innerHTML = '<p>Debes iniciar sesión para ver tus reservas.</p>';
+    document.getElementById('reservas-lista').innerHTML = '<p>No tienes reservas.</p>';
     return;
   }
 
