@@ -20,6 +20,7 @@ export function configurarFormularios() {
 function handleLoginSubmit(e) {
   e.preventDefault();
 
+  localStorage.clear(); 
   const email = document.getElementById("login-email").value;
   const password = document.getElementById("login-password").value;
 
@@ -59,11 +60,12 @@ function handleLoginSubmit(e) {
     })
     .then((data) => {
       const serverRole = (data.role || "").toUpperCase().trim();
-
-      // Guardar datos
+      localStorage.setItem("nombreUsuario", email.split("@")[0]); 
+      console.log("Respuesta del servidor:", data); 
       localStorage.setItem("token", data.jwt);
       localStorage.setItem("userId", data.userId);
       localStorage.setItem("tipoUsuario", serverRole);
+      localStorage.setItem("sesionActiva", "true");
 
       // Cerrar modal y ocultar contenido principal
       document.getElementById("login-modal").classList.remove("active");
@@ -100,7 +102,7 @@ function handleLoginSubmit(e) {
 
 function handleRegisterSubmit(e) {
   e.preventDefault();
-
+  localStorage.clear(); 
   const name = document.getElementById("register-name").value;
   const email = document.getElementById("register-email").value;
   const password = document.getElementById("register-password").value;
@@ -171,8 +173,11 @@ function handleRegisterSubmit(e) {
       return response.json();
     })
     .then((data) => {
+      localStorage.setItem("nombreUsuario", email.split("@")[0]); 
       localStorage.setItem("token", data.jwt);
       localStorage.setItem("userId", data.id);
+      console.log("Respuesta del servidor:", data); 
+      localStorage.setItem("sesionActiva", "true");
 
       document.getElementById("register-modal").classList.remove("active");
       document.getElementById("contenido-principal").style.display = "none";
@@ -193,4 +198,41 @@ function handleRegisterSubmit(e) {
       console.error("Error:", error);
       alert("Ocurrió un error al registrar el usuario.");
     });
+}
+
+export function restaurarSesion() {
+  const sesionActiva = localStorage.getItem("sesionActiva");
+  if (sesionActiva !== "true") return; 
+
+  const token = localStorage.getItem("token");
+  const userId = localStorage.getItem("userId");
+  const tipoUsuario = localStorage.getItem("tipoUsuario");
+
+  if (!token || !userId || !tipoUsuario) return;
+
+  const nombre = localStorage.getItem("nombreUsuario") || "Usuario";
+
+  switch (tipoUsuario.toUpperCase()) {
+    case "ROLE_CUSTOMER":
+      import("./panelCliente.js").then((module) => {
+        module.mostrarPanelCliente(nombre);
+        module.mostrarProductos();
+      });
+      break;
+    case "ROLE_SUPPLIER":
+      import("./panelProveedor.js").then((module) => {
+        module.mostrarPanelProveedor(nombre);
+        module.mostrarMisHerramientas();
+      });
+      break;
+    case "ROLE_ADMINISTRATOR":
+      import("../admin/modules/panelAdmin.js").then((module) => {
+        module.mostrarPanelAdmin(nombre);
+      });
+      break;
+    default:
+      console.warn("Rol no reconocido. No se pudo restaurar sesión.");
+  }
+
+  document.getElementById("contenido-principal").style.display = "none";
 }

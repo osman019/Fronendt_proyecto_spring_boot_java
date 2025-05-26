@@ -78,7 +78,8 @@ export function cerrarSesionAdmin() {
   ]
 
   elementosAMostrar.forEach((id) => mostrarElemento(id, "block"))
-
+  localStorage.clear();
+  location.reload();
   // Mostrar alerta
   alert("Has cerrado sesión correctamente.")
 }
