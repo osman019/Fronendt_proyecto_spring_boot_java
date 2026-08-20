@@ -13,7 +13,7 @@ document.addEventListener('DOMContentLoaded', () => {
   const filtroEstado = document.getElementById("filtro-estado");
   const buscarHerramienta = document.getElementById("buscar-herramienta");
 
-  fetch('http://localhost:8080/api/Tools', {
+  fetch('http://100.61.142.99:8080/api/Tools', {
     headers: {
       'Authorization': `Bearer ${token}`
     }

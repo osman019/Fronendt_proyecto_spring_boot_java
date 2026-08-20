@@ -11,7 +11,7 @@ function formatearFecha(fechaString) {
 
 async function cargarReservas() {
   try {
-    const response = await fetch("http://localhost:8080/api/Reservations");
+    const response = await fetch("http://100.61.142.99:8080/api/Reservations");
     if (!response.ok) throw new Error("Error al obtener reservas");
 
     const reservas = await response.json();

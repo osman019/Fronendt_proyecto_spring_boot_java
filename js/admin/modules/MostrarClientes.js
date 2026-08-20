@@ -9,7 +9,7 @@ function formatearFecha(fechaString) {
 
 async function cargarClientes() {
   try {
-    const response = await fetch("http://localhost:8080/customers");
+    const response = await fetch("http://100.61.142.99:8080/customers");
     if (!response.ok) throw new Error("Error al obtener los clientes");
 
     const clientes = await response.json();
