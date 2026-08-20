@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/Supplier";
+const API_URL = "http://100.61.142.99:8080/api/Supplier";
 
 // Listar todos los proveedores
 export const getSuppliers = async () => {

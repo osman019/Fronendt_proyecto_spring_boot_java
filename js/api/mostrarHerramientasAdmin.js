@@ -1,5 +1,5 @@
 document.addEventListener('DOMContentLoaded', () => {
-  fetch('http://localhost:8080/api/Tools')
+  fetch('http://100.61.142.99:8080/api/Tools')
     .then(res => res.json())
     .then(data => {
       mostrarHerramientasAdmin(data);

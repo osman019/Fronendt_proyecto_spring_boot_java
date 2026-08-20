@@ -1,6 +1,6 @@
 
 
-const API_URL = "http://localhost:8080/api/Admin";
+const API_URL = "http://100.61.142.99:8080/api/Admin";
 
 // Obtener todos los administradores
 export const getAdmins = async () => {

@@ -32,7 +32,7 @@ document.addEventListener('DOMContentLoaded', function () {
         return;
       }
 
-      fetch(`http://localhost:8080/api/Reservations?userId=${userId}`, {
+      fetch(`http://100.61.142.99:8080/api/Reservations?userId=${userId}`, {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',

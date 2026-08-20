@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/customers";
+const API_URL = "http://100.61.142.99:8080/customers";
 
 // Crear un cliente (POST)
 export const createCustomer = async (customer) => {

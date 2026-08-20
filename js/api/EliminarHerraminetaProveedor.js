@@ -4,7 +4,7 @@ export function eliminarHerramienta(toolId, userId) {
     return;
   }
 
-  fetch(`http://localhost:8080/api/Tools/${toolId}/${userId}`, {
+  fetch(`http://100.61.142.99:8080/api/Tools/${toolId}/${userId}`, {
     method: 'DELETE',
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')

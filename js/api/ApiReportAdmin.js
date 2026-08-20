@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/api/ReportAdmin";
+const API_URL = "http://100.61.142.99:8080/api/ReportAdmin";
 
 // Listar todos los reportes
 export const getReportsAdmin = async () => {

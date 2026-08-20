@@ -5,7 +5,7 @@ export function mostrarReservas() {
     return;
   }
 
-  fetch(`http://localhost:8080/api/Reservations/user/${userId}`, {
+  fetch(`http://100.61.142.99:8080/api/Reservations/user/${userId}`, {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     }
@@ -62,7 +62,7 @@ export function mostrarReservas() {
 function cancelarReserva(idReserva) {
   if (!confirm("¿Estás seguro de cancelar esta reserva?")) return;
 
-  fetch(`http://localhost:8080/api/Reservations/${idReserva}`, {
+  fetch(`http://100.61.142.99:8080/api/Reservations/${idReserva}`, {
     method: 'DELETE',
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token') 
@@ -83,7 +83,7 @@ function cancelarReserva(idReserva) {
 }
 
 function descargarFactura(reservationId) {
-  fetch(`http://localhost:8080/api/Reservations/${reservationId}/pdf`, {
+  fetch(`http://100.61.142.99:8080/api/Reservations/${reservationId}/pdf`, {
     method: 'GET',
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token'),

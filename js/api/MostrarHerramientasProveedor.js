@@ -6,7 +6,7 @@ export function mostrarHerramientasProveedor() {
     return;
   }
 
-  fetch(`http://localhost:8080/api/Tools/proveedor/${userId}`, {
+  fetch(`http://100.61.142.99:8080/api/Tools/proveedor/${userId}`, {
     headers: {
       'Authorization': 'Bearer ' + localStorage.getItem('token')
     }

@@ -1,4 +1,4 @@
-const API_URL = "http://localhost:8080/categories";
+const API_URL = "http://100.61.142.99:8080/categories";
 
 // Obtener categorías paginadas (page y size opcionales)
 export const getCategories = async (page = 0, size = 5) => {

@@ -67,7 +67,7 @@ document.addEventListener("DOMContentLoaded", () => {
         formData.append("imagen", imageFile);
 
         try {
-            const response = await fetch("http://localhost:8080/api/Tools", {
+            const response = await fetch("http://100.61.142.99:8080/api/Tools", {
                 method: "POST",
                 headers: {
                     "Authorization": `Bearer ${jwtToken}`,
