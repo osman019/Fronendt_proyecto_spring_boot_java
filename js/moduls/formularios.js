@@ -47,7 +47,7 @@ function handleLoginSubmit(e) {
     password: password,
   };
 
-  fetch("http://localhost:8080/auth/authenticate", {
+  fetch("https://100.61.142.99/:8080/auth/authenticate", {
     method: "POST",
     headers: {
       "Content-Type": "application/json",
@@ -160,8 +160,8 @@ function handleRegisterSubmit(e) {
 
   const url =
     tipoUsuario === "proveedor"
-      ? "http://localhost:8080/suppliers"
-      : "http://localhost:8080/customers";
+      ? "https://100.61.142.99/:8080/suppliers"
+      : "https://100.61.142.99/:8080/customers";
 
   fetch(url, {
     method: "POST",
